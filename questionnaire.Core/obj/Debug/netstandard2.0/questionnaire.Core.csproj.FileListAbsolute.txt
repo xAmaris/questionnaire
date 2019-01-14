@@ -7,3 +7,12 @@ D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netstandard2.0\que
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.AssemblyInfo.cs
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.dll
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.pdb
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\bin\Debug\netstandard2.0\questionnaire.Core.deps.json
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\bin\Debug\netstandard2.0\questionnaire.Core.dll
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\bin\Debug\netstandard2.0\questionnaire.Core.pdb
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.csprojAssemblyReference.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.csproj.CoreCompileInputs.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.AssemblyInfoInputs.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.AssemblyInfo.cs
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.dll
+D:\AngularProjects\questionnaire — kopia\questionnaire.Core\obj\Debug\netstandard2.0\questionnaire.Core.pdb

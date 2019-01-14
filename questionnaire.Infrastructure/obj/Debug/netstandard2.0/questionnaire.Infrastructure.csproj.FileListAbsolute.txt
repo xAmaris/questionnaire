@@ -10,3 +10,15 @@ D:\AngularProjects\questionnaire\questionnaire.Infrastructure\obj\Debug\netstand
 D:\AngularProjects\questionnaire\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.csproj.CopyComplete
 D:\AngularProjects\questionnaire\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.dll
 D:\AngularProjects\questionnaire\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.pdb
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\bin\Debug\netstandard2.0\questionnaire.Infrastructure.deps.json
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\bin\Debug\netstandard2.0\questionnaire.Infrastructure.dll
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\bin\Debug\netstandard2.0\questionnaire.Infrastructure.pdb
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\bin\Debug\netstandard2.0\questionnaire.Core.dll
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\bin\Debug\netstandard2.0\questionnaire.Core.pdb
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.csprojAssemblyReference.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.csproj.CoreCompileInputs.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.AssemblyInfoInputs.cache
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.AssemblyInfo.cs
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.csproj.CopyComplete
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.dll
+D:\AngularProjects\questionnaire — kopia\questionnaire.Infrastructure\obj\Debug\netstandard2.0\questionnaire.Infrastructure.pdb

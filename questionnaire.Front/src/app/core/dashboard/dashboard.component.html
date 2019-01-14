@@ -1,0 +1,14 @@
+<div id="dashboard">
+  <mat-sidenav-container id="wrapper" hasBackdrop="false">
+    <mat-sidenav
+      id="sidenav"
+      #sidenav
+      [mode]="'side'"
+      [(opened)]="isSidebarOpened"
+    >
+    </mat-sidenav>
+    <mat-sidenav-content id="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

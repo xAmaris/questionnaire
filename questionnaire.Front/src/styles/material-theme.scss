@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+@import './devbricks-default-light-palette.scss';
+
+$devbricks-default-primary: mat-palette($devbricks-default-light);
+$devbricks-default-accent: mat-palette($devbricks-default-light);
+$devbricks-default-warn: mat-palette($devbricks-default-light);
+
+$devbricks-default-theme: mat-light-theme($devbricks-default-primary, $devbricks-default-accent, $devbricks-default-warn);
