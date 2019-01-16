@@ -1,0 +1,15 @@
+@import './styles/material-theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons');
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+
+  width: 100vw;
+  height: 100vh;
+}
+.mat-menu-panel {
+  overflow: initial !important;
+}

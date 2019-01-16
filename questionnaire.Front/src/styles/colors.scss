@@ -1,26 +1,12 @@
 @import './material-theme.scss';
+@import '~@angular/material/theming';
 
-.devbricks-default-theme {
-    @include angular-material-theme($devbricks-default-theme);
-}
-
-$primary: mat-color($devbricks-default-primary);
-$warn: mat-color($devbricks-default-warn);
+$primary: mat-color($my-app-primary, 500);
+$warn: mat-color($my-app-warn);
 $warn-light: #ff6c61;
 $warn-very-light: #ffebee;
 $primary-light: #8bc34a;
-$primary-very-light: #fafbfc;
-$foreground: #fff;
-
-$grey-light: #bdbdbd;
+$primary-very-light: #c2e697;
 $primary-gradient: #a3d26c;
 $grey: #666;
-$background-highlight-color: $primary-very-light;
-$border-highlight-color: $primary;
-$border-radius: 3px;
-
-$primary-gradient-start: #23b7e5;
-$primary-gradient-end: #51c6ea;
-
-$border-color: #cfdbe2;
-@mixin box-shadow() {box-shadow: 0 1px 1px rgba(0,0,0,.05);}
+$grey-light: #bdbdbd;

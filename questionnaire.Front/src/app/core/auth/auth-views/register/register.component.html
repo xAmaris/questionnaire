@@ -1,0 +1,157 @@
+<div id="container">
+  <form #reg="ngForm" [formGroup]="regForm">
+    <div id="header">
+      <span id="signup"> Zarejestruj się</span>
+      <div id="profiles-container">
+        <span id="profile-info">Wybierz swój profil</span>
+        <div id="profiles">
+          <div
+            class="profile"
+            *ngFor="let profile of profiles"
+            class=" cc-selector"
+          >
+            <input
+              id="{{ profile.value }}"
+              type="radio"
+              formControlName="profileName"
+              value="{{ profile.value }}"
+            />
+            <label
+              for="{{ profile.value }}"
+              class="{{ profile.value }} card-cc"
+              matTooltip="{{ profile.message }}"
+              matTooltipPosition="below"
+            >
+              <fa-icon [icon]="['fas', profile.icon]"></fa-icon>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="register-container">
+      <div id="form-container">
+        <div id="regErr">
+          <!-- <mat-error *ngIf="registrationError">{{
+            registrationErrorMessage
+          }}</mat-error> -->
+        </div>
+        <div class="group half">
+          <mat-form-field>
+            <input
+              matInput
+              autocomplete="given-name"
+              placeholder="Name"
+              type="text"
+              id="name"
+              formControlName="name"
+              autofocus
+            />
+            <mat-error *ngIf="regForm['controls'].name.invalid">
+              błędne imię
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="group half">
+          <mat-form-field>
+            <input
+              matInput
+              autocomplete="family-name"
+              placeholder="Last name"
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+            />
+            <mat-error *ngIf="regForm['controls'].lastName.invalid">
+              błędne nazwisko
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div
+          [ngClass]="
+            regForm['controls'].profileName.value === 'Student'
+              ? 'group half'
+              : 'group full'
+          "
+        >
+          <mat-form-field>
+            <input
+              matInput
+              autocomplete="email"
+              placeholder="E-mail"
+              type="text"
+              id="email"
+              formControlName="email"
+            />
+            <mat-error *ngIf="regForm['controls'].email.invalid">
+              błędny email
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div
+          class="group half"
+          *ngIf="regForm['controls'].profileName.value === 'Student'"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Nr Albumu"
+              type="text"
+              id="albumID"
+              formControlName="albumID"
+            />
+            <mat-error *ngIf="regForm['controls'].albumID.invalid">
+              błędny numer albumu
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="group half">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Password"
+              type="password"
+              id="password"
+              formControlName="password"
+              (keydown)="clearPasswordConfirm()"
+            />
+            <mat-error *ngIf="regForm['controls'].password.invalid">
+              błędne hasło
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="group half">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Confirm password"
+              type="password"
+              id="passwordConfirm"
+              formControlName="passwordConfirm"
+            />
+            <mat-error *ngIf="regForm['controls'].passwordConfirm.invalid">
+              hasła są różne
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="btnBox">
+        <button
+          type="button"
+          class="white"
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit(reg)"
+        >
+          Rejestracja
+        </button>
+      </div>
+      <div
+        class="additionalLink"
+        [routerLink]="['/auth/login']"
+        routerLinkActive="active"
+      >
+        Posiadasz już konto?
+      </div>
+    </div>
+  </form>
+</div>

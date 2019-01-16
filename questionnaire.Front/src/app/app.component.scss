@@ -1,0 +1,11 @@
+#appContainer {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  align-content: stretch;
+
+  width: 100vw;
+  height: 100vh;
+}
