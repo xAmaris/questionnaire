@@ -1,0 +1,6 @@
+<div id="container">
+    <div *ngFor="let item of list">
+      <ng-container
+        *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-container>
+    </div>
+  </div>

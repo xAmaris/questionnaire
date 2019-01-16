@@ -1,0 +1,60 @@
+<div id="bar" #nav>
+  <div id="container">
+    <div class="sideButton" (click)="openSidebar()">
+      <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+    </div>
+    <!-- <div class="sideButton" (click)="backTo()">
+      <fa-icon
+        [icon]="['fas', 'arrow-left']"
+        matTooltip="{{ toolTipInfo.main }}"
+        matTooltipPosition="below"
+      ></fa-icon>
+    </div> -->
+    <div id="logo"><img src="{{ logoIMG }}" alt="logo WSEI" /></div>
+    <!-- <div id="preview">PODGLĄD</div> -->
+  </div>
+  <div id="profile-container">
+    <div id="career-offices">
+      <ul class="menu">
+        <li
+          class="menu-item"
+          [matMenuTriggerFor]="surveyInfo"
+          #surveyTrigger="matMenuTrigger"
+        >
+          Ankiety
+        </li>
+        <li class="menu-item" (click)="redirectTo('users')">Użytkownicy</li>
+      </ul>
+      <!-- <div id="survey-buttons">
+        <fa-icon
+          [icon]="['far', 'eye']"
+          matTooltip="{{ toolTipInfo.show }}"
+          matTooltipPosition="below"
+          (click)="showSurvey()"
+        ></fa-icon>
+        <button mat-button id="save" (click)="sendSurvey()">WYŚLIJ</button>
+      </div> -->
+    </div>
+    <div
+      id="userInfo"
+      class="clickable"
+      [matMenuTriggerFor]="userInfo"
+      #menuTrigger="matMenuTrigger"
+    >
+      <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
+      <!-- <img src="./../../../assets/profile-image.png"> -->
+      <img src="{{ profileIMG }}" alt="zdjęcie profilowe" />
+    </div>
+    <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">
+      <app-user-info
+        (logout)="emitLogout()"
+        (routeSwitch)="emitRouteSwitch($event)"
+        [name]="profileName"
+      ></app-user-info>
+    </mat-menu>
+    <mat-menu #surveyInfo="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="redirectTo('survey')">Szablony</button>
+      <button mat-menu-item (click)="redirectTo('sent')">Historia</button>
+    </mat-menu>
+  </div>
+</div>

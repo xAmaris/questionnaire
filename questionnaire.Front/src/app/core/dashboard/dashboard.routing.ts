@@ -5,7 +5,19 @@ import { DashboardComponent } from './dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          './dashboard-content/dashboard-content-views/main-dashboard/main-dashboard.module#MainDashboardModule'
+      },
+      {
+        path: 'd',
+        loadChildren:
+          './dashboard-content/dashboard-content.module#DashboardContentModule'
+      }
+    ]
   }
 ];
 

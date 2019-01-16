@@ -1,4 +1,24 @@
 <div id="dashboard">
+  <div id="bar">
+    <app-bar
+      [toolTipInfo]="toolTipInfo"
+      [isLogged]="isLogged$ | async"
+      [isPreview]="isPreview$ | async"
+      [accountRole]="accountRole$ | async"
+      [showCreatorButton]="showCreatorButton$ | async"
+      [showSendButton]="showSendButton$ | async"
+      [showAdmin]="showAdminMenu$ | async"
+      [showToggleButton]="showToggleButton$ | async"
+      [showBackButton]="showBackButton$ | async"
+      [showUserInfo]="showUserInfo$ | async"
+      (showSurveyButton)="showSurvey()"
+      (openSidebarButton)="openSidebar()"
+      [profileName]="profileData$ | async"
+      (redirectToButton)="redirectTo($event)"
+      (sendSurveyDialog)="sendSurvey()"
+      (logout)="logout()"
+    ></app-bar>
+  </div>
   <mat-sidenav-container id="wrapper" hasBackdrop="false">
     <mat-sidenav
       id="sidenav"

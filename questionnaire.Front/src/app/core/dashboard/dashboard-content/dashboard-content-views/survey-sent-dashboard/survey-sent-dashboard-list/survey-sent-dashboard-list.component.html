@@ -1,0 +1,7 @@
+<app-list [list]="surveySentList">
+  <ng-template let-item>
+    <app-survey-sent-dashboard-list-item
+      [surveySent]="item"
+    ></app-survey-sent-dashboard-list-item>
+  </ng-template>
+</app-list>
