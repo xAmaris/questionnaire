@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserProfile } from 'src/app/models/user.model';
 
 @Injectable()
 export class AccountService {
@@ -8,7 +7,7 @@ export class AccountService {
 
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
   role: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
-  profileData: BehaviorSubject<UserProfile> = new BehaviorSubject<UserProfile>(
+  profileData: BehaviorSubject<any> = new BehaviorSubject<any>(
     undefined
   );
 

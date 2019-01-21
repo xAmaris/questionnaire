@@ -1,0 +1,64 @@
+@import '../../../../../../styles/colors.scss';
+#dialog-container {
+  width: 450px;
+  #dialog-header {
+    border-bottom: 1px solid $grey;
+  }
+  #dialog-main {
+    .question {
+      display: flex;
+      align-items: center;
+      height: 64px;
+      border-bottom: 1px solid $grey;
+      user-select: none;
+
+      .dialog-grip {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 60px;
+        .grip {
+          cursor: move;
+        }
+      }
+      .dialog-info {
+        display: flex;
+        flex: 1;
+        height: 100%;
+        .info {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          flex: 1;
+          height: 100%;
+          .section{
+            font-size: 12px;
+            color: grey;
+          }
+        }
+        .dialog-controls {
+          display: flex;
+          align-items: center;
+          padding-right: 15px;
+          .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            button {
+              .icon {
+                font-size: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #dialog-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

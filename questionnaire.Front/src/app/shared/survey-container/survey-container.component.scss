@@ -1,0 +1,22 @@
+@import './../../../styles/colors.scss';
+#outer-container {
+  background-color: $primary-very-light;
+  height: 100%;
+  #container {
+    background-color: $primary-very-light;
+    padding-bottom: 100px;
+    padding-top: 25px;
+    #creator-container {
+      display: flex;
+      width: 770px;
+      background-color: white;
+      margin: 0 auto;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    }
+  }
+}
+@media screen and (max-width: 770px) {
+  #creator-container {
+    width: inherit !important;
+  }
+}

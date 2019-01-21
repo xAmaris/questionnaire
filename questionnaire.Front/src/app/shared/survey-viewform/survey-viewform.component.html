@@ -1,0 +1,173 @@
+<form *ngIf="loader == true" [formGroup]="invoiceForm">
+
+  <div id="form-title">
+    <span>{{title}}</span>
+  </div>
+  <div id="questions-container" formArrayName="questions">
+    <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i"
+      [ngClass]="controlError(question, i) ? 'question-field error-background': 'question-field'">
+
+      <div class="select-container">
+        <!-- <span>{{question.controls.content.value}}</span> -->
+        <span>{{question.controls.content.value}} <span class="error" *ngIf="question.value.isRequired === true">*</span></span>
+      </div>
+      <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
+        <div class="field-loop" *ngFor="let field of question.controls.FieldData.controls; let j = index"
+          [formGroupName]="j">
+
+          <div class="choice answer" *ngSwitchCase="'short-answer'">
+            <mat-form-field appearance="standard">
+              <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+              <!-- <mat-error>{{defaultError}}</mat-error> -->
+            </mat-form-field>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }}
+            </div>
+          </div>
+
+          <div class="choice answer" *ngSwitchCase="'long-answer'">
+            <mat-form-field appearance="standard">
+              <textarea matInput [rows]="1" type="text" formControlName="input" placeholder="Twoja odpowiedź"
+                matTextareaAutosize></textarea>
+              <!-- <mat-error>{{defaultError}}</mat-error> -->
+            </mat-form-field>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="choice" *ngSwitchCase="'dropdown-menu'" formArrayName="choiceOptions">
+            <mat-form-field appearance="standard">
+              <mat-select placeholder="Wybierz">
+                <!-- <mat-option>Wybierz</mat-option> -->
+                <div *ngFor="let select of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                  <mat-option [value]="select.value.value" (click)="updateSelection(field.controls.choiceOptions.controls, select.controls.value)">
+                    {{select.value.viewValue}}
+                  </mat-option>
+                </div>
+              </mat-select>
+            </mat-form-field>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="form flex" *ngSwitchCase="'linear-scale'">
+            <div class="linear">
+              <div class="div-container">
+                <div class="blank-div"></div>
+                <div class="label-container">
+                  <div class="label-div">{{field.value.minLabel}}</div>
+                </div>
+              </div>
+
+              <div class="table">
+                <div class="columns">
+                  <div class="column" *ngFor="let column of field.controls.choiceOptions.controls">
+                    <div class="label">{{column.value.viewValue}}</div>
+                  </div>
+                </div>
+                <div class="rows">
+                  <div formArrayName="choiceOptions" class="row">
+                    <div class="row-container">
+                      <div *ngFor="let column of field.controls.choiceOptions.controls; let j = index" [formGroupName]="j"
+                        class="row-el light">
+                        <mat-radio-group formControlName="value" name="{{j}}" (change)="updateSelection(field.controls.choiceOptions.controls, column.controls.value ,$event)">
+                          <mat-radio-button></mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="div-container">
+                <div class="blank-div"></div>
+                <div class="label-container">
+                  <div class="label-div">{{field.value.maxLabel}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="choice" *ngSwitchCase="'single-choice'" formArrayName="choiceOptions">
+            <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+              <mat-radio-group formControlName="value" name="{{'radio' + i}}" (change)="updateSelection(field.controls.choiceOptions.controls, input.controls.value, $event)">
+                <mat-radio-button id="{{i + '-' + k}}"></mat-radio-button>
+              </mat-radio-group>
+              <label class="label" for="{{i + '-' + k + '-input'}}">{{input.value.viewValue}}</label>
+            </div>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="choice" *ngSwitchCase="'multiple-choice'" formArrayName="choiceOptions">
+            <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+              <div class="checkbox" name="check">
+                <div class="right">
+                  <mat-checkbox formControlName="value" id="{{'check' + '-' + i + '-' + k}}"></mat-checkbox>
+                </div>
+                <label class="label" for="{{'check' + '-' + i + '-' + k + '-input'}}">{{input.value.viewValue}}</label>
+              </div>
+            </div>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="form" *ngSwitchCase="'single-grid'">
+            <div class="table">
+              <div class="columns">
+                <div class="column width">
+                </div>
+                <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.choiceOptions.controls">
+                  <span>{{column.value.viewValue}}</span>
+                </div>
+              </div>
+              <div formArrayName="rows" class="rows">
+                <div *ngFor="let row of field.controls.rows.controls; let k = index" [formGroupName]="k" class="row">
+                  <div formArrayName="choiceOptions" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
+                    <div class="row-el width">
+                      <span>{{row.value.input}}</span>
+                    </div>
+
+                    <label *ngFor="let column of row.controls.choiceOptions.controls; let l = index" for="{{i + '-' + k + '-' + l + '-input'}}"
+                      [formGroupName]="l" class="row-el width">
+                      <mat-radio-group formControlName="value" name="{{'grid_radio' + k + l}}" (change)="updateSelection(row.controls.choiceOptions.controls, column.controls.value ,$event)">
+                        <mat-radio-button id="{{i + '-' + k + '-' + l}}"></mat-radio-button>
+                      </mat-radio-group>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+
+          <div class="form" *ngSwitchCase="'multiple-grid'">
+            <div class="table">
+              <div class="columns">
+                <div class="column width">
+                </div>
+                <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.choiceOptions.controls">
+                  <span>{{column.value.viewValue}}</span>
+                </div>
+              </div>
+              <div formArrayName="rows" class="rows">
+                <div *ngFor="let row of field.controls.rows.controls; let k = index" [formGroupName]="k" class="row">
+                  <div formArrayName="choiceOptions" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
+                    <div class="row-el width">
+                      <span>{{row.value.input}}</span>
+                    </div>
+                    <label *ngFor="let column of row.controls.choiceOptions.controls; let l = index" for="{{i + '-' + k + '-' + l + '-input'}}"
+                      [formGroupName]="l" class="row-el width">
+                      <mat-checkbox formControlName="value" id="{{i + '-' + k + '-' + l}}"></mat-checkbox>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="hash">PRZEŚLIJ</button>
+    <!-- <button mat-raised-button id="send" [routerLink]="['formResponse']">PRZEŚLIJ</button> -->
+
+    <pre>{{invoiceForm.value | json }}</pre>
+  </div>
+</form>

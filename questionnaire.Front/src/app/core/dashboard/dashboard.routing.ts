@@ -10,12 +10,13 @@ const routes: Routes = [
       {
         path: '',
         loadChildren:
-          './dashboard-content/dashboard-content-views/main-dashboard/main-dashboard.module#MainDashboardModule'
+          './dashboard-content/dashboard-content.module#DashboardContentModule'
       },
       {
-        path: 'd',
+        path: 'survey',
         loadChildren:
-          './dashboard-content/dashboard-content.module#DashboardContentModule'
+          // './dashboard-views/survey-creator/survey-creator.module#SurveyCreatorModule'
+          './../../shared/survey-container/survey-container.module#SurveyContainerModule'
       }
     ]
   }

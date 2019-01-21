@@ -7,10 +7,15 @@ const routes: Routes = [
     path: '',
     component: DashboardContentComponent,
     children: [
+      // {
+      //   path: '',
+      //   loadChildren:
+      //     './dashboard-content-views/main-dashboard/main-dashboard.module#MainDashboardModule'
+      // },
       {
         path: '',
-        loadChildren:
-          './dashboard-content-views/main-dashboard/main-dashboard.module#MainDashboardModule'
+        redirectTo: 'survey',
+        pathMatch: 'full'
       },
       {
         path: 'survey',

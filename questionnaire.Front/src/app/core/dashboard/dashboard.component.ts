@@ -2,7 +2,6 @@ import { AccountService } from './../auth/auth-views/services/account.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
-import { UserProfile } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 import { BarTooltip } from './models/bar-tooltip.model';
 
@@ -142,7 +141,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   getProfileData() {
     this.profileDataSub = this.accountService.profileData.subscribe(
-      (user: UserProfile) => {
+      (user: any) => {
         if (user) {
           // console.log(user);
           const name = user.firstName + ' ' + user.lastName;
