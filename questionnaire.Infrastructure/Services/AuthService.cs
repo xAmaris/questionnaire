@@ -13,33 +13,21 @@ namespace questionnaire.Infrastructure.Services {
         private readonly IAccountRepository _accountRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly IStudentService _studentService;
-        private readonly IGraduateRepository _graduateRepository;
-        private readonly IGraduateService _graduateService;
         private readonly ICareerOfficeRepository _careerOfficeRepository;
         private readonly ICareerOfficeService _careerOfficeService;
-        private readonly IEmployerRepository _employerRepository;
-        private readonly IEmployerService _employerService;
         private readonly IAccountEmailFactory _accountEmailFactory;
 
         public AuthService (IAccountRepository accountRepository,
             IStudentRepository studentRepository,
             IStudentService studentService,
-            IGraduateRepository graduateRepository,
-            IGraduateService graduateService,
             ICareerOfficeRepository careerOfficeRepository,
             ICareerOfficeService careerOfficeService,
-            IEmployerRepository employerRepository,
-            IEmployerService employerService,
             IAccountEmailFactory accountEmailFactory) {
             _accountRepository = accountRepository;
             _studentRepository = studentRepository;
             _studentService = studentService;
-            _graduateRepository = graduateRepository;
-            _graduateService = graduateService;
             _careerOfficeRepository = careerOfficeRepository;
             _careerOfficeService = careerOfficeService;
-            _employerRepository = employerRepository;
-            _employerService = employerService;
             _accountEmailFactory = accountEmailFactory;
         }
 
@@ -65,17 +53,6 @@ namespace questionnaire.Infrastructure.Services {
             await _accountEmailFactory.SendActivationEmailAsync (student, activationKey);
         }
 
-        public async Task RegisterGraduateAsync (string name, string surname, string email, string phoneNumber,
-            string password) {
-            if (await _graduateService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
-            var graduate = new Graduate (name, surname, email, phoneNumber, password);
-            var activationKey = Guid.NewGuid ();
-            graduate.AddAccountActivation (new AccountActivation (activationKey));
-            await _graduateRepository.AddAsync (graduate);
-            await _accountEmailFactory.SendActivationEmailAsync (graduate, activationKey);
-        }
-
         public async Task RegisterCareerOfficeAsync (string name, string surname, string email, string phoneNumber,
             string password) {
             if (await _careerOfficeService.ExistByEmailAsync (email.ToLowerInvariant ()))
@@ -85,19 +62,6 @@ namespace questionnaire.Infrastructure.Services {
             careerOffice.AddAccountActivation (new AccountActivation (activationKey));
             await _careerOfficeRepository.AddAsync (careerOffice);
             await _accountEmailFactory.SendActivationEmailAsync (careerOffice, activationKey);
-        }
-
-        public async Task RegisterEmployerAsync (string name, string surname, string email, string phoneNumber,
-            string password, string companyName,
-            string location, string companyDescription) {
-            if (await _employerService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
-            var employer = new Employer (name, surname, email, phoneNumber, password, companyName, location,
-                companyDescription);
-            var activationKey = Guid.NewGuid ();
-            employer.AddAccountActivation (new AccountActivation (activationKey));
-            await _employerRepository.AddAsync (employer);
-            await _accountEmailFactory.SendActivationEmailAsync (employer, activationKey);
         }
 
         private bool VerifyPasswordHash (string password, byte[] passwordHash, byte[] passwordSalt) {

@@ -11,21 +11,15 @@ namespace questionnaire.Infrastructure.Services {
     public class AccountService : IAccountService {
         private readonly IAccountRepository _accountRepository;
         private readonly IStudentRepository _studentRepository;
-        private readonly IEmployerRepository _employerRepository;
-        private readonly IGraduateRepository _graduateRepository;
         private readonly IAccountEmailFactory _accountEmailFactory;
         private readonly ICareerOfficeRepository _careerOfficeRepository;
 
         public AccountService (IAccountRepository accountRepository,
             IStudentRepository studentRepository,
-            IEmployerRepository employerRepository,
-            IGraduateRepository graduateRepository,
             IAccountEmailFactory accountEmailFactory,
             ICareerOfficeRepository careerOfficeRepository) {
             _accountRepository = accountRepository;
             _studentRepository = studentRepository;
-            _employerRepository = employerRepository;
-            _graduateRepository = graduateRepository;
             _accountEmailFactory = accountEmailFactory;
             _careerOfficeRepository = careerOfficeRepository;
         }
@@ -100,19 +94,7 @@ namespace questionnaire.Infrastructure.Services {
                 await _accountRepository.UpdateAsync (student);
                 account = student;
             }
-            if (account.GetType () == typeof (Graduate)) {
-                var graduate = (Graduate) account;
-                graduate.Update (name, surname, email, phoneNumber);
-                await _accountRepository.UpdateAsync (graduate);
-                account = graduate;
-            }
-            if (account.GetType () == typeof (Employer)) {
-                var employer = (Employer) account;
-                employer.Update (name, surname, phoneNumber, companyName, location, companyDescription);
-                await _employerRepository.UpdateAsync (employer);
-                account = employer;
-            }
-            if (account.GetType () == typeof (CareerOffice)) {
+           else if (account.GetType () == typeof (CareerOffice)) {
                 var careerOffice = (CareerOffice) account;
                 careerOffice.Update (name, surname, email, phoneNumber);
                 await _careerOfficeRepository.UpdateAsync(careerOffice);

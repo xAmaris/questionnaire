@@ -3,24 +3,19 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using questionnaire.Core.Domains;
 using questionnaire.Core.Domains.Abstract;
 using questionnaire.Infrastructure.Commands.Account;
 using questionnaire.Infrastructure.Commands.CareerOffice;
-using questionnaire.Infrastructure.Commands.Employer;
-using questionnaire.Infrastructure.Commands.Graduate;
 using questionnaire.Infrastructure.Commands.User;
 using questionnaire.Infrastructure.Extension.JWT;
 using questionnaire.Infrastructure.Extension.JWT.Interfaces;
 using questionnaire.Infrastructure.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace questionnaire.Api.Controllers {
+namespace questionnaire.Api.Controllers
+{
     public class AuthController : ApiUserController {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
@@ -82,39 +77,6 @@ namespace questionnaire.Api.Controllers {
             try {
                 await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email,
                     command.IndexNumber, command.PhoneNumber, command.Password);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
-
-        [HttpPost ("employers")]
-        public async Task<IActionResult> RegisterEmployer ([FromBody] RegisterEmployer command) {
-            command.Email = command.Email.ToLowerInvariant ();
-            if (await _accountService.ExistsByEmailAsync (command.Email))
-                ModelState.AddModelError ("Email", "Email is already taken.");
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterEmployerAsync (command.Name, command.Surname, command.Email,
-                    command.PhoneNumber, command.Password,
-                    command.CompanyName, command.Location, command.CompanyDescription);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
-
-        [HttpPost ("graduates")]
-        public async Task<IActionResult> RegisterGraduate ([FromBody] RegisterGraduate command) {
-            command.Email = command.Email.ToLowerInvariant ();
-            if (await _accountService.ExistsByEmailAsync (command.Email))
-                ModelState.AddModelError ("Email", "Email is already taken.");
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterGraduateAsync (command.Name, command.Surname, command.Email,
-                    command.PhoneNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);

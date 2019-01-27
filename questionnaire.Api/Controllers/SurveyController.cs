@@ -48,16 +48,5 @@ namespace questionnaire.Api.Controllers {
                 return BadRequest (e.Message);
             }
         }
-
-        // [HttpDelete ("{surveyId}")]
-        // public async Task<IActionResult> DeleteSurvey (int surveyId){
-        //     try{
-        //         await _surveyService.DeleteAsync(surveyId);
-        //         return StatusCode(200);
-        //     }
-        //     catch(Exception e){
-        //         return BadRequest(e.Message);
-        //     }
-        // }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using questionnaire.Core.Domains;
 using questionnaire.Core.Domains.Abstract;
 using questionnaire.Core.Domains.ImportFile;
@@ -5,7 +6,6 @@ using questionnaire.Core.Domains.SurveyReport;
 using questionnaire.Core.Domains.Surveys;
 using questionnaire.Core.Domains.SurveysAnswers;
 using questionnaire.Core.Domains.SurveyTemplates;
-using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Data {
     public class questionnaireContext : DbContext {
@@ -31,18 +31,8 @@ namespace questionnaire.Infrastructure.Data {
         public DbSet<DataSet> DataSets { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<Graduate> Graduates { get; set; }
         public DbSet<CareerOffice> CareerOffices { get; set; }
-        public DbSet<Employer> Employers { get; set; }
         public DbSet<AccountRestoringPassword> AccountRestoringPasswords { get; set; }
-        public DbSet<Certificate> Certificates { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Education> Educations { get; set; }
-        public DbSet<Experience> Experiences { get; set; }
-        public DbSet<JobOffer> JobOffers { get; set; }
-        public DbSet<Language> Languages { get; set; }
-        public DbSet<ProfileLink> ProfileLinks { get; set; }
-        public DbSet<Skill> Skills { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
         public questionnaireContext (DbContextOptions<questionnaireContext> options) : base (options) { }
@@ -56,30 +46,6 @@ namespace questionnaire.Infrastructure.Data {
                 .HasOne (a => a.AccountRestoringPassword)
                 .WithOne (b => b.Account)
                 .HasForeignKey<AccountRestoringPassword> (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasMany (a => a.Certificates)
-                .WithOne (s => s.Account)
-                .HasForeignKey (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasMany (a => a.Courses)
-                .WithOne (s => s.Account)
-                .HasForeignKey (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasMany (a => a.Educations)
-                .WithOne (s => s.Account)
-                .HasForeignKey (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasMany (a => a.Experiences)
-                .WithOne (s => s.Account)
-                .HasForeignKey (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasMany (a => a.Languages)
-                .WithOne (s => s.Account)
-                .HasForeignKey (b => b.AccountId);
-            modelBuilder.Entity<Account> ()
-                .HasOne (a => a.ProfileLink)
-                .WithOne (s => s.Account)
-                .HasForeignKey<ProfileLink> (b => b.AccountId);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.Questions)
                 .WithOne (b => b.Survey)

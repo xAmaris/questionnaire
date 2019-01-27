@@ -9,10 +9,7 @@ using questionnaire.Core.Domains.ImportFile;
 using questionnaire.Infrastructure.Commands.Account;
 using questionnaire.Infrastructure.Commands.CareerOffice;
 using questionnaire.Infrastructure.Commands.Email;
-using questionnaire.Infrastructure.Commands.Employer;
-using questionnaire.Infrastructure.Commands.Graduate;
 using questionnaire.Infrastructure.Commands.ImportFile;
-using questionnaire.Infrastructure.Commands.ProfileEdition;
 using questionnaire.Infrastructure.Commands.User;
 using questionnaire.Infrastructure.Data;
 using questionnaire.Infrastructure.Extension.JWT;
@@ -30,10 +27,7 @@ using questionnaire.Infrastructure.Services.Interfaces;
 using questionnaire.Infrastructure.Validators.Account;
 using questionnaire.Infrastructure.Validators.CareerOffice;
 using questionnaire.Infrastructure.Validators.Email;
-using questionnaire.Infrastructure.Validators.Employer;
-using questionnaire.Infrastructure.Validators.Graduate;
 using questionnaire.Infrastructure.Validators.ImportFile;
-using questionnaire.Infrastructure.Validators.ProfileEdition;
 using questionnaire.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -94,10 +88,6 @@ namespace questionnaire.Api {
             services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<URLSettings> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
             services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
-            services.AddAuthorization (
-                options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
-            services.AddAuthorization (
-                options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
             services.AddAuthorization (options =>
                 options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
             services.AddAuthorization (options =>
@@ -108,11 +98,7 @@ namespace questionnaire.Api {
 
             services.AddScoped<IAccountRepository, AccountRepository> ();
             services.AddScoped<IStudentRepository, StudentRepository> ();
-            services.AddScoped<IGraduateRepository, GraduateRepository> ();
-            services.AddScoped<IEmployerRepository, EmployerRepository> ();
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
-            services.AddScoped<ILanguageRepository, LanguageRepository> ();
-            services.AddScoped<ISkillRepository, SkillRepository> ();
             services.AddScoped<ISurveyRepository, SurveyRepository> ();
             services.AddScoped<IQuestionRepository, QuestionRepository> ();
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
@@ -141,10 +127,7 @@ namespace questionnaire.Api {
             services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();
             services.AddScoped<IStudentService, StudentService> ();
-            services.AddScoped<IGraduateService, GraduateService> ();
-            services.AddScoped<IEmployerService, EmployerService> ();
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
-            services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
             services.AddScoped<ISurveyTemplateService, SurveyTemplateService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
@@ -157,20 +140,11 @@ namespace questionnaire.Api {
 
             services.AddTransient<IValidator<SignIn>, SignInValidator> ();
             services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
-            services.AddTransient<IValidator<RegisterGraduate>, RegisterGraduateValidator> ();
-            services.AddTransient<IValidator<RegisterEmployer>, RegisterEmployerValidator> ();
             services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
             services.AddTransient<IValidator<ChangePassword>, ChangePasswordValidator> ();
             services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
             services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
             services.AddTransient<IValidator<EmailToSend>, EmailToSendValidator> ();
-            services.AddTransient<IValidator<AddCertificate>, AddCertificateValidator> ();
-            services.AddTransient<IValidator<AddCourse>, AddCourseValidator> ();
-            services.AddTransient<IValidator<AddEducation>, AddEducationValidator> ();
-            services.AddTransient<IValidator<AddExperience>, AddExperienceValidator> ();
-            services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
-            services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
-            services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
             services.AddTransient<IValidator<AddUnregisteredUser>, AddUnregisteredUserValidator> ();
             services.AddTransient<IValidator<UpdateUnregisteredUser>, UpdateUnregisteredUserValidator> ();
 

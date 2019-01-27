@@ -18,13 +18,6 @@ namespace questionnaire.Core.Domains.Abstract {
         public bool Activated { get; protected set; }
         public AccountActivation AccountActivation { get; protected set; }
         public AccountRestoringPassword AccountRestoringPassword { get; protected set; }
-        public ProfileLink ProfileLink { get; protected set; }
-        public ICollection<Education> Educations { get; protected set; }
-        public ICollection<Experience> Experiences { get; protected set; }
-        public ICollection<Certificate> Certificates { get; protected set; }
-        public ICollection<Skill> Skills { get; protected set; }
-        public ICollection<Course> Courses { get; protected set; }
-        public ICollection<Language> Languages { get; protected set; }
 
         protected Account () { }
 
@@ -96,55 +89,6 @@ namespace questionnaire.Core.Domains.Abstract {
         public void AddAccountRestoringPassword (AccountRestoringPassword accountRestoringPassword) {
             if (accountRestoringPassword != null)
                 AccountRestoringPassword = accountRestoringPassword;
-        }
-
-        public void AddProfileLink (ProfileLink profileLink) {
-            if (Role == "student" || Role == "graduate")
-                ProfileLink = profileLink;
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddEducation (Education education) {
-            if (Role == "student" || Role == "graduate")
-                Educations.Add (education);
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddExperience (Experience experience) {
-            if (Role == "student" || Role == "graduate")
-                Experiences.Add (experience);
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddCertificate (Certificate certificate) {
-            if (Role == "student" || Role == "graduate")
-                Certificates.Add (certificate);
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddSkill (Skill skill) {
-            if (Role == "student" || Role == "graduate")
-                Skills.Add (skill);
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddCourse (Course course) {
-            if (Role == "student" || Role == "graduate")
-                Courses.Add (course);
-            else
-                throw new Exception ("Inccorect role.");
-        }
-
-        public void AddLanguage (Language language) {
-            if (Role == "student" || Role == "graduate")
-                Languages.Add (language);
-            else
-                throw new Exception ("Inccorect role.");
         }
     }
 }
