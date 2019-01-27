@@ -1,9 +1,5 @@
 <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog) [formGroup]="dialogForm" *ngIf="dialogForm">
   <div id="form-container">
-
-    <!-- <mat-form-field>
-      <input matInput placeholder="Temat wiadomości" formControlName="subject">
-    </mat-form-field> -->
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Imię" formControlName="name">
@@ -43,7 +39,7 @@
       </mat-form-field>
     </div>
     <div id="button-container">
-      <button mat-button type="submit">
+      <button mat-button type="submit" [mat-dialog-close]="dialog.value">
         <div id="button">
           <span>Dodaj</span>
           <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>

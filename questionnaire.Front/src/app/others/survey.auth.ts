@@ -5,12 +5,7 @@ import { SurveyService } from '../main-view/admin-view/survey-container/services
 @Injectable()
 export class SurveyGuard implements CanLoad {
   bool = false;
-  constructor(private router: Router, private surveyService: SurveyService) {
-    // this.surveyService.savedSurvey.subscribe(data => {
-    //   if (data) {
-    //     this.bool = true;
-    //   }
-    // });
+  constructor(private router: Router) {
   }
 
   canLoad() {

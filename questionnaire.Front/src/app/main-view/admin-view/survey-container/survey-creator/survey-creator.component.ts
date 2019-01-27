@@ -14,7 +14,6 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
-import { SendSurveyDialog } from '../../../../data/shared.data';
 import { SharedService } from '../../../../services/shared.service';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
@@ -38,6 +37,7 @@ import {
   SurveyTemplate
 } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
+import { SendSurveyDialogData } from './../../../../data/shared.data';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
 // import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
@@ -157,7 +157,6 @@ export class SurveyCreatorComponent
       (res: SurveyTemplate) => {
         this.surveyService.isCreatorLoading(false);
         if (res) {
-          console.log(res);
           this.id = res.id;
           if (res.questionTemplates.length === 0) {
             this.createQuestionData();
@@ -168,7 +167,6 @@ export class SurveyCreatorComponent
         }
       },
       error => {
-        console.log(error);
         this.surveyService.isCreatorLoading(false);
       }
     );
@@ -186,20 +184,38 @@ export class SurveyCreatorComponent
     this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
       data => {
         if (data === true) {
-          this.openSurveyDialog();
+          this.openSendSurveyDialog();
         }
       }
     );
   }
-  openSurveyDialog(): void {
-    // const dataModel: ConfirmDataDialog = {
-    //  dialogTitle:
-    // }
-    this.dialog.open(ConfirmDialogComponent, {
-      data: new SendSurveyDialog()
+  openSendSurveyDialog(): void {
+    this.openSurveyDialog().subscribe(res => {
+      if (res) {
+        this.sendSurveyToAll();
+      }
     });
   }
-
+  openSurveyDialog(): Observable<any> {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: new SendSurveyDialogData()
+    });
+    return dialogRef.afterClosed();
+  }
+  surveySendingLoading(x: boolean): void {
+    this.sharedService.isSurveySendingLoading(x);
+  }
+  sendSurveyToAll() {
+    this.surveySendingLoading(true);
+    this.surveyService.sendSpecificSurvey(this.id).subscribe(
+      data => {
+        this.surveySendingLoading(false);
+      },
+      error => {
+        this.surveySendingLoading(false);
+      }
+    );
+  }
   updateSurveySubject(x?) {
     this.updateToApi.next(x);
   }
@@ -218,20 +234,10 @@ export class SurveyCreatorComponent
       QuestionTemplates: this.invoiceForm.getRawValue().questionTemplates,
       id: this.id
     };
-    // console.log(JSON.stringify(object));
-    // console.log('update');
-    // console.log(object);
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
-    this.updateSurveyObs().subscribe(
-      data => {
-        // console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.updateSurveyObs();
   }
 
   openMoveQuestionDialog(): void {
@@ -752,14 +758,6 @@ export class SurveyCreatorComponent
     }
     this.addGroup(fieldData, select, data);
   }
-  onSubmit(): void {
-    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    // if (this.id) {
-    //   this.updateSurvey();
-    // } else {
-    //   this.createSurvey();
-    // }
-  }
 
   setSelection(e) {
     e.target.select();
@@ -768,12 +766,9 @@ export class SurveyCreatorComponent
     this.createSurveySub = this.surveyService
       .createSurvey(this.invoiceForm.getRawValue())
       .subscribe(
-        data => {
+        () => {
           this.router.navigate(['/app/admin/d']);
         },
-        error => {
-          console.log(error);
-        }
       );
   }
 

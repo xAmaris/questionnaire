@@ -1,6 +1,5 @@
 <div id="container" *ngIf="loader === false">
   <form #reg="ngForm" [formGroup]="regForm">
-    <!-- <pre>{{regForm.value | json }}</pre> -->
     <div id="register-container">
       <div id="form-container">
         <div id="regErr">
@@ -46,23 +45,6 @@
             </ng-template>
           </mat-expansion-panel>
 
-          <!-- <mat-expansion-panel *ngIf="profileType === 'student'">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Numer albumu
-              </mat-panel-title>
-              <mat-panel-description>
-                {{userInfo.albumID}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template matExpansionPanelContent>
-              <mat-form-field>
-                <input matInput placeholder="Nr albumu" formControlName="albumID" [value]="userInfo.albumID">
-                <mat-error *ngIf="inputError(albumID)">{{albumIDErrorStr}}</mat-error>
-              </mat-form-field>
-            </ng-template>
-          </mat-expansion-panel> -->
-
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -93,56 +75,19 @@
             </ng-template>
           </mat-expansion-panel>
 
-          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
+          <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Nazwa firmy / organizacji
+                Dodaj Admina
               </mat-panel-title>
-              <mat-panel-description>
-                {{userInfo.companyName}}
-              </mat-panel-description>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
-              <mat-form-field>
-                <input matInput placeholder="Nazwa" formControlName="companyName" [value]="userInfo.companyName">
-                <mat-error *ngIf="inputError(companyName)">{{companyNameErrorStr}}</mat-error>
-              </mat-form-field>
+              <div [routerLink]="['/auth/add']">
+                <span id="change-password">Dodaj..</span>
+              </div>
             </ng-template>
-          </mat-expansion-panel> -->
+          </mat-expansion-panel>
 
-          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Lokalizacja
-              </mat-panel-title>
-              <mat-panel-description>
-                {{userInfo.location}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template matExpansionPanelContent>
-              <mat-form-field>
-                <input matInput placeholder="Lokalizacja" formControlName="location" [value]="userInfo.location">
-                <mat-error *ngIf="inputError(location)">{{locationErrorStr}}</mat-error>
-              </mat-form-field>
-            </ng-template>
-          </mat-expansion-panel> -->
-
-          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Opis firmy
-              </mat-panel-title>
-              <mat-panel-description>
-                {{userInfo.companyDescription}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template matExpansionPanelContent>
-              <mat-form-field>
-                <textarea matInput placeholder="Opis Firmy" formControlName="companyDescription" [value]="userInfo.companyDescription"></textarea>
-                <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error>
-              </mat-form-field>
-            </ng-template>
-          </mat-expansion-panel> -->
         </mat-accordion>
       </div>
       <div class="btnBox">

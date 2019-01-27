@@ -1,0 +1,6 @@
+<button mat-button id="save" (click)="emitClick()">
+  <div id="button">
+    <span>{{buttonText}}</span>
+    <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
+  </div>
+</button>

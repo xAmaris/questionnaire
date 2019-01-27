@@ -8,7 +8,6 @@
       [ngClass]="controlError(question, i) ? 'question-field error-background': 'question-field'">
 
       <div class="select-container">
-        <!-- <span>{{question.controls.content.value}}</span> -->
         <span>{{question.controls.content.value}} <span class="error" *ngIf="question.value.isRequired === true">*</span></span>
       </div>
       <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
@@ -18,7 +17,6 @@
           <div class="choice answer" *ngSwitchCase="'short-answer'">
             <mat-form-field appearance="standard">
               <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
-              <!-- <mat-error>{{defaultError}}</mat-error> -->
             </mat-form-field>
             <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }}
             </div>
@@ -28,7 +26,6 @@
             <mat-form-field appearance="standard">
               <textarea matInput [rows]="1" type="text" formControlName="input" placeholder="Twoja odpowiedź"
                 matTextareaAutosize></textarea>
-              <!-- <mat-error>{{defaultError}}</mat-error> -->
             </mat-form-field>
             <div class="error" *ngIf="controlError(question, i)"> {{ defaultError }} </div>
           </div>
@@ -36,7 +33,6 @@
           <div class="choice" *ngSwitchCase="'dropdown-menu'" formArrayName="choiceOptions">
             <mat-form-field appearance="standard">
               <mat-select placeholder="Wybierz">
-                <!-- <mat-option>Wybierz</mat-option> -->
                 <div *ngFor="let select of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
                   <mat-option [value]="select.value.value" (click)="updateSelection(field.controls.choiceOptions.controls, select.controls.value)">
                     {{select.value.viewValue}}
@@ -166,8 +162,5 @@
       </div>
     </div>
     <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="hash">PRZEŚLIJ</button>
-    <!-- <button mat-raised-button id="send" [routerLink]="['formResponse']">PRZEŚLIJ</button> -->
-
-    <pre>{{invoiceForm.value | json }}</pre>
   </div>
 </form>

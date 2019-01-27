@@ -21,17 +21,13 @@ export class AddUserDialogComponent implements OnInit {
   onSubmit(form) {
     if (form.valid) {
       const value: UnregisteredUser = form.value;
-      console.log(value);
       this.loader = true;
       const unregUser: UnregisteredUserModel = new UnregisteredUserModel(value);
-      console.log(unregUser);
       this.userService.saveUnregisteredUser(unregUser).subscribe(
-        data => {
-          console.log(data);
+        () => {
           this.loader = false;
         },
-        error => {
-          console.log(error);
+        () => {
           this.loader = false;
         }
       );

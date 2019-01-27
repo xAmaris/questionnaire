@@ -4,9 +4,6 @@
     <div id="menu">
       <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="form_menu" *ngIf="invoiceForm.controls['questionTemplates'].length > 1"></fa-icon>
       <mat-menu #form_menu="matMenu" [overlapTrigger]="false">
-        <!-- <button mat-menu-item>Dodaj sekcję</button>
-        <button mat-menu-item>Duplikuj sekcję</button>
-        <button mat-menu-item>Przenieś sekcję</button>-->
         <button mat-menu-item (click)="openMoveQuestionDialog()">
           Przenieś
           pytania
@@ -16,13 +13,10 @@
   </div>
   <div id="form-title">
     <mat-form-field appearance="standard" id="title">
-      <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()"
+      <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()" #nvfnjfgb
+
         (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
     </mat-form-field>
-    <!-- <mat-form-field appearance="standard" id="description">
-      <textarea matInput [rows]="1" matTextareaAutosize matAutosizeMaxRows=15 type="text" maxLength="1500" placeholder="Opis formularza"
-        (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" formControlName="description"></textarea>
-    </mat-form-field> -->
   </div>
   <div id="questions-container" formArrayName="questionTemplates">
     <div *ngFor="let question of invoiceForm.controls['questionTemplates'].controls; let i = index" [formGroupName]="i"
@@ -240,7 +234,7 @@
             </div>
             <div class="breakV"></div>
             <div id="required-container">
-              <mat-slide-toggle formControlName="isRequired">Wymagane</mat-slide-toggle>
+              <mat-slide-toggle (change)="updateSurveySubject()" formControlName="isRequired">Wymagane</mat-slide-toggle>
 
             </div>
             <div id="question-menu">
@@ -265,5 +259,4 @@
       </div>
     </div>
   </div>
-  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
 </form>

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { SurveySentSidenavComponent } from './survey-sent-sidenav.component';
 
 @NgModule({

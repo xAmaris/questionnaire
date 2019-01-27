@@ -1,10 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  Output
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { SharedService } from '../../../../../../../services/shared.service';
 
 @Component({
@@ -37,10 +46,19 @@ export class AddUserTabComponent implements OnInit {
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   namePattern = /^([a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ\\']){0,}$/;
   surnamePattern = /^([a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ]+[\s\-\\'])*[a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ]+$/;
-  constructor(private fb: FormBuilder, private sharedService: SharedService) {}
+  constructor(
+    private fb: FormBuilder,
+    private sharedService: SharedService,
+    @Optional()
+    @Inject(MAT_DIALOG_DATA)
+    public data: any
+  ) {}
 
   ngOnInit() {
     this.setForm();
+    if (this.data) {
+      this.setValues();
+    }
   }
   setForm() {
     this.dialogForm = this.fb.group({
@@ -81,6 +99,14 @@ export class AddUserTabComponent implements OnInit {
     this.course = this.dialogForm.controls['course'];
     this.typeOfStudy = this.dialogForm.controls['typeOfStudy'];
     this.dateOfCompletion = this.dialogForm.controls['dateOfCompletion'];
+  }
+  setValues() {
+    this.name.setValue(this.data.name);
+    this.surname.setValue(this.data.surname);
+    this.email.setValue(this.data.email);
+    this.course.setValue(this.data.course);
+    this.typeOfStudy.setValue(this.data.typeOfStudy);
+    this.dateOfCompletion.setValue(this.data.dateOfCompletion);
   }
   onSubmit(dialog) {
     this.submit.emit(dialog);

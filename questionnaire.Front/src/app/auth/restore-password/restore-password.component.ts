@@ -47,12 +47,10 @@ export class RestorePasswordComponent {
         .subscribe(
           data => {
             this.loader = false;
-            console.log(data);
             this.router.navigateByUrl('auth/login');
           },
           error => {
             this.loader = false;
-            console.log(error);
           }
         );
     }

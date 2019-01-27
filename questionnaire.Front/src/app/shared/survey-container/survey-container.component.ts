@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-survey-container',
@@ -7,12 +6,7 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./survey-container.component.scss']
 })
 export class SurveyContainerComponent implements OnInit {
-  constructor(private sharedService: SharedService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.showToggle();
-  }
-  showToggle(): void {
-    this.sharedService.showToggleButton(false);
-  }
+  ngOnInit() {}
 }

@@ -24,7 +24,6 @@
         mat-toolbar {
           background-color: white;
           font-size: 0.9em;
-          // color: $grey-dark;
           height: 100%;
           border-bottom: 1px solid rgba(0, 0, 0, 0.09);
           #icon-container {
@@ -34,7 +33,6 @@
             background-color: rgba(#000000, 0);
             border: none;
             font-size: 1em;
-            // color: $grey-dark * 0.6;
           }
           input:focus {
             outline: none;
@@ -42,9 +40,6 @@
           .icon {
             padding-right: 7%;
             cursor: pointer;
-          }
-          .icon:hover {
-            // color: $grey-dark * 0.5;
           }
           #clear {
             margin-left: -10px;
@@ -75,7 +70,6 @@
 }
 
 .mat-menu-item .icon {
-  //   color: $accent;
   padding-right: 3px;
 }
 .mat-menu-item {

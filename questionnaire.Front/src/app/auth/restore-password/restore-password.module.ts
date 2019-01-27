@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestorePasswordComponent } from './restore-password.component';
-import { Routes, RouterModule } from '@angular/router';
-import { MaterialsModule } from '../../materials/materials.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MaterialsModule } from '../../materials/materials.module';
+import { RestorePasswordComponent } from './restore-password.component';
 
 export const routes: Routes = [
   { path: '', component: RestorePasswordComponent }

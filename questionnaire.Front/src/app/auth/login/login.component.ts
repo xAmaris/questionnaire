@@ -94,13 +94,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         .login(this.email.value, this.password.value)
         .subscribe(
           data => {
-            console.log(data);
             this.accountService.isLoggedNext(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);
           },
           error => {
-            console.log(error);
             // set error message from api to loginErrorMessage
             this.loginError = true;
             this.loginErrorMessage = this.accountService.setLoginErrorString(

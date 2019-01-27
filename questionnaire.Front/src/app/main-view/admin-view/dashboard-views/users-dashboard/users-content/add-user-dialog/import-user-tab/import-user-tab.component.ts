@@ -6,10 +6,6 @@ import {
   ViewChildren
 } from '@angular/core';
 import { FileUpload } from 'primeng/fileupload';
-import {
-  UnregisteredUser,
-  UnregisteredUserModel
-} from '../../../../../../../models/user.model';
 import { UserService } from '../../../../../survey-container/services/user.services';
 
 @Component({
@@ -33,7 +29,6 @@ export class ImportUserTabComponent implements OnInit {
   ngOnInit() {}
 
   removeAttachment(event, i) {
-    console.log(i);
     this.fileInput.remove(event, i);
     this.attachmentsLength = this.fileInput.files.length;
   }
@@ -42,7 +37,6 @@ export class ImportUserTabComponent implements OnInit {
   }
   uploadFiles(fileObj) {
     this.loading = true;
-    console.log(fileObj);
     const files = fileObj.files;
     const body = new FormData();
     for (const file of files) {

@@ -24,11 +24,9 @@ const outletString =
   ':' +
   outletPath +
   ')';
-const adminString = mainString + dashboards.main + outletString;
 const surveyString = mainString + dashboards.survey + outletString;
 const usersString = mainString + dashboards.users + outletString;
 const sentString = mainString + dashboards.sent + outletString;
-// console.log(usersString);
 
 const routes: Routes = [
   {

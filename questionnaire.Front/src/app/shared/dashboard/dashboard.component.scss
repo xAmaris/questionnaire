@@ -8,7 +8,6 @@
       overflow-x: hidden;
       display: grid;
       grid-template-rows: 0 40px auto;
-      // grid-template-rows: auto;
       grid-template-columns: 250px;
       border-right: 1px solid rgba(0, 0, 0, 0.09);
       app-survey-search {
@@ -23,7 +22,6 @@
     #content {
       display: grid;
       grid-template-rows: 0 80px auto;
-      // grid-template-rows: auto;
       grid-template-columns: 100%;
       app-survey-list {
         overflow-y: auto;

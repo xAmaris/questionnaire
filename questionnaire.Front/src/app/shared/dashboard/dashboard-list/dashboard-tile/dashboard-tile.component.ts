@@ -1,4 +1,4 @@
-import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-tile',
@@ -6,9 +6,8 @@ import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateR
   styleUrls: ['./dashboard-tile.component.scss']
 })
 export class DashboardTileComponent implements OnInit {
-  // @ContentChild(TemplateRef)
-  // parentTemplate;
-  @Input() item_tile: any;
+  @Input()
+  item_tile: any;
   @Output()
   tileClick: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}

@@ -14,7 +14,7 @@
         <span id="answer-count" *ngIf="question.answersNumber !== 0">{{question.answersNumber + ' ' + 'odpowiedzi'}}</span>
       </div>
 
-      <div class="answer" *ngSwitchCase="'short-answer'">
+      <div class="answer" *ngSwitchCase="'short-answer'" >
         <div class="answer-loop" *ngFor="let answer of question.answersData.datasets[0].data; let j = index">
           <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'" *ngIf="question.answersNumber > 0">
             {{answer}}
@@ -37,23 +37,6 @@
       <div *ngSwitchDefault>
         <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
       </div>
-
-      <!-- <div *ngSwitchCase="'single-choice'">
-        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
-      </div>
-
-      <div *ngSwitchCase="'multiple-choice'">
-        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
-      </div>
-
-      <div *ngSwitchCase="'single-grid'">
-        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
-      </div>
-
-      <div *ngSwitchCase="'multiple-grid'">
-        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
-      </div> -->
-
       <span *ngIf="question.answersNumber === 0"> Na razie nie ma odpowiedzi na to pytanie.
       </span>
     </div>

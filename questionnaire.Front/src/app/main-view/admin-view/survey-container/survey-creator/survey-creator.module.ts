@@ -11,10 +11,8 @@ import { SortablejsModule } from 'angular-sortablejs/dist';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
-import { DraggableModule } from '../directives/draggable.module';
 import { ConfirmDialogModule } from './../../../../shared/confirm-dialog/confirm-dialog.module';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
-import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 import { ButtonSingleControlComponent } from './survey-creator-component/button-single-control/button-single-control.component';
 import { SurveyCreatorComponent } from './survey-creator.component';
 import { SurveyCreatorRoutingModule } from './survey-creator.routing';
@@ -29,7 +27,6 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
     MatRadioModule,
     MatCheckboxModule,
     FontAwesomeModule,
-    DraggableModule,
     ProgressSpinnerModule,
     MatSlideToggleModule,
     SortablejsModule,
@@ -37,7 +34,6 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
   ],
   declarations: [
     SurveyCreatorComponent,
-    SendSurveyDialogComponent,
     ButtonSingleControlComponent,
     MoveQuestionDialogComponent
   ],

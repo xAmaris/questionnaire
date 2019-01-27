@@ -17,7 +17,6 @@ import { SharedService } from '../../services/shared.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit, OnDestroy {
-  // userInfo: UserProfile;
   userInfoSub: Subscription = new Subscription();
   userName: string;
   email: string;
@@ -43,7 +42,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.backButton(true);
-    this.toggleButton();
     this.getUserInfo();
   }
   getUserInfo() {
@@ -53,9 +51,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
   backButton(x: boolean): void {
     this.sharedService.showBackButton(x);
-  }
-  toggleButton(): void {
-    this.sharedService.showToggleButton(false);
   }
   ngOnDestroy() {
     this.backButton(false);

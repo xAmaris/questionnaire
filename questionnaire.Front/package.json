@@ -1,5 +1,5 @@
 {
-  "name": "questionnaire",
+  "name": "monitorowanie-karier-wsei",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -30,10 +30,10 @@
     "@fortawesome/free-regular-svg-icons": "^5.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.4.1",
     "angular-sortablejs": "^2.6.0",
+    "auth0-js": "^9.8.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.4.1",
     "moment": "^2.22.2",
-    "node-sass": "^4.11.0",
     "primeng": "^6.1.5",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
@@ -51,7 +51,7 @@
     "codelyzer": "^4.5.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "^3.0.0",
+    "karma": "^3.1.1",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",

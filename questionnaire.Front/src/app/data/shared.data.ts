@@ -5,13 +5,13 @@ interface IConfirmDataDialog {
   boldWarn: boolean;
   buttonText: string;
 }
-export class SendSurveyDialog implements IConfirmDataDialog {
+export class SendSurveyDialogData implements IConfirmDataDialog {
   dialogTitle = 'Wysyłanie';
   boldContent = 'wysłać';
   boldWarn = false;
   buttonText = 'Wyślij';
 }
-export class DeleteTemplateDialog implements IConfirmDataDialog {
+export class DeleteTemplateDialogData implements IConfirmDataDialog {
   dialogTitle = 'Usuwanie';
   boldContent = 'trwale usunąć';
   boldWarn = true;

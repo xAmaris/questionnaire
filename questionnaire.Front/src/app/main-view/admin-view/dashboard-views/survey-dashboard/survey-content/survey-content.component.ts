@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { DeleteTemplateDialog } from '../../../../../data/shared.data';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
   SurveyModel,
   SurveyTemplate
 } from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
+import { DeleteTemplateDialogData } from './../../../../../data/shared.data';
 
 @Component({
   selector: 'app-survey-content',
@@ -42,7 +42,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllSurveys();
     this.isLoadingFromOutside();
-    this.filterSurveyList();
   }
 
   redirectToNew(): void {
@@ -51,28 +50,14 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       title: '',
       questions: []
     };
-    this.surveyService.createSurvey(obj).subscribe(
-      data => {
-        const string: string = '/app/admin/survey/create/' + data;
-        this.router.navigateByUrl(string);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.surveyService.createSurvey(obj).subscribe(data => {
+      const string: string = '/app/admin/survey/create/' + data;
+      this.router.navigateByUrl(string);
+    });
   }
 
   saveSurveysFromApi(): void {
     this.surveyService.saveSurveysFromApi();
-  }
-  filterSurveyList(): void {
-    this.surveyService.filterSurveyListInput.subscribe(data => {
-      // this.surveyArr.filter(filtered => console.log(filtered));
-      this.surveyArr.filter(sth => {
-        console.log(data);
-        console.log(sth);
-      });
-    });
   }
   isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
@@ -88,9 +73,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
         if (data) {
           this._items$.next(data);
         }
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -103,14 +85,9 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   }
 
   deleteSurvey(id: number): void {
-    this.surveyService.deleteSurvey(id).subscribe(
-      () => {
-        this.saveSurveysFromApi();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.surveyService.deleteSurvey(id).subscribe(() => {
+      this.saveSurveysFromApi();
+    });
   }
   openConfimDeleteDialog(id: number): void {
     this.openSurveyDialog().subscribe((res: boolean) => {
@@ -122,7 +99,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   openSurveyDialog(): Observable<boolean> {
     const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
       ConfirmDialogComponent,
-      { data: new DeleteTemplateDialog() }
+      { data: new DeleteTemplateDialogData() }
     );
     return dialogRef.afterClosed();
   }

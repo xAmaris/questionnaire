@@ -22,7 +22,6 @@ export class UserInfoComponent implements OnInit {
   routeSwitch: EventEmitter<string> = new EventEmitter<string>();
   constructor() {}
   ngOnInit() {
-    console.log(name);
   }
   emitLogout() {
     this.logout.emit(true);

@@ -12,7 +12,6 @@ import { SurveyService } from '../services/survey.services';
 export class SurveyResultComponent implements OnInit, OnDestroy {
   loading = true;
   data;
-  sth;
   id: number;
   // subs
   getResultsSub: Subscription = new Subscription();
@@ -70,8 +69,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
           this.surveyService.isCreatorLoading(false);
         }
       },
-      error => {
-        console.log(error);
+      () => {
         this.surveyService.isCreatorLoading(false);
       }
     );
@@ -124,10 +122,16 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
   }
 
   createMainDataSet(dataSets) {
+    const arr = [];
+    dataSets[0]._data.forEach(el => {
+      if (el.length > 0) {
+        arr.push(el);
+      }
+    });
     const dataSet = [
       {
         label: dataSets[0].label,
-        data: dataSets[0]._data,
+        data: arr,
         backgroundColor: this.color
       }
     ];
@@ -168,8 +172,5 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     this.getResultsSub.unsubscribe();
     this.surveyIDSub.unsubscribe();
     this.sharedService.showBackButton(false);
-  }
-  see(x) {
-    console.log(x);
   }
 }

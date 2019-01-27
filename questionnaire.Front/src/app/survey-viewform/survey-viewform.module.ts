@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCheckboxModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialsModule } from '../materials/materials.module';
-import { SurveySentComponent } from './survey-sent/survey-sent.component';
+import { SurveyCompletedComponent } from './survey-completed/survey-completed.component';
+import { SurveyCompletedModule } from './survey-completed/survey-completed.module';
 import { SurveyViewformComponent } from './survey-viewform.component';
 import { SurveyViewformRoutingModule } from './survey-viewform.routing';
 
@@ -20,9 +22,12 @@ import { SurveyViewformRoutingModule } from './survey-viewform.routing';
     MaterialsModule,
     MatRadioModule,
     MatCheckboxModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatSnackBarModule,
+    SurveyCompletedModule
   ],
-  declarations: [SurveyViewformComponent, SurveySentComponent],
+  entryComponents: [SurveyCompletedComponent],
+  declarations: [SurveyViewformComponent],
   exports: [SurveyViewformComponent]
 })
 export class SurveyViewformModule {}

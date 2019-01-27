@@ -10,7 +10,10 @@ import { AuthenticationService } from '../services/authentication.service';
 export class AccountActivationComponent implements OnInit {
   href: string[];
   token: string;
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
     this.href = this.router.url.split('/');
     this.token = this.href[this.href.length - 1];
   }
@@ -18,10 +21,6 @@ export class AccountActivationComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.activateAccount(this.token).subscribe(() => {
       this.router.navigateByUrl('auth/login');
-    },
-      error => {
-        console.log(error);
-      });
+    });
   }
-
 }

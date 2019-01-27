@@ -1,0 +1,16 @@
+@import './../../../../styles/colors.scss';
+#save {
+  background-color: $primary;
+  color: white;
+  #button {
+    display: flex;
+    justify-content: center;
+    span {
+      margin-right: 5px;
+    }
+    p-progressSpinner {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

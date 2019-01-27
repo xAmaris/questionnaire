@@ -3,7 +3,10 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { SurveyModel, SurveySurvey } from '../../../survey-container/models/survey.model';
+import {
+  SurveyModel,
+  SurveySurvey
+} from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
@@ -20,9 +23,9 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
   getAllSurveysSub: Subscription = new Subscription();
   isLoadingSub: Subscription = new Subscription();
 
-  private _items$: BehaviorSubject<SurveySurvey[]> = new BehaviorSubject<SurveySurvey[]>(
-    undefined
-  );
+  private _items$: BehaviorSubject<SurveySurvey[]> = new BehaviorSubject<
+    SurveySurvey[]
+  >(undefined);
   get items$(): Observable<SurveySurvey[]> {
     return this._items$.asObservable();
   }
@@ -35,20 +38,10 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllSurveys();
     this.isLoadingFromOutside();
-    this.filterSurveyList();
   }
 
   saveSurveysFromApi(): void {
     this.surveyService.saveSentSurveysFromApi();
-  }
-  filterSurveyList(): void {
-    this.surveyService.filterSurveyListInput.subscribe(data => {
-      // this.surveyArr.filter(filtered => console.log(filtered));
-      this.surveyArr.filter(sth => {
-        console.log(data);
-        console.log(sth);
-      });
-    });
   }
   isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
@@ -64,9 +57,6 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
         if (data) {
           this._items$.next(data);
         }
-      },
-      error => {
-        console.log(error);
       }
     );
   }
@@ -79,14 +69,9 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
   }
 
   deleteSurvey(id: number): void {
-    this.surveyService.deleteSurvey(id).subscribe(
-      () => {
-        this.saveSurveysFromApi();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.surveyService.deleteSurvey(id).subscribe(() => {
+      this.saveSurveysFromApi();
+    });
   }
   openConfimDeleteDialog(id: number): void {
     this.openSurveyDialog().subscribe((res: boolean) => {

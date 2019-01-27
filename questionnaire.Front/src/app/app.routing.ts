@@ -12,16 +12,11 @@ const appRoutes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'info',
-    loadChildren: './info/info.module#InfoModule'
-  },
-  {
     path: 'survey',
     loadChildren:
       './shared/survey-container/survey-container.module#SurveyContainerModule'
-  }
-
-  // { path: '**', redirectTo: '/auth/login' }
+  },
+  { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({

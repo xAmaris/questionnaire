@@ -17,17 +17,9 @@ export class SurveyService {
     undefined
   );
   openingCreatorLoader: Subject<boolean> = new Subject<boolean>();
-  // openedSurvey: any;
-  filterSurveyListInput: Subject<string> = new Subject<string>();
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id, hash) {
-    // const obj = {
-    //   SurveyTitle: survey.title,
-    //   SurveyId: id,
-    //   Questions: survey.questions
-    // };
-    // console.log(JSON.stringify(obj));
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/' + hash, {
         SurveyTitle: survey.title,
@@ -56,11 +48,6 @@ export class SurveyService {
       });
   }
   createSurvey(survey) {
-    // const obj = {
-    //   Title: survey.title,
-    //   Questions: survey.questions
-    // };
-    // console.log(JSON.stringify(obj));
     return this.http
       .post<any>(this.config.apiUrl + '/surveytemplate/surveys', {
         Title: survey.title,
@@ -71,12 +58,6 @@ export class SurveyService {
       });
   }
   updateSurvey(object: Update): Observable<any> {
-    // const obj = {
-    //   surveyId: object.id,
-    //   Title: object.Title,
-    //   Questions: object.Questions
-    // };
-    // console.log(JSON.stringify(obj));
     return this.http
       .put<Update>(this.config.apiUrl + '/surveytemplate/surveys', {
         surveyId: object.id,
@@ -149,15 +130,4 @@ export class SurveyService {
   isCreatorLoading(x: boolean): void {
     this.openingCreatorLoader.next(x);
   }
-  filterSurveyList(x: string): void {
-    this.filterSurveyListInput.next(x);
-  }
-  // openCreator(formGroup): void {
-  //   this.openedSurvey = formGroup;
-  // }
-  // getSurveyToOpen() {
-  //   return this.openedSurvey;
-  // }
-
-  saveInLocaLStorage() {}
 }

@@ -1,0 +1,40 @@
+<div id="container">
+  <p-progressBar mode="indeterminate" *ngIf="loader === true"></p-progressBar>
+  <form #reg="ngForm" (ngSubmit)=onSubmit(reg) [formGroup]="regForm" *ngIf="regForm">
+    <div id="header">
+      <span>
+        Dodaj admina</span>
+    </div>
+    <div id="form-container">
+      <div class="group half">
+        <mat-form-field>
+          <input matInput placeholder="Imię" formControlName="name">
+          <mat-error *ngIf="inputError(name)">{{ nameErrorStr }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="group half">
+        <mat-form-field>
+          <input matInput placeholder="Nazwisko" formControlName="surname">
+          <mat-error *ngIf="inputError(surname)">{{surnameErrorStr}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="group half">
+        <mat-form-field>
+          <input matInput placeholder="E-mail" formControlName="email">
+          <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="group half">
+        <mat-form-field>
+          <input matInput autocomplete="tel" placeholder="Nr telefonu" type="tel" name="number" id="phoneNum"
+            formControlName="phoneNum">
+          <mat-error *ngIf="inputError(phoneNum)">{{phoneNumErrorStr}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div id="button-container">
+        <button class="white" mat-raised-button color="accent" type="submit">Dodaj admina</button>
+      </div>
+    </div>
+  </form>
+</div>

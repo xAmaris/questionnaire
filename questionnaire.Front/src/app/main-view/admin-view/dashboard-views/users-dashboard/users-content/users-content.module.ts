@@ -12,6 +12,8 @@ import { MaterialsModule } from '../../../../../materials/materials.module';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { DashboardBarModule } from '../../../../../shared/dashboard/dashboard-bar/dashboard-bar.module';
 import { DashboardListModule } from '../../../../../shared/dashboard/dashboard-list/dashboard-list.module';
+import { IconButtonModule } from './../../../../../shared/buttons/icon-button/icon-button.module';
+import { ConfirmDialogModule } from './../../../../../shared/confirm-dialog/confirm-dialog.module';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
 import { ImportUserTabComponent } from './add-user-dialog/import-user-tab/import-user-tab.component';
@@ -33,15 +35,17 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     MatTabsModule,
     FileUploadModule,
     FontAwesomeModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    IconButtonModule,
+    ConfirmDialogModule
   ],
-  entryComponents: [ConfirmDialogComponent, AddUserDialogComponent],
+  entryComponents: [ConfirmDialogComponent, AddUserDialogComponent, AddUserTabComponent],
   declarations: [
     UsersContentComponent,
     UsersTileComponent,
     AddUserDialogComponent,
     AddUserTabComponent,
-    ImportUserTabComponent
+    ImportUserTabComponent,
   ]
 })
 export class UsersContentModule {}

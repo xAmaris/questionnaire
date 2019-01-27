@@ -27,11 +27,6 @@ const adminRoutes: Routes = [
       }
     ]
   }
-  //   path: 'list',
-  //   loadChildren:
-  //     './draggable/sortable-list/sortable-list.module#SortableListModule',
-  //   canLoad: [AuthGuard]
-  // }
 ];
 
 @NgModule({

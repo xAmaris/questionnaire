@@ -20,7 +20,6 @@ export class RoleGuard implements CanActivate {
       return true;
     } else {
       if (this.accountService.isLogged.value === true) {
-        console.log(currentRole);
         this.sharedService.routeSwitch(currentRole);
       } else {
         this.router.navigateByUrl('auth/login');

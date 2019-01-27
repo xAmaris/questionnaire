@@ -101,12 +101,10 @@ export class PasswordChangeComponent implements OnInit, OnDestroy {
         .changePassword(this.oldPassword.value, this.newPassword.value)
         .subscribe(
           data => {
-            // console.log(data);
             this.accountService.isLoggedNext(false);
             this.router.navigateByUrl('auth/login');
           },
           error => {
-            // console.log(error);
             // set error message from api to loginErrorMessage
             this.loginError = true;
             this.loginErrorMessage = this.accountService.setLoginErrorString(

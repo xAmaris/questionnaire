@@ -2,12 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
-  NgForm,
   Validators
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import {
   ProfileDataStorage,
   UserProfile
@@ -68,16 +65,6 @@ export class MainSettingsComponent implements OnInit {
 
   // user object sent to API
   user: UserProfile;
-  // profiles tooltip
-  // profiles = [
-  //   { value: 'Student', icon: 'pen', message: 'Student' },
-  //   {
-  //     value: 'Graduate',
-  //     icon: 'graduation-cap',
-  //     message: 'Absolwent'
-  //   },
-  //   { value: 'Employer', icon: 'briefcase', message: 'Pracodawca' }
-  // ];
 
   // tslint:disable-next-line:max-line-length
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -122,7 +109,6 @@ export class MainSettingsComponent implements OnInit {
       phoneNum: ['', Validators.required]
     });
     // connecting controls with form inputs
-    this.setAdditionalControls();
     this.name = this.regForm.controls['name'];
     this.lastName = this.regForm.controls['lastName'];
     this.email = this.regForm.controls['email'];
@@ -143,44 +129,13 @@ export class MainSettingsComponent implements OnInit {
     this.profileType = JSON.parse(localStorage.getItem('currentUser')).role;
   }
 
-  setAdditionalControls() {
-    // if (this.profileType === 'student') {
-    //   this.regForm.addControl(
-    //     'albumID',
-    //     new FormControl(this.userInfo.albumID, Validators.required)
-    //   );
-    //   this.albumID = this.regForm.controls['albumID'];
-    // } else if (this.profileType === 'employer') {
-    //   this.regForm.addControl(
-    //     'companyName',
-    //     new FormControl(this.userInfo.companyName, Validators.required)
-    //   );
-    //   this.regForm.addControl(
-    //     'location',
-    //     new FormControl(this.userInfo.location, Validators.required)
-    //   );
-    //   this.regForm.addControl(
-    //     'companyDescription',
-    //     new FormControl(this.userInfo.companyDescription)
-    //   );
-    //   this.companyName = this.regForm.controls['companyName'];
-    //   this.location = this.regForm.controls['location'];
-    //   this.companyDescription = this.regForm.controls['companyDescription'];
-    // }
-  }
   onSubmit(form: FormGroup): void {
     if (!form.valid) {
     } else {
       this.loading = true;
-      this.accountService.updateProfile(this.createUser()).subscribe(
-        data => {
-          console.log(data);
-          this.setLocalStorage();
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      this.accountService.updateProfile(this.createUser()).subscribe(() => {
+        this.setLocalStorage();
+      });
     }
   }
   setLocalStorage() {
@@ -202,16 +157,6 @@ export class MainSettingsComponent implements OnInit {
       phoneNum: this.phoneNum.value
     };
     return _user;
-    // switch (this.profileName.value) {
-    //   case 'Student':
-    //     this.user.albumID = this.albumID.value;
-    //     break;
-    //   case 'Employer':
-    //     this.user.companyName = this.companyName.value;
-    //     this.user.location = this.location.value;
-    //     this.user.companyDescription = this.companyDescription.value;
-    //     break;
-    // }
   }
   createProfileDataStorage(user: ProfileDataStorage): void {
     user.name = this.name.value;
@@ -239,30 +184,11 @@ export class MainSettingsComponent implements OnInit {
         case 'password':
           this.passwordErrorStr = errorObj.errorStr;
           break;
-        // case 'albumID':
-        //   this.albumIDErrorStr = errorObj.errorStr;
-        //   break;
         case 'phoneNum':
           this.phoneNumErrorStr = errorObj.errorStr;
           break;
       }
       return true;
-    }
-  }
-
-  onFocus(control: AbstractControl): void {
-    // hide possible errors
-    // if (control.touched) {
-    control.markAsUntouched();
-    // }
-    this.registrationError = false;
-  }
-
-  onBlur(control: AbstractControl): void {
-    // hide possible errors
-    if (control.dirty === false) {
-      control.markAsUntouched();
-      this.registrationError = false;
     }
   }
 }

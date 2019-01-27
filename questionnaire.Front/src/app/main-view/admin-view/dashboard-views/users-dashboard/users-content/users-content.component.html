@@ -1,8 +1,9 @@
 <app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="openAddUserDialog()"></app-dashboard-bar>
 <app-dashboard-list [itemArr]=" items$ | async"  [emptyListInfo]=emptyListInfo>
   <ng-template let-item>
-    <app-dashboard-tile [item_tile]=item (tileClick)="see()">
+    <app-dashboard-tile [item_tile]=item (tileClick)="openUserUpdateDialog(item)">
         <app-users-tile [user]=item></app-users-tile>
     </app-dashboard-tile>
+    <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.id)"></app-icon-button>
   </ng-template>
 </app-dashboard-list>

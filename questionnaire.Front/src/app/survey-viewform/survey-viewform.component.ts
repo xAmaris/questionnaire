@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import {
@@ -21,6 +22,7 @@ import {
 } from '../main-view/admin-view/survey-container/models/survey.model';
 import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
 import { SharedService } from '../services/shared.service';
+import { SurveyCompletedComponent } from './survey-completed/survey-completed.component';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -38,10 +40,13 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   hash: string;
   isPreviewed: boolean;
   title: string;
-  defaultError = 'Odpowiedź na to pytanie jest wymagana';
+  defaultError = 'Odpowiedź jest wymagana';
   singleGridError = 'To pytanie wymaga jednej odpowiedzi w każdym wierszu';
   multipleGridError =
     'To pytanie wymaga co najmniej jednej odpowiedzi w każdym wierszu';
+  sentSnackbar = 'Twoja odpowiedź została zapisana!';
+  answeredSnackbar = 'Już odpowiedziałeś na tę ankietę';
+  alreadyAnsweredString = 'you already answered to that survey';
   // subs
   surveyIDSub: Subscription = new Subscription();
 
@@ -52,7 +57,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private sharedService: SharedService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +77,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       res => {
         if (res) {
           const params = this.activatedRoute.snapshot.params;
-          console.log(res);
           this.loader = true;
           this.id = Number(params['id']);
           this.hash = params['hash'];
@@ -80,9 +85,9 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           } else if (params['preview'] === 't') {
             this.isPreviewed = false;
           }
-          // this.preview = this.activatedRoute.snapshot.params['preview'];
           this.createQuestionData(res);
           this.title = res['title'];
+          this.sharedService.saveTitle = res['title'];
           this.surveyService.isCreatorLoading(false);
           if (!this.hash) {
             this.showBackButton(true);
@@ -92,8 +97,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           }
         }
       },
-      error => {
-        console.log(error);
+      () => {
         this.surveyService.isCreatorLoading(false);
       }
     );
@@ -110,33 +114,31 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       this.surveyService
         .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id, this.hash)
         .subscribe(
-          data => {
-            console.log(data);
+          () => {
+            this.openSnackbar(this.sentSnackbar);
           },
           error => {
-            console.log(error);
-            const nameArr: string[] = Object.keys(error.error);
-            // console.log(nameArr);
-            nameArr.forEach((err: string) => {
-              const n: number = err.indexOf('[') + 1;
-              this.inputErrorArr.push(Number(err.charAt(n)));
-            });
-            // console.log(this.inputErrorArr);
-            // this.inputErrorArr = error;
-            // error.error.forEach(err => {
-
-            // });
+            if (error.error === this.alreadyAnsweredString) {
+              this.openSnackbar(this.answeredSnackbar);
+            } else {
+              const nameArr: string[] = Object.keys(error.error);
+              nameArr.forEach((err: string) => {
+                const n: number = err.indexOf('[') + 1;
+                this.inputErrorArr.push(Number(err.charAt(n)));
+              });
+            }
             this.submitted = true;
           }
         );
     } else {
       this.showError = true;
-      console.log(this.invoiceForm);
     }
   }
-
-  routeToSurveyCompleted() {
-    this.router.navigateByUrl('./formResponse');
+  openSnackbar(string) {
+    this.snackBar.openFromComponent(SurveyCompletedComponent, {
+      duration: 1500,
+      data: string
+    });
   }
   routeToEditSurvey(): void {
     this.router.navigateByUrl('/app/admin/survey/create/' + this.id);
@@ -148,13 +150,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       this.showBackButton(false);
       this.showPreview(false);
     }
-    // else {
     this.showAdminMenu(true);
-    // }
   }
 
   updateSelection(choiceOptions, radio, e?): void {
-    // console.log(choiceOptions);
     choiceOptions.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -164,16 +163,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     }
   }
 
-  sth(f) {
-    console.log(f);
-  }
-
   createQuestionData(data) {
     let propertyName;
     this.invoiceForm = this.fb.group({
       title: [data.title],
-      // Created_Date: [data.Created_Date],
-      // Created_Time: [data.Created_Time],
       questions: this.fb.array([])
     });
     propertyName =
@@ -191,11 +184,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     control.push(group);
   }
 
-  addRows(question: QuestionData) {
-    const group = this.fb.group({
-      content: [question.content || this.defaultQuestion],
-      select: [question.select],
-      QuestionPosition: [question.QuestionPosition],
+  addRows(question: QuestionSurvey) {
+    const group: FormGroup = this.fb.group({
+      content: question.content || this.defaultQuestion,
+      select: question.select,
+      QuestionPosition: question.questionPosition,
       FieldData: this.fb.array([]),
       isRequired: question.isRequired
     });
@@ -230,7 +223,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       case 'dropdown-menu':
       case 'single-choice':
       case 'multiple-choice':
-        // this.addCheckField(FieldData, data);
         this.addArray(FieldData, isRequired, data);
         break;
       case 'single-grid':
@@ -250,7 +242,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
         ? this.nameof<FieldDataSurvey>('choiceOptions')
         : this.nameof<FieldDataTemplate>('choiceOptionTemplates');
     data[propertyName].forEach(choiceOptions => {
-      // this.addCheckField(group.controls.choiceOptions, choiceOptions);
       this.createViewValue(
         group.controls.choiceOptions,
         choiceOptions.viewValue,
@@ -263,15 +254,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     const group = this.fb.group({
       input: ''
     });
-    if (isRequired) {
-      // group.controls.input.setValidators([Validators.required]);
-    }
     FieldData.push(group);
   }
   addCheckField(selectArr, data) {
-    // console.log();
     const group = this.fb.group({
-      // input: false,
       value: false,
       viewValue: [data.viewValue]
     });
@@ -360,21 +346,20 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   inputFieldError(formGroup: FormGroup): boolean {
     const control = formGroup.controls.input;
     if (control.errors && this.showError) {
-      console.log('g');
       return true;
     }
   }
-  see(x) {
-    console.log(x);
-  }
   controlError(question, i) {
-    const bool1 = this.controlErrorFromApi(i);
+    const bool1 = this.controlErrorFromApi(question, i);
     const bool2 = this.controlEmpty(question);
     return bool1 && bool2;
   }
-  controlErrorFromApi(i): boolean {
-    // console.log()
-    return this.inputErrorArr.includes(i) && this.submitted;
+  controlErrorFromApi(question, i): boolean {
+    return (
+      this.inputErrorArr.includes(i) &&
+      this.submitted &&
+      question.value.isRequired
+    );
   }
   controlEmpty(question: any): boolean {
     const field = question.controls.FieldData.controls[0];

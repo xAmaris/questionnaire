@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../app.config';
 import { UserProfile } from '../other/user.model';
 
@@ -64,6 +65,19 @@ export class AccountService {
       Location: user.location,
       CompanyDescription: user.companyDescription
     });
+  }
+
+  createNewAdmin(user: UserProfile): Observable<any> {
+    return this.http
+      .post<any>(this.config.apiUrl + '/auth/careerOffices', {
+        Name: user.firstName,
+        Surname: user.lastName,
+        Email: user.email,
+        PhoneNumber: user.phoneNum
+      })
+      .map(data => {
+        return data;
+      });
   }
   // change password
   changePassword(OldPassword, NewPassword) {

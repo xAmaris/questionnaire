@@ -56,13 +56,11 @@ export class PasswordRecoveryComponent implements OnInit {
 
   onSubmit(): void {
     this.loading = true;
-    console.log(this.email.value);
     this.accountService.sendRestorePasswordEmail(this.email.value).subscribe(
-      data => {
+      () => {
         this.router.navigateByUrl('auth/login');
       },
-      error => {
-        console.log(error);
+      () => {
         this.loading = false;
       }
     );

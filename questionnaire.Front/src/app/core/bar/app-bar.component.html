@@ -1,23 +1,15 @@
 <div id="bar" #nav>
   <div id="container">
-    <div class="sideButton" *ngIf="showToggleButton === true" (click)="openSidebar()">
-      <fa-icon [icon]="['fas','bars']"></fa-icon>
-    </div>
     <div class="sideButton" (click)="backTo()" *ngIf="showBackButton === true">
       <fa-icon [icon]="['fas','arrow-left']" matTooltip="{{toolTipInfo.main}}" matTooltipPosition="below"></fa-icon>
     </div>
     <div id="logo">
-      <!-- <img src="./../../../assets/logo-wsei.png" alt="logo WSEI"> -->
       <img src={{logoIMG}} alt="logo WSEI">
     </div>
     <div id="preview" *ngIf="isPreview">PODGLĄD</div>
   </div>
   <ul class="menu" *ngIf="isLogged === false">
     <li class="menu-item" [routerLink]="['/auth/login']">Logowanie</li>
-    <li class="menu-item" [routerLink]="['/info/student']">Student</li>
-    <li class="menu-item" [routerLink]="['/info/graduate']">Absolwent</li>
-    <li class="menu-item" [routerLink]="['/info/employer']">Dla Firm</li>
-    <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li>
   </ul>
   <div id="profile-container" *ngIf="isLogged === true" [ngSwitch]="accountRole">
     <div id="career-offices" *ngSwitchCase="'careerOffice'">
@@ -28,12 +20,10 @@
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton === true" matTooltip="{{toolTipInfo.show}}"
           matTooltipPosition="below" (click)="showSurvey()"></fa-icon>
-        <button mat-button id="save" *ngIf="showCreatorButton === true" (click)="sendSurvey()">WYŚLIJ</button>
+        <app-progress-button *ngIf="showCreatorButton === true" [buttonText]="buttonText" [loader]=isLoading (buttonClick)=sendSurvey()></app-progress-button>
       </div>
     </div>
     <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger" *ngIf="showUserInfo === true">
-      <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
-      <!-- <img src="./../../../assets/profile-image.png"> -->
       <img src={{profileIMG}} alt="zdjęcie profilowe">
     </div>
     <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">

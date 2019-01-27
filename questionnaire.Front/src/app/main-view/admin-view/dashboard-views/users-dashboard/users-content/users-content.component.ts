@@ -6,7 +6,11 @@ import {
   UnregisteredUser
 } from '../../../../../models/user.model';
 import { UserService } from '../../../survey-container/services/user.services';
+import { DeleteTemplateDialogData } from './../../../../../data/shared.data';
+import { UnregisteredUserModel } from './../../../../../models/user.model';
+import { ConfirmDialogComponent } from './../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
 
 @Component({
   selector: 'app-users-content',
@@ -32,26 +36,61 @@ export class UsersContentComponent implements OnInit {
   ngOnInit() {
     this.getAllUsers();
   }
-  see() {
-    console.log('click');
-  }
   getAllUsers() {
-    this.getAllUsersSub = this.userService.getAllUsers().subscribe(
+    this.saveUsersFromApi();
+    this.getAllUsersSub = this.userService.savedUnregisteredUsers.subscribe(
       (data: Array<RegisteredUser | UnregisteredUser>) => {
-        // console.log(data);
         if (data) {
           this._items$.next(data);
         }
-      },
-      error => {
-        console.log(error);
       }
     );
   }
   openAddUserDialog(): void {
-    const dialogRef: MatDialogRef<AddUserDialogComponent> = this.dialog.open(
-      AddUserDialogComponent
+    this.dialog.open(AddUserDialogComponent);
+  }
+  openConfimDeleteDialog(id: number): void {
+    this.openSurveyDialog().subscribe((res: boolean) => {
+      if (res === true) {
+        this.deleteUnregisteredUser(id);
+      }
+    });
+  }
+  openUserUpdateDialog(user): void {
+    this.openUpdateDialog(user).subscribe((res: any) => {
+      if (res) {
+        this.updateUnregisteredUser(user.id, res);
+      }
+    });
+  }
+  updateUnregisteredUser(id, user) {
+    const usermodel: UnregisteredUserModel = new UnregisteredUserModel(user);
+    this.userService.updateUserById(id, usermodel).subscribe(data => {
+      this.getAllUsers();
+    });
+  }
+  deleteUnregisteredUser(id: number): void {
+    this.userService.deleteUserById(id).subscribe(() => {
+      this.saveUsersFromApi();
+    });
+  }
+  saveUsersFromApi() {
+    this.userService.saveUsersFromApi();
+  }
+  openSurveyDialog(): Observable<boolean> {
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
+      ConfirmDialogComponent,
+      { data: new DeleteTemplateDialogData() }
     );
-    // return dialogRef.afterClosed();
+    return dialogRef.afterClosed();
+  }
+  openUpdateDialog(survey): Observable<boolean> {
+    const dialogRef: MatDialogRef<AddUserTabComponent> = this.dialog.open(
+      AddUserTabComponent,
+      {
+        data: survey
+      }
+    );
+    return dialogRef.afterClosed();
   }
 }

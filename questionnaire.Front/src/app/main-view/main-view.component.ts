@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { UserProfile } from '../auth/other/user.model';
+import {  Component, OnInit } from '@angular/core';
 import { AccountService } from '../auth/services/account.service';
 import { SharedService } from '../services/shared.service';
 
@@ -7,7 +6,6 @@ import { SharedService } from '../services/shared.service';
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainViewComponent implements OnInit {
   constructor(

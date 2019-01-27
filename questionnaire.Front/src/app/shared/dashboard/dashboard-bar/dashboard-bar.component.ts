@@ -14,15 +14,11 @@ export class DashboardBarComponent implements OnInit {
   @Output()
   buttonClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private surveyService: SurveyService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   onButtonClick() {
     this.buttonClick.emit(true);
-  }
-
-  searchSurveyList(searchString: string): void {
-    this.surveyService.filterSurveyList(searchString);
   }
 }

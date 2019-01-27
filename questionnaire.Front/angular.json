@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "questionnaire": {
+    "monitorowanie-karier-wsei": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -20,7 +20,8 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/primeng/resources/primeng.min.css"
-            ]
+            ],
+            "scripts": ["./node_modules/auth0-js/build/auth0.js"]
           },
           "configurations": {
             "production": {
@@ -45,18 +46,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "questionnaire:build"
+            "browserTarget": "monitorowanie-karier-wsei:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "questionnaire:build:production"
+              "browserTarget": "monitorowanie-karier-wsei:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "questionnaire:build"
+            "browserTarget": "monitorowanie-karier-wsei:build"
           }
         },
         "test": {
@@ -80,7 +81,7 @@
         }
       }
     },
-    "questionnaire-e2e": {
+    "monitorowanie-karier-wsei-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -89,7 +90,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "questionnaire:serve"
+            "devServerTarget": "monitorowanie-karier-wsei:serve"
           }
         },
         "lint": {
@@ -102,7 +103,7 @@
       }
     }
   },
-  "defaultProject": "questionnaire",
+  "defaultProject": "monitorowanie-karier-wsei",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

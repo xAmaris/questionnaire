@@ -13,6 +13,11 @@ const surveyContainerRoutes: Routes = [
     component: SurveyContainerComponent,
     children: [
       {
+        path: 'response/:id/:hash',
+        loadChildren:
+          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
+      },
+      {
         path: 'create/:id',
         loadChildren:
           './../../main-view/admin-view/survey-container/survey-creator/survey-creator.module#SurveyCreatorModule',
@@ -50,12 +55,6 @@ const surveyContainerRoutes: Routes = [
           cres: SurveyResultResolver
         },
         data: { preload: true, delay: false }
-      },
-      {
-        path: 'response',
-        loadChildren:
-          // './survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
-          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
       }
     ]
   }

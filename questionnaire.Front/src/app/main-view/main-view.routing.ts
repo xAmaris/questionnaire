@@ -19,33 +19,6 @@ const mainRoutes: Routes = [
         }
       },
       {
-        path: 'student',
-        loadChildren: './student-view/student-view.module#StudentViewModule',
-        canLoad: [AuthGuard],
-        canActivate: [RoleGuard],
-        data: {
-          expectedRole: 'student'
-        }
-      },
-      {
-        path: 'graduate',
-        loadChildren: './graduate-view/graduate-view.module#GraduateViewModule',
-        canLoad: [AuthGuard],
-        canActivate: [RoleGuard],
-        data: {
-          expectedRole: 'graduate'
-        }
-      },
-      {
-        path: 'employer',
-        loadChildren: './employer-view/employer-view.module#EmployerViewModule',
-        canLoad: [AuthGuard],
-        canActivate: [RoleGuard],
-        data: {
-          expectedRole: 'employer'
-        }
-      },
-      {
         path: 'settings',
         loadChildren: './settings/settings.module#SettingsModule',
         canLoad: [AuthGuard]
