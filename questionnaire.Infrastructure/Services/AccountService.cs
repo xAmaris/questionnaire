@@ -114,7 +114,7 @@ namespace questionnaire.Infrastructure.Services {
             }
             if (account.GetType () == typeof (CareerOffice)) {
                 var careerOffice = (CareerOffice) account;
-                careerOffice.Update (name, email, surname, phoneNumber);
+                careerOffice.Update (name, surname, email, phoneNumber);
                 await _careerOfficeRepository.UpdateAsync(careerOffice);
                 account = careerOffice;
             }

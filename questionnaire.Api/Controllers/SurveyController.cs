@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace questionnaire.Api.Controllers {
-    // [Authorize(Policy = "careerOffice")]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
@@ -18,36 +17,35 @@ namespace questionnaire.Api.Controllers {
             _surveyReportService = surveyReportService;
         }
 
+        [Authorize (Policy = "careerOffice")]
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
-            try{
+            try {
                 var survey = await _surveyService.GetByIdAsync (surveyId);
                 return Json (survey);
-            }
-            catch(Exception e){
-                return BadRequest(e.Message);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
             }
         }
 
         [HttpGet ("{surveyId}/{email}")]
         public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
-            try{
+            try {
                 var survey = await _surveyService.GetByIdAsync (surveyId);
                 return Json (survey);
-            }
-            catch(Exception e){
-                return BadRequest(e.Message);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
             }
         }
 
+        [Authorize (Policy = "careerOffice")]
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys () {
-            try{
+            try {
                 var surveys = await _surveyService.GetAllAsync ();
                 return Json (surveys);
-            }
-            catch(Exception e){
-                return BadRequest(e.Message);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
             }
         }
 

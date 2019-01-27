@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace questionnaire.Api.Controllers
 {
-    // [Authorize (Policy = "careerOffice")]
+    [Authorize (Policy = "careerOffice")]
     public class SurveyTemplateController : ApiUserController
     {
         private readonly ISurveyTemplateService _surveyTemplateService;

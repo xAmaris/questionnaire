@@ -672,11 +672,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
+      "projectUniqueName": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
       "projectName": "questionnaire.Core",
-      "projectPath": "D:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
+      "projectPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
       "packagesPath": "C:\\Users\\gabi9\\.nuget\\packages\\",
-      "outputPath": "D:\\AngularProjects\\questionnaire\\questionnaire.Core\\obj\\",
+      "outputPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

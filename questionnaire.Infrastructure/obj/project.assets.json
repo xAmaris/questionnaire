@@ -3372,7 +3372,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.antiforgery/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Antiforgery.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Antiforgery.xml",
@@ -3385,7 +3384,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.authentication.abstractions/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Abstractions.xml",
@@ -3398,7 +3396,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.authentication.core/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
@@ -3424,7 +3421,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.authorization.policy/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.Policy.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.Policy.xml",
@@ -3437,7 +3433,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.cors/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Cors.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Cors.xml",
@@ -3528,7 +3523,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.html.abstractions/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.xml",
@@ -3593,7 +3587,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.jsonpatch/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
@@ -3606,7 +3599,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.localization/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Localization.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Localization.xml",
@@ -3619,7 +3611,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.xml",
@@ -3671,7 +3662,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.cors/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Cors.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Cors.xml",
@@ -3710,7 +3700,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.localization/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Localization.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Localization.xml",
@@ -3723,7 +3712,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.razor/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.xml",
@@ -3736,7 +3724,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.razor.extensions/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "build/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.props",
         "build/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.targets",
@@ -3753,7 +3740,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.razorpages/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.RazorPages.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.RazorPages.xml",
@@ -3766,7 +3752,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.taghelpers/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.TagHelpers.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.TagHelpers.xml",
@@ -3792,7 +3777,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.razor/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.xml",
@@ -3804,9 +3788,7 @@
       "sha512": "2oNNMs9RektIq1u+VrZ1+LEkGK0jNQiwVkI67v8UAn7TApuctEg/jIe5LTnob1fW6MUKsSOULXb+rrY60X67Vw==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.0",
-      "hasTools": true,
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets",
         "build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.props",
@@ -3832,7 +3814,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.razor.language/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net46/Microsoft.AspNetCore.Razor.Language.dll",
         "lib/net46/Microsoft.AspNetCore.Razor.Language.xml",
@@ -3847,7 +3828,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.razor.runtime/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Runtime.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Runtime.xml",
@@ -3860,7 +3840,6 @@
       "type": "package",
       "path": "microsoft.aspnetcore.responsecaching.abstractions/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.ResponseCaching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.ResponseCaching.Abstractions.xml",
@@ -3956,7 +3935,6 @@
       "type": "package",
       "path": "microsoft.codeanalysis.razor/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net46/Microsoft.CodeAnalysis.Razor.dll",
         "lib/net46/Microsoft.CodeAnalysis.Razor.xml",
@@ -4280,7 +4258,6 @@
       "type": "package",
       "path": "microsoft.extensions.fileproviders.composite/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Composite.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Composite.xml",
@@ -4306,7 +4283,6 @@
       "type": "package",
       "path": "microsoft.extensions.hosting.abstractions/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
@@ -5923,6 +5899,7 @@
       "type": "package",
       "path": "system.data.common/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7199,6 +7176,7 @@
       "type": "package",
       "path": "system.net.networkinformation/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8521,6 +8499,7 @@
       "type": "package",
       "path": "system.security.cryptography.cng/4.4.0",
       "files": [
+        ".nupkg.metadata",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/System.Security.Cryptography.Cng.dll",
@@ -9248,6 +9227,7 @@
       "type": "package",
       "path": "system.threading.overlapped/4.3.0",
       "files": [
+        ".nupkg.metadata",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net46/System.Threading.Overlapped.dll",

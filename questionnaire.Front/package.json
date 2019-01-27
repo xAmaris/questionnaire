@@ -30,7 +30,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.4.1",
     "angular-sortablejs": "^2.6.0",
-    "auth0-js": "^9.8.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.4.1",
     "moment": "^2.22.2",
