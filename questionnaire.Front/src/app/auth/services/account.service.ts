@@ -44,36 +44,15 @@ export class AccountService {
       PhoneNumber: user.phoneNum
     });
   }
-  createGraduate(user) {
-    return this.http.post(this.config.apiUrl + '/auth/graduates', {
-      Email: user.email,
-      Password: user.password,
-      Name: user.firstName,
-      Surname: user.lastName,
-      PhoneNumber: user.phoneNum
-    });
-  }
-  createEmployer(user) {
-    return this.http.post(this.config.apiUrl + '/auth/employers', {
-      IndexNumber: user.albumID,
-      Email: user.email,
-      Password: user.password,
-      Name: user.firstName,
-      Surname: user.lastName,
-      PhoneNumber: user.phoneNum,
-      CompanyName: user.companyName,
-      Location: user.location,
-      CompanyDescription: user.companyDescription
-    });
-  }
 
-  createNewAdmin(user: UserProfile): Observable<any> {
+  createNewAdmin(user): Observable<any> {
     return this.http
       .post<any>(this.config.apiUrl + '/auth/careerOffices', {
         Name: user.firstName,
         Surname: user.lastName,
         Email: user.email,
-        PhoneNumber: user.phoneNum
+        PhoneNumber: user.phoneNum,
+        Password: user.password
       })
       .map(data => {
         return data;

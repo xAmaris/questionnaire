@@ -70,12 +70,6 @@ export class SharedService {
       case 'student':
         this.router.navigateByUrl('/app/student');
         break;
-      case 'employer':
-        this.router.navigateByUrl('/app/employer');
-        break;
-      case 'graduate':
-        this.router.navigateByUrl('/app/graduate');
-        break;
       case 'careerOffice':
         this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
         break;

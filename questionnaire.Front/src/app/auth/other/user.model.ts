@@ -10,11 +10,10 @@ export class User extends UserProfile {
   password: string;
   profileName: string;
 }
-export class Graduate extends User {}
 export class Student extends User {
   albumID: string;
 }
-export class Employer extends User {
+export class Admin extends User {
   companyName: string;
   location: string;
   companyDescription: string;

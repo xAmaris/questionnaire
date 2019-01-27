@@ -11,6 +11,10 @@ const authRoutes: Routes = [
     children: [
       { path: 'login', loadChildren: './login/login.module#LoginModule' },
       {
+        path: 'register',
+        loadChildren: './register/register.module#RegisterModule'
+      },
+      {
         path: 'activation/:token',
         loadChildren:
           './account-activation/account-activation.module#AccountActivationModule',
@@ -35,8 +39,7 @@ const authRoutes: Routes = [
       },
       {
         path: 'add',
-        loadChildren:
-          './add-admin/add-admin.module#AddAdminModule',
+        loadChildren: './add-admin/add-admin.module#AddAdminModule',
         canLoad: [AuthGuard]
       }
     ]

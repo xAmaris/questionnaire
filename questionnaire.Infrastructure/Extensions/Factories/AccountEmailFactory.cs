@@ -31,7 +31,7 @@ namespace questionnaire.Infrastructure.Extensions.Factories {
             var message = new MimeMessage ();
             message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
             message.To.Add (new MailboxAddress (account.Name, account.Email));
-            message.Subject = "Monitorowanie karier - aktywacja konta.";
+            message.Subject = "Ankietyzator - aktywacja konta.";
             message.Body = new TextPart ("html") {
                 Text = _emailContent.ActivationEmail (activationKey)
             };
@@ -42,7 +42,7 @@ namespace questionnaire.Infrastructure.Extensions.Factories {
             var message = new MimeMessage ();
             message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
             message.To.Add (new MailboxAddress (account.Name.ToString (), account.Email.ToString ()));
-            message.Subject = "Monitorowanie Karier - przywracanie hasla";
+            message.Subject = "Ankietyzator - przywracanie hasla";
             message.Body = new TextPart ("html") {
                 Text = _emailContent.RecoveringPasswordEmail (account.Name, token)
             };
