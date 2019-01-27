@@ -10,16 +10,6 @@
                 "${workspaceFolder}/questionnaire.Api/questionnaire.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/questionnaire.Api/questionnaire.Api.csproj"
-            ],
-            "problemMatcher": "$msCompile"
         }
     ]
 }

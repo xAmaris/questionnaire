@@ -1,0 +1,87 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj",
+    "projectName": "questionnaire.Infrastructure",
+    "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj",
+    "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\questionnaire.Infrastructure\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\questionnaire.Core\\questionnaire.Core.csproj": {
+            "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\questionnaire.Core\\questionnaire.Core.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "AutoMapper": {
+          "target": "Package",
+          "version": "[7.0.1, )"
+        },
+        "EPPlus.Core": {
+          "target": "Package",
+          "version": "[1.5.4, )"
+        },
+        "FluentValidation.AspNetCore": {
+          "target": "Package",
+          "version": "[8.0.0, )"
+        },
+        "MailKit": {
+          "target": "Package",
+          "version": "[2.0.6, )"
+        },
+        "Microsoft.EntityFrameworkCore.Design": {
+          "target": "Package",
+          "version": "[2.1.1, )"
+        },
+        "Microsoft.EntityFrameworkCore.SqlServer": {
+          "target": "Package",
+          "version": "[2.1.1, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "target": "Package",
+          "version": "[2.1.1, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.0, )",
+          "autoReferenced": true
+        },
+        "MimeKit": {
+          "target": "Package",
+          "version": "[2.0.6, )"
+        },
+        "NLog.Extensions.Logging": {
+          "target": "Package",
+          "version": "[1.3.0, )"
+        },
+        "NLog.Web.AspNetCore": {
+          "target": "Package",
+          "version": "[4.7.0, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

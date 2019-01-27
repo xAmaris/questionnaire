@@ -8,10 +8,10 @@ namespace questionnaire.Core.Domains.Surveys {
         public DateTime CreatedAt { get; private set; }
         public ICollection<Question> Questions { get; private set; } = new List<Question> ();
 
-        protected Survey () { }
+        private Survey () { }
 
         public Survey (string title) {
-            SetTitle (title);
+            SetTitle(title);
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -24,7 +24,7 @@ namespace questionnaire.Core.Domains.Surveys {
         }
 
         public void Update (string title) {
-            SetTitle (title);
+            SetTitle(title);
             CreatedAt = DateTime.UtcNow;
         }
     }

@@ -1,59 +1,87 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using questionnaire.Core.Domains.Surveys;
+using questionnaire.Infrastructure.Data;
 using questionnaire.Infrastructure.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace questionnaire.Infrastructure.Repositories
-{
-    public class SurveyRepository : ISurveyRepository
-    {
+namespace questionnaire.Infrastructure.Repositories {
+    public class SurveyRepository : ISurveyRepository {
+        private readonly questionnaireContext _context;
 
-        private static readonly List<Survey> _surveys = new List<Survey>() {
-            new Survey ("nazwa")
-        };
-        public async Task AddSurveyAsync(Survey survey)
-        {
-            _surveys.Add(survey);
-            await Task.CompletedTask;
-        }
-        public async Task UpdateSurveyAsync(Survey survey)
-        {
-            await Task.CompletedTask;
-        }
-        public async Task DeleteSurveyAsync(Survey survey)
-        {
-            _surveys.Remove(survey);
-            await Task.CompletedTask;
+        public SurveyRepository (questionnaireContext context) {
+            _context = context;
         }
 
-        public Task AddAsync(Survey survey)
-        {
-            throw new System.NotImplementedException();
+        public async Task AddAsync (Survey survey) {
+            await _context.Surveys.AddAsync (survey);
+            await _context.SaveChangesAsync ();
         }
 
-        public Task<Survey> GetByIdWithQuestionsAsync(int id)
-        {
-            throw new System.NotImplementedException();
+        public async Task<Survey> GetByIdWithQuestionsAsync (int id, bool isTracking = true) {
+            if (isTracking) {
+                return await _context.Surveys
+                    .AsTracking ()
+                    .Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.ChoiceOptions)
+                    .Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.Rows)
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Surveys
+                .AsNoTracking ()
+                .Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.ChoiceOptions)
+                .Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.Rows)
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public Task<Survey> GetByIdAsync(int id)
-        {
-            throw new System.NotImplementedException();
+        public async Task<Survey> GetByTitleWithQuestionsAsync (string title, bool isTracking = true) {
+            if (isTracking) {
+                return await _context.Surveys
+                    .AsTracking ()
+                    .Include (x => x.Questions)
+                    .SingleOrDefaultAsync (x => x.Title == title);
+            }
+            return await _context.Surveys
+                .AsNoTracking ()
+                .Include (x => x.Questions)
+                .SingleOrDefaultAsync (x => x.Title == title);
         }
 
-        public Task<Survey> GetByTitleWithQuestionsAsync(string title)
-        {
-            throw new System.NotImplementedException();
+        public async Task<IEnumerable<Survey>> GetAllWithQuestionsAsync (bool isTracking = true) {
+            if (isTracking) {
+                return await Task.FromResult (_context.Surveys
+                    .AsTracking ()
+                    .Include (x => x.Questions)
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Surveys
+                .AsNoTracking ()
+                .Include (x => x.Questions)
+                .AsEnumerable ());
         }
 
-        public Task<IEnumerable<Survey>> GetAllWithQuestionsAsync()
-        {
-            throw new System.NotImplementedException();
+        public async Task<Survey> GetByIdAsync (int id, bool isTracking = true) {
+            if (isTracking) {
+                return await _context.Surveys
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Surveys
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public Task DeleteAsync(Survey survey)
-        {
-            throw new System.NotImplementedException();
+        public async Task DeleteAsync (Survey survey) {
+            _context.Surveys.Remove (survey);
+            await _context.SaveChangesAsync ();
         }
     }
 }

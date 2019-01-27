@@ -1,77 +1,87 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using questionnaire.Infrastructure.Commands.Survey;
 using questionnaire.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace questionnaire.Api.Controllers
 {
-    public class SurveyTemplateController : ApiController
+    // [Authorize (Policy = "careerOffice")]
+    public class SurveyTemplateController : ApiUserController
     {
         private readonly ISurveyTemplateService _surveyTemplateService;
-        public SurveyTemplateController(ISurveyTemplateService surveyTemplateService)
-        {
+
+        public SurveyTemplateController (ISurveyTemplateService surveyTemplateService) {
             _surveyTemplateService = surveyTemplateService;
         }
 
-        [HttpGet("{surveyId}")]
-        public async Task<IActionResult> GetSurvey(int surveyId, string email)
-        {
-            try
-            {
-                var survey = await _surveyTemplateService.GetByIdAsync(surveyId);
-                return Json(survey);
+        [HttpGet ("{surveyId}")]
+        public async Task<IActionResult> GetSurvey (int surveyId, string email) {
+            try{
+                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
+                return Json (survey);
             }
-            catch (Exception e)
-            {
+            catch(Exception e){
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("surveys")]
-        public async Task<IActionResult> GetAllSurveys()
-        {
-            try
-            {
-                var surveys = await _surveyTemplateService.GetAllAsync();
-                return Json(surveys);
+
+        [HttpGet ("{surveyId}/{email}/{userId}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
+            try{
+                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
+                return Json (survey);
             }
-            catch (Exception e)
-            {
+            catch(Exception e){
                 return BadRequest(e.Message);
             }
         }
-        [HttpPost("surveys")]
-        public async Task<IActionResult> CreateSurvey([FromBody] SurveyToAdd command)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
+
+        [HttpGet ("surveys")]
+        public async Task<IActionResult> GetAllSurveys () {
+            try{
+                var surveys = await _surveyTemplateService.GetAllAsync ();
+                return Json (surveys);
             }
-            try
-            {
-                var surveyTemplateId = await _surveyTemplateService.CreateSurveyAsync(command);
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost ("surveys")]
+        public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
+            try{
+                if (!ModelState.IsValid)
+                    return BadRequest (ModelState);
+                var surveyTemplateId = await _surveyTemplateService.CreateSurveyAsync (command);
                 return Json(surveyTemplateId);
             }
-            catch (Exception e)
-            {
+            catch(Exception e){
                 return BadRequest(e.Message);
             }
         }
-        [HttpPut("surveys")]
-        public async Task<IActionResult> UpdateSurvey([FromBody] SurveyToUpdate command)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            try
-            {
 
-                await _surveyTemplateService.UpdateSurveyAsync(command);
+        [HttpPut ("surveys")]
+        public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
+            try{
+                if (!ModelState.IsValid)
+                    return BadRequest (ModelState);
+                await _surveyTemplateService.UpdateSurveyAsync (command);
+                return StatusCode (200);
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete ("{surveyId}")]
+        public async Task<IActionResult> DeleteSurvey (int surveyId){
+            try{
+                await _surveyTemplateService.DeleteAsync(surveyId);
                 return StatusCode(200);
             }
-            catch (Exception e)
-            {
+            catch(Exception e){
                 return BadRequest(e.Message);
             }
         }

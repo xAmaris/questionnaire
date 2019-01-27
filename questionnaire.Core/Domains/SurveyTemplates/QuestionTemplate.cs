@@ -13,36 +13,31 @@ namespace questionnaire.Core.Domains.SurveyTemplates
         public SurveyTemplate SurveyTemplate { get; private set; }
         public ICollection<FieldDataTemplate> FieldDataTemplates { get; private set; } = new List<FieldDataTemplate>();
 
-        private QuestionTemplate() { }
+        private QuestionTemplate () { }
 
-        public QuestionTemplate(int questionPosition, string content, string select, bool isRequired)
-        {
+        public QuestionTemplate (int questionPosition, string content, string select, bool isRequired) {
             SetQuestionPosition(questionPosition);
             SetContent(content);
             SetSelect(select);
             SetIsRequired(isRequired);
         }
 
-        public void SetQuestionPosition(int questionPosition)
-        {
+        public void SetQuestionPosition (int questionPosition) {
             QuestionPosition = questionPosition;
         }
 
-        public void SetContent(string content)
-        {
+        public void SetContent (string content) {
             Content = content;
         }
 
-        public void SetSelect(string select)
-        {
+        public void SetSelect (string select) {
             Select = select;
         }
-        public void SetIsRequired(bool isRequired)
-        {
+        public void SetIsRequired (bool isRequired) {
             IsRequired = isRequired;
         }
 
-        public void AddFieldDataTemplate(FieldDataTemplate fieldDataTemplate)
+        public void AddFieldDataTemplate (FieldDataTemplate fieldDataTemplate)
         {
             FieldDataTemplates.Add(fieldDataTemplate);
         }
