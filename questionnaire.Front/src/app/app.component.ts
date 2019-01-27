@@ -195,7 +195,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // bar buttons actions
   sendSurvey(): void {
-    this.sharedService.showSendSurveyDialog(true);
+    this.sharedService.showSendSurveyDialog();
   }
   showSurvey(): void {
     this.sharedService.showSurveyButton(true);

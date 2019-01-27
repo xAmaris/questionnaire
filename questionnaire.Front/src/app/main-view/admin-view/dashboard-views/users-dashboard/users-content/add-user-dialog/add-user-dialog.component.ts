@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   UnregisteredUser,
@@ -14,7 +14,8 @@ import { UserService } from '../../../../survey-container/services/user.services
 export class AddUserDialogComponent implements OnInit {
   loader = false;
   selected = 0;
-
+  @Output()
+  submit: EventEmitter<any> = new EventEmitter<any>();
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {}

@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using OfficeOpenXml;
 using questionnaire.Core.Domains.ImportFile;
 using questionnaire.Infrastructure.DTO.ImportFile;
 using questionnaire.Infrastructure.Extensions.Aggregate.Interfaces;
 using questionnaire.Infrastructure.Repositories.Interfaces;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using OfficeOpenXml;
 
 namespace questionnaire.Infrastructure.Extensions.Aggregate {
     public class ImportFileAggregate : IImportFileAggregate {
@@ -61,17 +61,29 @@ namespace questionnaire.Infrastructure.Extensions.Aggregate {
 
                 for (int i = 2; i <= totalRows; i++) {
                     var importData = new UnregisteredUser ();
-                    importData.SetName (workSheet.Cells[i, 1].Value.ToString ());
-                    importData.SetSurname (workSheet.Cells[i, 2].Value.ToString ());
-                    importData.SetCourse (workSheet.Cells[i, 3].Value.ToString ());
-                    importData.SetDateOfCompletion (Convert.ToDateTime (workSheet.Cells[i, 4].Value.ToString ()));
-                    importData.SetTypeOfStudy (workSheet.Cells[i, 5].Value.ToString ());
-                    importData.SetEmail (workSheet.Cells[i, 6].Value.ToString ().ToLowerInvariant ());
-                    importDataList.Add (importData);
-
-                    importDataListDto.Add (_mapper.Map<UnregisteredUserDto> (importData));
+                    var name = workSheet.Cells[i, 1].Value;
+                    if (name != null)
+                        importData.SetName (name.ToString ());
+                    var surname = workSheet.Cells[i, 2].Value;
+                    if (surname != null)
+                        importData.SetSurname (surname.ToString ());
+                    var course = workSheet.Cells[i, 3].Value;
+                    if (course != null)
+                        importData.SetCourse (course.ToString ());
+                    var dateOfCompletion = workSheet.Cells[i, 4].Value;
+                    if (dateOfCompletion != null)
+                        importData.SetDateOfCompletion (Convert.ToDateTime (dateOfCompletion.ToString ()));
+                    var typeOfStudy = workSheet.Cells[i, 5].Value;
+                    if (typeOfStudy != null)
+                        importData.SetTypeOfStudy (typeOfStudy.ToString ());
+                    var email = workSheet.Cells[i, 6].Value;
+                    if (email != null)
+                        importData.SetEmail (email.ToString ().ToLowerInvariant ());
+                    if (importData.Name != null && importData.Surname != null && importData.Course != null && importData.DateOfCompletion != null && importData.TypeOfStudy != null && importData.Email != null) {
+                        importDataListDto.Add (_mapper.Map<UnregisteredUserDto> (importData));
+                        importDataList.Add (importData);
+                    }
                 }
-
                 await _unregisteredUserRepository.AddAllAsync (importDataList);
             }
             Directory.Delete (fileInfo.DirectoryName, true);

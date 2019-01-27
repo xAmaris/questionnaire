@@ -9,9 +9,7 @@ export class SharedService {
   showButton: Subject<boolean> = new Subject<boolean>();
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  showSurveyDialog: Subject<boolean> = new Subject<boolean>();
   showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showAdminMenu: Subject<boolean> = new Subject<boolean>();
@@ -57,8 +55,8 @@ export class SharedService {
   showPreviewDiv(x: boolean): void {
     this.showPreview.next(x);
   }
-  showSendSurveyDialog(x: boolean): void {
-    this.showSurveyDialog.next(x);
+  showSendSurveyDialog(): void {
+    this.showSurveyDialog.next();
   }
 
   showUser(x: boolean): void {

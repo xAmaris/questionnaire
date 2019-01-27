@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
 import {
   RegisteredUser,
   UnregisteredUser
@@ -46,22 +47,30 @@ export class UsersContentComponent implements OnInit {
       }
     );
   }
-  openAddUserDialog(): void {
-    this.dialog.open(AddUserDialogComponent);
-  }
   openConfimDeleteDialog(id: number): void {
-    this.openSurveyDialog().subscribe((res: boolean) => {
-      if (res === true) {
-        this.deleteUnregisteredUser(id);
-      }
-    });
+    this.openSurveyDialog()
+      .pipe(first())
+      .subscribe((res: boolean) => {
+        if (res === true) {
+          this.deleteUnregisteredUser(id);
+        }
+      });
   }
   openUserUpdateDialog(user): void {
-    this.openUpdateDialog(user).subscribe((res: any) => {
-      if (res) {
-        this.updateUnregisteredUser(user.id, res);
-      }
-    });
+    this.openUpdateDialog(user)
+      .pipe(first())
+      .subscribe((res: any) => {
+        if (res) {
+          this.updateUnregisteredUser(user.id, res);
+        }
+      });
+  }
+  openAddUserDialog() {
+    this.openUserDialog()
+      .pipe(first())
+      .subscribe(() => {
+        this.getAllUsers();
+      });
   }
   updateUnregisteredUser(id, user) {
     const usermodel: UnregisteredUserModel = new UnregisteredUserModel(user);
@@ -76,6 +85,12 @@ export class UsersContentComponent implements OnInit {
   }
   saveUsersFromApi() {
     this.userService.saveUsersFromApi();
+  }
+  openUserDialog(): Observable<any> {
+    const dialogRef: MatDialogRef<AddUserDialogComponent> = this.dialog.open(
+      AddUserDialogComponent
+    );
+    return dialogRef.afterClosed();
   }
   openSurveyDialog(): Observable<boolean> {
     const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(

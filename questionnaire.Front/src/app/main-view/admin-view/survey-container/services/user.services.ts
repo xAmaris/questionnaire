@@ -37,6 +37,7 @@ export class UserService {
       });
   }
   saveUnregisteredUser(user: UnregisteredUserModel): Observable<any> {
+    console.log(user);
     return this.http
       .post<any>(this.config.apiUrl + '/importfile/unregisteredUsers', {
         Name: user.name,

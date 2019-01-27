@@ -1,4 +1,4 @@
-<form #dialog="ngForm" (ngSubmit)=onSubmit(dialog) [formGroup]="dialogForm" *ngIf="dialogForm">
+<form #dialog="ngForm" [formGroup]="dialogForm" *ngIf="dialogForm">
   <div id="form-container">
     <div class="group half">
       <mat-form-field>
@@ -39,7 +39,7 @@
       </mat-form-field>
     </div>
     <div id="button-container">
-      <button mat-button type="submit" [mat-dialog-close]="dialog.value">
+      <button mat-button (click)="onSubmit(dialog)" [mat-dialog-close]="dialog.value">
         <div id="button">
           <span>Dodaj</span>
           <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
