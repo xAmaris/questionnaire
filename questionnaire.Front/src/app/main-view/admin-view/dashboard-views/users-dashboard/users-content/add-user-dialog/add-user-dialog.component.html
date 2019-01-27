@@ -1,0 +1,23 @@
+<div id="send-survey-container">
+  <div>
+    <div id="header">
+      <span mat-dialog-title>Dodawanie użytkowników</span>
+    </div>
+    <div id="content-container" mat-dialog-content>
+      <mat-tab-group mat-stretch-tabs [selectedIndex]="selected">
+        <mat-tab label="Dodaj absolwenta">
+          <ng-template matTabContent>
+            <!-- Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} -->
+            <app-add-user-tab [loader]=loader (submit)=onSubmit($event)></app-add-user-tab>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Import pliku">
+          <ng-template matTabContent>
+            <!-- Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}} -->
+            <app-import-user-tab></app-import-user-tab>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

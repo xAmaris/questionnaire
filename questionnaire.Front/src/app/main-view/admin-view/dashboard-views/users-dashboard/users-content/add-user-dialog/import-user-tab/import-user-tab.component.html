@@ -1,0 +1,41 @@
+<div id="upload-container">
+  <p-fileUpload #fileInput name="file[]" multiple="multiple" maxFileSize="3145728" (change)="onFileSelect($event)"
+    customUpload="true" (uploadHandler)="uploadFiles($event)" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    chooseLabel="Dodaj plik" uploadLabel="Prześlij pliki" cancelLabel="Anuluj">
+    <ng-template pTemplate="toolbar">
+      <div id="loading-container">
+        <mat-spinner *ngIf="loading === true" [diameter]="25"></mat-spinner>
+        <div id="ready" *ngIf="completed === true">{{status}}</div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <span id="drag-info" *ngIf="fileInput.files.length < 1">
+        <i class="fas fa-paperclip"></i>
+        <span> Przeciągnij plik tutaj </span>
+      </span>
+    </ng-template>
+    <ng-template let-file let-i="index" pTemplate="file">
+      <div class="attachment-field">
+        <div class="attachment">
+          <div class="icon">
+            <fa-icon [icon]="['fas', 'file-excel']"></fa-icon>
+          </div>
+          <div class="information">
+            <div class="name">{{file.name}}</div>
+            <div class="size">{{formatSize(file.size)}}</div>
+          </div>
+          <div class="delete">
+            <button mat-icon-button>
+              <fa-icon class="delete" [icon]="['fas','times']" (click)="removeAttachment($event, i)"></fa-icon>
+            </button>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div #progress class="percent"></div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </ng-template>
+  </p-fileUpload>
+</div>

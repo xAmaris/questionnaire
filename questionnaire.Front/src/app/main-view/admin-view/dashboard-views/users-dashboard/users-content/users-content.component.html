@@ -1,0 +1,8 @@
+<app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="openAddUserDialog()"></app-dashboard-bar>
+<app-dashboard-list [itemArr]=" items$ | async"  [emptyListInfo]=emptyListInfo>
+  <ng-template let-item>
+    <app-dashboard-tile [item_tile]=item (tileClick)="see()">
+        <app-users-tile [user]=item></app-users-tile>
+    </app-dashboard-tile>
+  </ng-template>
+</app-dashboard-list>

@@ -25,18 +25,6 @@ C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\n
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb
-<<<<<<< HEAD:questionnaire.Core/obj/Debug/netcoreapp2.0/questionnaire.Core.csproj.FileListAbsolute.txt
-=======
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.deps.json
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csprojAssemblyReference.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csproj.CoreCompileInputs.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfoInputs.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb
->>>>>>> d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80:questionnaire.Core/obj/Debug/netcoreapp2.0/questionnaire.Core.csproj.FileListAbsolute.txt
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.deps.json
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb

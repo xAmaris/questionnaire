@@ -1,0 +1,33 @@
+<div id="container">
+  <p-progressBar mode="indeterminate" *ngIf="loading === true"></p-progressBar>
+  <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
+    <div id="header">
+      <span>
+        Zaloguj się</span>
+
+    </div>
+    <div id="form-container">
+        <div id="logErr">
+            <mat-error *ngIf=loginError>{{loginErrorMessage}}</mat-error>
+          </div>
+
+      <mat-form-field>
+        <input matInput autocomplete="email" placeholder="Email" type="email" id="email" formControlName="email">
+        <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput autocomplete="current-password" placeholder="Password" type="password" id="password" formControlName="password">
+        <mat-error *ngIf="inputError(password)">{{passwordErrorStr}}</mat-error>
+      </mat-form-field>
+
+
+      <div class="btnBox">
+        <button class="white" mat-raised-button color="accent" type="submit">Logowanie</button>
+        <button mat-raised-button type="button" [routerLink]="['/auth/register']" routerLinkActive="active">Rejestracja</button>
+      </div>
+      <div class="additionalLink" [routerLink]="['/auth/recovery']" routerLinkActive="active" (click)="setRecoveryRoute()">Zapomniałeś hasła?</div>
+
+    </div>
+  </form>
+</div>

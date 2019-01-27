@@ -1,0 +1,168 @@
+@import './../../styles/colors.scss';
+:host {
+  width: 100%;
+}
+form {
+  width: 100%;
+  #form-title {
+    padding: 40px;
+    font-size: 34px;
+    line-height: 135%;
+    max-width: 100%;
+  }
+  #questions-container {
+    padding: 25px 15px;
+    .question-field {
+      padding: 10px 30px;
+      .select-container {
+        color: #000;
+        font-size: 20px;
+        line-height: 135%;
+        width: 100%;
+      }
+
+      #field-data {
+        padding-bottom: 20px;
+        .field-loop {
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 15px;
+          .choice {
+            div {
+              display: flex;
+              align-items: center;
+              padding: 5px 0;
+              // answer fields
+              mat-form-field {
+                width: 100%;
+                font-size: 13px;
+              }
+              .label {
+                padding: 5px 2px;
+                cursor: pointer;
+                user-select: none;
+              }
+              // multiple-choice
+              .checkbox {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                .right {
+                  display: inline-block;
+                  margin-right: 8px;
+                }
+              }
+            }
+            // linear-scale
+            .cont {
+              width: 47%;
+              margin: 0 13px;
+            }
+          }
+          .loop {
+            display: flex;
+            flex-direction: column;
+            .cont {
+              display: flex;
+              width: 100%;
+              mat-form-field {
+                width: 90%;
+                margin: 0 15px;
+              }
+            }
+            .center {
+              display: flex;
+              justify-content: center;
+            }
+          }
+          .form {
+            display: table;
+            width: 100%;
+            .table {
+              width: 100%;
+              .columns {
+                display: flex;
+                .column {
+                  display: flex;
+                  justify-content: center;
+                  min-height: 3em;
+                  flex: 1;
+                  align-items: center;
+                }
+              }
+              .rows {
+                .row {
+                  .row-container {
+                    display: flex;
+                    .row-el {
+                      display: flex;
+                      justify-content: center;
+                      flex: 1;
+                      min-height: 3em;
+                      align-items: center;
+                      mat-radio-group {
+                        margin-left: 8px;
+                      }
+                    }
+                  }
+                  .dark {
+                    background-color: #dbdbdb;
+                  }
+                  .light {
+                    background-color: #ededed;
+                  }
+                }
+              }
+            }
+          }
+          .answer {
+            mat-form-field {
+              width: 100%;
+            }
+          }
+          .flex {
+            .linear {
+              display: flex;
+              .div-container {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+                text-align: center;
+                max-width: 20%;
+                min-width: 50px;
+                .label-container,
+                .blank-div {
+                  align-items: center;
+                  display: flex;
+                  justify-content: center;
+                  min-height: 3em;
+                  .label-div {
+                    line-height: 135%;
+                    min-width: 0;
+                    word-wrap: break-word;
+                    padding: 0 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    #send {
+      margin: 5px 20px;
+      background-color: $primary;
+      color: white;
+    }
+  }
+}
+.width {
+  width: 65px;
+}
+.error {
+  color: $warn;
+}
+.error-background{
+  background-color: $warn-very-light;
+}

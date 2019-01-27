@@ -1,7 +1,7 @@
 // tslint:disable:max-classes-per-file
 // tslint:disable:no-duplicate-imports
 import { Moment } from 'moment';
-import _moment from 'moment';
+import * as _moment from 'moment';
 
 export class User {
   id?: number;
@@ -49,7 +49,7 @@ export class UnregisteredUserModel extends UnregisteredUser {
     super(user.name, user.surname, user.email, user.course, user.typeOfStudy);
     const date: string = this.isDataString(user.dateOfCompletion)
       ? (user.dateOfCompletion as string)
-      : (_moment(user.dateOfCompletion.toISOString()) as any['_i']);
+      : _moment((user.dateOfCompletion as Moment).toISOString())['_i'];
     const created_date: string = date
       .split('T')[0]
       .split('-')

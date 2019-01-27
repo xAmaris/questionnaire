@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+<div id="survey-module">
+  <mat-sidenav-container id="wrapper">
+    <mat-sidenav id="sidenav" #sidenav [mode]="isLargeScreen() ? 'side': 'over'" [(opened)]="isSidebarOpened">
+      <router-outlet name="s"></router-outlet>
+    </mat-sidenav>
+    <mat-sidenav-content id="content">
+      <!-- <app-survey-list (loading)="setLoader()"></app-survey-list> -->
+      <router-outlet name="m"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,153 @@
+<div id="container" *ngIf="loader === false">
+  <form #reg="ngForm" [formGroup]="regForm">
+    <!-- <pre>{{regForm.value | json }}</pre> -->
+    <div id="register-container">
+      <div id="form-container">
+        <div id="regErr">
+          <mat-error *ngIf=registrationError>{{registrationErrorMessage}}</mat-error>
+        </div>
+        <mat-accordion>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Imię i nazwisko
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.firstName + ' ' + userInfo.lastName}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="Imię" formControlName="name" [value]="userInfo.firstName">
+                <mat-error *ngIf="inputError(name)">{{nameErrorStr}}</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Nazwisko" formControlName="lastName" [value]="userInfo.lastName">
+                <mat-error *ngIf="inputError(lastName)">{{lastNameErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                E-mail
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.email}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="E-mail" formControlName="email" [value]="userInfo.email">
+                <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <!-- <mat-expansion-panel *ngIf="profileType === 'student'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Numer albumu
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.albumID}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="Nr albumu" formControlName="albumID" [value]="userInfo.albumID">
+                <mat-error *ngIf="inputError(albumID)">{{albumIDErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel> -->
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Numer telefonu
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.phoneNum}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="Nr telefonu" formControlName="phoneNum" [value]="userInfo.phoneNum">
+                <mat-error *ngIf="inputError(phoneNum)">{{phoneNumErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Hasło
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div [routerLink]="['/auth/password']">
+                <span id="change-password">Zmień hasło..</span>
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Nazwa firmy / organizacji
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.companyName}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="Nazwa" formControlName="companyName" [value]="userInfo.companyName">
+                <mat-error *ngIf="inputError(companyName)">{{companyNameErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel> -->
+
+          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Lokalizacja
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.location}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput placeholder="Lokalizacja" formControlName="location" [value]="userInfo.location">
+                <mat-error *ngIf="inputError(location)">{{locationErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel> -->
+
+          <!-- <mat-expansion-panel *ngIf="profileType === 'employer'">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Opis firmy
+              </mat-panel-title>
+              <mat-panel-description>
+                {{userInfo.companyDescription}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <textarea matInput placeholder="Opis Firmy" formControlName="companyDescription" [value]="userInfo.companyDescription"></textarea>
+                <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel> -->
+        </mat-accordion>
+      </div>
+      <div class="btnBox">
+        <button type="button" class="white" mat-raised-button color="primary" (click)=onSubmit(reg)>Zapisz</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+@import '../../../../../../../styles/colors.scss';
+
+.add {
+  fa-icon {
+    font-size: 20px;
+    color: $grey;
+    cursor: pointer;
+  }
+  mat-form-field {
+    font-size: 13px;
+  }
+}
+@media (max-width: 580px) {
+  mat-form-field {
+    width: 100% !important;
+  }
+}

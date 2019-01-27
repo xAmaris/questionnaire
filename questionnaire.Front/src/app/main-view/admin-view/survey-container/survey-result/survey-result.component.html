@@ -1,0 +1,61 @@
+<div id="result-container" *ngIf="loading === false">
+  <div id="result-header">
+    <div id="answer-title">
+      <span>{{data.surveyTitle}}</span>
+    </div>
+    <div id="answer-number">
+      <span>{{data.answersNumber + ' ' + 'odpowiedzi'}}</span>
+    </div>
+  </div>
+  <div id="result-main" *ngFor="let question of data.questionReports; let i = index">
+    <div id="switch" [ngSwitch]="question.select">
+      <div class="header">
+        <span id="question">{{question.content}}</span>
+        <span id="answer-count" *ngIf="question.answersNumber !== 0">{{question.answersNumber + ' ' + 'odpowiedzi'}}</span>
+      </div>
+
+      <div class="answer" *ngSwitchCase="'short-answer'">
+        <div class="answer-loop" *ngFor="let answer of question.answersData.datasets[0].data; let j = index">
+          <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'" *ngIf="question.answersNumber > 0">
+            {{answer}}
+          </div>
+        </div>
+      </div>
+
+      <div class="answer" *ngSwitchCase="'long-answer'">
+        <div class="answer-loop" *ngFor="let answer of question.answersData.datasets[0].data; let j = index">
+          <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'" *ngIf="question.answersNumber > 0">
+            {{answer}}
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'dropdown-menu'">
+        <p-chart type="pie" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div>
+
+      <div *ngSwitchDefault>
+        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div>
+
+      <!-- <div *ngSwitchCase="'single-choice'">
+        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div>
+
+      <div *ngSwitchCase="'multiple-choice'">
+        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div>
+
+      <div *ngSwitchCase="'single-grid'">
+        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div>
+
+      <div *ngSwitchCase="'multiple-grid'">
+        <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
+      </div> -->
+
+      <span *ngIf="question.answersNumber === 0"> Na razie nie ma odpowiedzi na to pytanie.
+      </span>
+    </div>
+  </div>
+</div>

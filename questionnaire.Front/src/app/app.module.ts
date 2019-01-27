@@ -1,15 +1,20 @@
-import { SortablejsModule } from 'angular-sortablejs/dist';
-import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app.routing';
-import { AppComponent } from './app.component';
-import { InterceptorService } from './services/interceptor.service';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter
 } from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE
+} from '@angular/material/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChartBar, faEye } from '@fortawesome/free-regular-svg-icons';
 import {
   faArrowLeft,
   faBars,
@@ -31,13 +36,23 @@ import {
   faTrash,
   faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SortablejsModule } from 'angular-sortablejs/dist';
+import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
-import {
-  MAT_DATE_LOCALE,
-  DateAdapter,
-  MAT_DATE_FORMATS
-} from '@angular/material';
+import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './auth/other/guard.auth';
+import { GuidGuard } from './auth/other/guid.auth';
+import { JwtInterceptor } from './auth/other/jwt.interceptor';
+import { PreloadSelectedModulesList } from './auth/other/preload';
+import { AccountService } from './auth/services/account.service';
+import { AuthenticationService } from './auth/services/authentication.service';
+import { BarModule } from './core/bar/app-bar.module';
+import { SurveyViewformResolver } from './main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
+import { SurveyService } from './main-view/admin-view/survey-container/services/survey.services';
+import { MaterialsModule } from './materials/materials.module';
+import { SharedService } from './services/shared.service';
+import { LoadingOverlayModule } from './shared/loading-overlay/loading-overlay.module';
+import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
 
 library.add(
   faTimes,
@@ -52,11 +67,13 @@ library.add(
   faGraduationCap,
   faBriefcase,
   faCog,
+  faEye,
   faClone,
   faUserAlt,
   faEllipsisV,
   faSearch,
   faEllipsisH,
+  faChartBar,
   faArrowLeft,
   faFileExcel
 );
@@ -64,18 +81,32 @@ library.add(
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule,
+    MaterialsModule,
+    FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    LoadingOverlayModule,
+    BarModule,
+    LoadingScreenModule,
     SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [
-    InterceptorService,
+    AuthenticationService,
+    AccountService,
+    SharedService,
+    AuthGuard,
+    GuidGuard,
     AppConfig,
+    SurveyService,
+    SurveyViewformResolver,
+    PreloadSelectedModulesList,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
+      useClass: JwtInterceptor,
       multi: true
     },
     {

@@ -1,0 +1,40 @@
+<div id="settings-container">
+  <div id="profile-info">
+    <div id="avatar-field">
+      <div id="avatar">
+        <img src="./../../../assets/profile-image.png">
+      </div>
+      <div id="avatar-info" *ngIf="userInfo$">
+        <h2 id="name">{{userName}}</h2>
+        <div id="degree-info">
+          <span>{{email}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="tab-groups">
+    <mat-tab-group mat-stretch-tabs>
+      <!-- <mat-tab label="profile">
+
+        <ng-template mat-tab-label>
+          <mat-icon>person</mat-icon>
+          <span class="tab-name">Profil</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <app-profile-settings [userInfo]=userInfo></app-profile-settings>
+        </ng-template>
+
+      </mat-tab> -->
+      <mat-tab label="settings">
+        <ng-template mat-tab-label>
+          <mat-icon>settings</mat-icon>
+          <span class="tab-name">Ustawienia</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <app-main-settings [userInfo]="userInfo$ | async"></app-main-settings>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

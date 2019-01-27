@@ -1,0 +1,54 @@
+<form #dialog="ngForm" (ngSubmit)=onSubmit(dialog) [formGroup]="dialogForm" *ngIf="dialogForm">
+  <div id="form-container">
+
+    <!-- <mat-form-field>
+      <input matInput placeholder="Temat wiadomości" formControlName="subject">
+    </mat-form-field> -->
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="Imię" formControlName="name">
+        <mat-error *ngIf="inputError(name)">{{ nameErrorStr }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="Nazwisko" formControlName="surname">
+        <mat-error *ngIf="inputError(surname)">{{surnameErrorStr}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="E-mail" formControlName="email">
+        <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="Kierunek studiów" formControlName="course">
+        <mat-error *ngIf="inputError(course)">{{courseErrorStr}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="Specjalizacja" formControlName="typeOfStudy">
+        <mat-error *ngIf="inputError(typeOfStudy)">{{typeOfStudyErrorStr}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group half">
+      <mat-form-field color="primary">
+        <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" disabled="false"></mat-datepicker>
+        <mat-error *ngIf="inputError(dateOfCompletion)">{{dateOfCompletionErrorStr}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="button-container">
+      <button mat-button type="submit">
+        <div id="button">
+          <span>Dodaj</span>
+          <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
+        </div>
+      </button>
+    </div>
+  </div>
+</form>

@@ -43,7 +43,7 @@ namespace questionnaire.Infrastructure.Extensions.Factories {
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
-                    message.Subject = "Monitorowanie karier - ankieta";
+                    message.Subject = "ankieta";
                     message.Body = new TextPart ("html") {
                         Text = _emailContent.SurveyEmail (surveyId, CalculateEmailHash(account.Email))
                     };
@@ -65,7 +65,7 @@ namespace questionnaire.Infrastructure.Extensions.Factories {
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
-                    message.Subject = "Monitorowanie karier - ankieta";
+                    message.Subject = "ankieta";
                     message.Body = new TextPart ("html") {
                         Text = _emailContent.SurveyEmail (surveyId, CalculateEmailHash(unregisteredUser.Email))
                     };

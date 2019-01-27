@@ -40,23 +40,6 @@ C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Infrastructure\o
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.csproj.CopyComplete
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.dll
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.pdb
-<<<<<<< HEAD:questionnaire.Infrastructure/obj/Debug/netcoreapp2.0/questionnaire.Infrastructure.csproj.FileListAbsolute.txt
-=======
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.csprojAssemblyReference.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.AssemblyInfo.cs
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.dll
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.pdb
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.deps.json
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.runtimeconfig.json
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.runtimeconfig.dev.json
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.dll
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.pdb
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
-C:\Users\amado\Desktop\absolwenci-wsei\questionnaire.Infrastructure\obj\Debug\netcoreapp2.0\questionnaire.Infrastructure.csproj.CopyComplete
->>>>>>> d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80:questionnaire.Infrastructure/obj/Debug/netcoreapp2.0/questionnaire.Infrastructure.csproj.FileListAbsolute.txt
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.deps.json
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.runtimeconfig.json
 C:\Users\Filip\Desktop\absolwenci-wsei-back\questionnaire.Infrastructure\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.runtimeconfig.dev.json

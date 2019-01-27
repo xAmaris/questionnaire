@@ -1,0 +1,13 @@
+<div id="survey-container">
+  <div [ngClass]="loading === true ? 'surveyList opacity' : 'surveyList'">
+    <div id="container" *ngFor="let item of itemArr">
+      <div class="survey-item">
+        <ng-content *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-content>
+      </div>
+      <div class="break"></div>
+    </div>
+    <div id="empty" *ngIf="fetching === false && itemArr.length === 0"> {{ emptyListInfo}}</div>
+  </div>
+
+  <app-loading-overlay *ngIf="loading === true || fetching === true"></app-loading-overlay>
+</div>

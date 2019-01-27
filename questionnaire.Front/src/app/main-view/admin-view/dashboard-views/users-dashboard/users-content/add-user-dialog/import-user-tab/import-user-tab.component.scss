@@ -1,0 +1,165 @@
+@import './../../../../../../../../styles/colors.scss';
+
+#upload-container {
+  p-fileUpload {
+    width: 100%;
+    min-height: 100%;
+    #loading-container {
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      #ready {
+        color: #45535c;
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
+    ::ng-deep .ui-fileupload-buttonbar {
+      display: flex;
+      width: 100%;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9ebee;
+      .ui-button {
+        border-radius: 15px;
+        background-color: #f5f6f7;
+        border: 0;
+        font-size: 15px;
+        color: gray;
+        width: 150px;
+        font-weight: 400;
+        font-family: sans-serif;
+        padding: 2px;
+        display: flex;
+        outline: none;
+        .ui-button-text {
+          color: #333;
+          line-height: initial;
+          color: #4b4f56;
+          display: inline-block;
+          font-weight: 600;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+        }
+      }
+    }
+    ::ng-deep .ui-fileupload-content {
+      min-height: 100px;
+      width: 100%;
+      padding: 5px;
+      border: 2px dashed #cdcdcd;
+      .ui-fileupload-files {
+        width: 100%;
+        height: 100%;
+      }
+      .ng-star-inserted {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  #drag-info {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 20px;
+    z-index: 20;
+    .fa-paperclip {
+      color: #333;
+    }
+    span {
+      margin-left: 5px;
+      color: #333;
+    }
+  }
+  .attachment-field {
+    height: 50px;
+    width: 218px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    white-space: nowrap;
+    background-color: #f4f4f4;
+
+    .progress-bar {
+      font-size: 14px;
+      transition: opacity 1s linear;
+      width: 100%;
+      .percent {
+        height: 4px;
+        background-color: $primary;
+      }
+    }
+
+    .attachment {
+      cursor: pointer;
+      display: flex;
+      width: 100%;
+      flex-wrap: nowrap !important;
+      .progress-bar.loading {
+        opacity: 1;
+      }
+      .progress-bar .percent {
+        background-color: $primary;
+        height: auto;
+        width: 0;
+      }
+      .icon {
+        height: 50px;
+        padding: 0 5px;
+        display: flex;
+        fa-icon {
+          font-size: 45px;
+        }
+      }
+      .information {
+        padding: 5px;
+        .name,
+        .size {
+          text-align: left;
+        }
+        .name {
+          display: block;
+          max-width: 120px;
+          min-width: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #333;
+        }
+        .size {
+          font-size: 12px;
+          margin-top: 3px;
+          color: #666;
+        }
+      }
+      .delete {
+        width: 100%;
+        padding-top: 5px;
+        button {
+          svg {
+            color: black;
+          }
+        }
+        button {
+          border: none;
+          padding: 0px;
+          outline: none;
+          cursor: pointer;
+          background-color: transparent;
+          // padding-left: 4px;
+        }
+      }
+    }
+    .attachment:hover {
+      background-color: #eaeaea;
+    }
+  }
+}

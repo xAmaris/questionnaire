@@ -1,0 +1,10 @@
+<app-dashboard-bar [groupTitle]=groupTitle></app-dashboard-bar>
+<app-dashboard-list [itemArr]=" items$ | async"  [emptyListInfo]=emptyListInfo>
+  <ng-template let-item>
+    <app-dashboard-tile [item_tile]=item (tileClick)="openPreview(item)">
+      <app-survey-sent-tile [survey]=changeSurveyToModel(item)></app-survey-sent-tile>
+    </app-dashboard-tile>
+    <app-icon-button [type]="'far'" [icon]="'chart-bar'" (buttonClick)="openResult(item)"></app-icon-button>
+    <!-- <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.id)"></app-icon-button> -->
+  </ng-template>
+</app-dashboard-list>

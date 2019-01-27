@@ -1,0 +1,16 @@
+<div id="catalogs">
+  <div id="add-container">
+    <span id="add-name">GRUPY</span>
+    <button mat-icon-button>
+      <fa-icon id="icon" [icon]="['fas','plus']"></fa-icon>
+    </button>
+
+  </div>
+  <ul id="list">
+    <li class="loop" *ngFor="let group of groupList">
+      <div class="name">
+        {{group.name}}
+      </div>
+    </li>
+  </ul>
+</div>

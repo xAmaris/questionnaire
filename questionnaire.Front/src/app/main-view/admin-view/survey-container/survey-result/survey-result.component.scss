@@ -1,0 +1,55 @@
+@import '../../../../../styles/colors.scss';
+:host {
+  width: 100%;
+}
+#result-container {
+  padding: 10px 20px;
+  #result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+
+    #answer-title {
+      // padding: 40px;
+      font-size: 34px;
+      line-height: 135%;
+      max-width: 100%;
+      span {
+      }
+    }
+    #answer-number {
+    }
+    #answer-toggle {
+    }
+  }
+  #result-main {
+    padding: 50px 20px;
+    #switch {
+      .header {
+        padding: 25px 0;
+        #question {
+          padding-right: 40px;
+        }
+        #answer-count {
+          font-size: 12px;
+          color: $grey;
+        }
+      }
+      .answer {
+        .answer-loop {
+          .answer-div {
+            padding: 8px 16px;
+            font-size: 13px;
+          }
+          .dark {
+            background-color: $primary-light;
+          }
+          .light {
+            background-color: $primary-very-light;
+          }
+        }
+      }
+    }
+  }
+}

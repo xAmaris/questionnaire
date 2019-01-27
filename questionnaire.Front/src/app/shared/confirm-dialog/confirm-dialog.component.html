@@ -1,8 +1,10 @@
 <div id="dialog-container">
   <div id="dialog-header">
-    - <span mat-dialog-title>{{ data.dialogTitle }} ankiety</span>
+    <!-- <span mat-dialog-title>Usuwanie ankiety</span> -->
+    <span mat-dialog-title>{{ data.dialogTitle }} ankiety</span>
   </div>
   <div id="dialog-main" mat-dialog-content>
+    <!-- <span> Czy na pewno chcesz <span>trwale usunąć</span> tę ankietę?</span> -->
     <span>
       Czy na pewno chcesz
       <span [ngClass]="data.boldWarn ? 'red' : 'primary'">{{
@@ -13,6 +15,7 @@
   </div>
   <div id="dialog-menu" mat-dialog-actions>
     <button tabindex="-1" mat-button mat-dialog-close>Anuluj</button>
+    <!-- <button mat-button color="warn" [mat-dialog-close]=true>Tak, usuń</button> -->
     <button mat-button color="warn" [mat-dialog-close]="true">
       {{ data.buttonText }}
     </button>

@@ -1,0 +1,25 @@
+<div id="send-survey-container">
+  <div>
+    <div id="header">
+      <span mat-dialog-title>{{data.content.title}}</span>
+    </div>
+    <div id="content-container" mat-dialog-content>
+      <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
+        <div id="form-container">
+
+          <mat-form-field>
+            <input matInput placeholder="Temat wiadomości" formControlName="subject">
+          </mat-form-field>
+          <div id="button-container">
+            <button mat-button type="submit">
+              <div id="button">
+                <span>Wyślij wszystkim</span>
+                <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

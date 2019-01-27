@@ -1,0 +1,12 @@
+<div id="auth-container">
+  <!-- <div id="info">
+    <div id="background">
+      <span>Monitorowanie Karier WSEI</span>
+    </div>
+  </div> -->
+  <div id="login-container">
+    <div id="centered-container" [@basicTransition]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </div>
+</div>

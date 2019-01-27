@@ -1,0 +1,69 @@
+// @import './../../../../../../styles/colors.scss';
+
+// :host {
+//   width: 100%;
+// }
+// .surveyBox {
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: nowrap;
+//   outline: none;
+//   user-select: none;
+//   .survey {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//     width: 100%;
+//     outline: none;
+//     font-weight: 400;
+//   }
+
+//   .options {
+//     flex: 0 0 30px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+//   .info {
+//     flex: 1 1 auto;
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: nowrap;
+//     padding: 3px;
+//     text-overflow: clip;
+//     max-width: 80%;
+
+//     .title {
+//       flex: 1 1 auto;
+//       margin: 2px;
+//       font-size: 1em;
+//       font-weight: 400;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+
+//     .address {
+//       margin: 1px;
+//       font-size: 0.9em;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+
+//     .content {
+//       margin: 2px;
+//       font-size: 0.8em;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+//   }
+// }
+// // .nosurveys {
+// //   padding: 20px;
+// //   display: flex;
+// //   justify-content: center;
+// //   font-size: 18px;
+// //   color: Gray;
+// // }

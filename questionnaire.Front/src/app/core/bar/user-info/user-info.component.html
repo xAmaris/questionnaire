@@ -1,0 +1,17 @@
+<div id="infoContainer">
+  <!-- <img src="./../../../assets/profile-image.png"> -->
+  <!-- <img src="{{account.url}}"> -->
+  <!-- <div class="label name">{{account?.name}}</div>
+  <div class="label"></div> -->
+  <div class="label name">{{name}}</div>
+  <!-- <button mat-raised-button color="primary">My Account</button> -->
+  <div class="break"></div>
+  <!-- <button mat-button color="primary" (click)="emitRouteSwitch()">Strona Główna</button> -->
+  <!-- <div class="break"></div> -->
+  <!-- <button mat-button color="primary" [routerLink]="['app/settings']">Ustawienia</button>
+  <button mat-button color="primary" [routerLink]="['/auth/password']">Zmień hasło</button> -->
+  <button mat-button color="primary" (click)="emitRouteSwitch('app/settings')">Ustawienia</button>
+  <button mat-button color="primary" (click)="emitRouteSwitch('auth/password')">Zmień hasło</button>
+  <div class="break"></div>
+  <button mat-button color="primary" [routerLink]="['/auth/login']" (click)="emitLogout()">Wyloguj</button>
+</div>

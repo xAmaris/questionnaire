@@ -1,0 +1,36 @@
+<div id="dialog-container">
+  <div id="dialog-header">
+    <span mat-dialog-title>Zmień kolejność pytań</span>
+  </div>
+  <ul [sortablejs]="data.content" id="dialog-main" mat-dialog-content>
+    <li class="question" *ngFor="let question of data.content; let i = index">
+      <div class="dialog-grip">
+        <i class="material-icons grip">
+          reorder
+        </i>
+      </div>
+      <div class="dialog-info">
+        <div class="info">
+          <span>{{ question.content.length > 0 ? question.content : defaultQuestion}}</span>
+          <span class="section">{{ 'pytanie ' + (i + 1) + ' z ' + length}}</span>
+        </div>
+        <div class="dialog-controls">
+          <!-- <div class="icon-container">
+            <button tabindex="-1" mat-icon-button [disabled]="i === length - 1">
+              <i class="material-icons icon">arrow_drop_down</i>
+            </button>
+          </div>
+          <div class="icon-container">
+            <button tabindex="-1" mat-icon-button [disabled]="i === 0">
+              <i class="material-icons icon">arrow_drop_up</i>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div id="dialog-menu" mat-dialog-actions>
+    <button tabindex="-1" mat-button mat-dialog-close>Anuluj</button>
+    <button mat-button [mat-dialog-close]="data.content">Zapisz</button>
+  </div>
+</div>
