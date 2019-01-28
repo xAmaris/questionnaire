@@ -1,11 +1,9 @@
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using questionnaire.Core.Domains;
 using questionnaire.Infrastructure.Data;
 using questionnaire.Infrastructure.Repositories;
 using questionnaire.Infrastructure.Repositories.Interfaces;
-using questionnaire.Tests.Fixtures;
 using Xunit;
 
 namespace questionnaire.Tests.Repositories
@@ -16,7 +14,7 @@ namespace questionnaire.Tests.Repositories
         private readonly ICareerOfficeRepository _careerOfficeRepository;
         public CareerOfficeRepositoryTests(TestHostFixture fixture)
         {
-            _context = new TestHostFixture().Context;
+            _context = fixture.Context;
             _careerOfficeRepository = new CareerOfficeRepository(_context);
         }
 
@@ -25,7 +23,6 @@ namespace questionnaire.Tests.Repositories
         {
             //Arrange
             var careerOffice = new CareerOffice("jan", "nowak", "wp@wp.pl", "+48123456789", "!A123456a");
-
             //Act
             await _careerOfficeRepository.AddAsync(careerOffice);
             //Assert
@@ -37,22 +34,24 @@ namespace questionnaire.Tests.Repositories
         {
             //Arrange
             int id = 1;
-            var existingUser = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
+            var careerOffice = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
             //Act
             var user = await _careerOfficeRepository.GetByIdAsync(id);
             //Assert
-            Assert.Equal(existingUser, user);
+            Assert.NotNull(user);
+            Assert.Equal(careerOffice, user);
         }
         [Fact]
         public async Task GetByEmailAsync_GetCorrectCareerOffice_ReturnTrue()
         {
             //Arrange
-            string email = "wp@wp.pl";
-            var existingUser = _context.CareerOffices.FirstOrDefault(x => x.Email == email);
+            int id = 1;
+            var careerOffice = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
             //Act
-            var user = await _careerOfficeRepository.GetByEmailAsync(email);
+            var user = await _careerOfficeRepository.GetByEmailAsync(careerOffice.Email);
             //Assert
-            Assert.Equal(existingUser, user);
+            Assert.NotNull(user);
+            Assert.Equal(careerOffice, user);
         }
         [Fact]
         public async Task UpdateAsync_ObjectNameHasBeenCorrectlyChanged_ReturnTrue()

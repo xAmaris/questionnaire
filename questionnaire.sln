@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "questionnaire.Core", "quest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "questionnaire.Infrastructure", "questionnaire.Infrastructure\questionnaire.Infrastructure.csproj", "{15F6A057-8B3F-4476-8050-A6E6D0F7A003}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "questionnaire.UnitTests", "questionnaire.UnitTests\questionnaire.UnitTests.csproj", "{30E7B533-786D-4284-887E-237F1A80B028}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "questionnaire.Tests", "questionnaire.Tests\questionnaire.Tests.csproj", "{947954E5-826B-4F14-ADFF-7865749A068D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "questionnaire.Tests", "questionnaire.Tests\questionnaire.Tests.csproj", "{947954E5-826B-4F14-ADFF-7865749A068D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{15F6A057-8B3F-4476-8050-A6E6D0F7A003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15F6A057-8B3F-4476-8050-A6E6D0F7A003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15F6A057-8B3F-4476-8050-A6E6D0F7A003}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30E7B533-786D-4284-887E-237F1A80B028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30E7B533-786D-4284-887E-237F1A80B028}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30E7B533-786D-4284-887E-237F1A80B028}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30E7B533-786D-4284-887E-237F1A80B028}.Release|Any CPU.Build.0 = Release|Any CPU
 		{947954E5-826B-4F14-ADFF-7865749A068D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{947954E5-826B-4F14-ADFF-7865749A068D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{947954E5-826B-4F14-ADFF-7865749A068D}.Release|Any CPU.ActiveCfg = Release|Any CPU
