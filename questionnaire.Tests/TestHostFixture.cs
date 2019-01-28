@@ -12,7 +12,7 @@ namespace questionnaire.Tests
         public TestHostFixture()
         {
             var options = new DbContextOptionsBuilder<QuestionnaireContext>()
-                .UseInMemoryDatabase("TestsDB")
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
             var context = new QuestionnaireContext(options);
             SeedData(context);
