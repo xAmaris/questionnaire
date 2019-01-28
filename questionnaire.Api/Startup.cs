@@ -4,19 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using questionnaire.Api.ActionFilters;
 using questionnaire.Core.Domains.ImportFile;
 using questionnaire.Infrastructure.Commands.Account;
@@ -42,12 +29,25 @@ using questionnaire.Infrastructure.Validators.CareerOffice;
 using questionnaire.Infrastructure.Validators.Email;
 using questionnaire.Infrastructure.Validators.ImportFile;
 using questionnaire.Infrastructure.Validators.User;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using static questionnaire.Infrastructure.Extension.Exception.ExceptionsHelper;
+using questionnaire.Infrastructure.Extensions.JWT;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using questionnaire.Infrastructure.Extensions.Aggregate;
 using questionnaire.Infrastructure.Extensions.Aggregate.Interfaces;
-using questionnaire.Infrastructure.Extensions.JWT;
+using questionnaire.Infrastructure.Extensions.Aggregate;
 
 namespace questionnaire.Api {
     public class Startup {
@@ -68,7 +68,9 @@ namespace questionnaire.Api {
             #region DbContextAndSettings
 
             services.AddCors ();
-            ConfigureDatabase (services);
+            services.AddDbContext<QuestionnaireContext> (options =>
+                options.UseSqlServer (Configuration.GetConnectionString ("questionnaireDatabase"),
+                    b => b.MigrationsAssembly ("questionnaire.Api")));
             var key = Encoding.ASCII.GetBytes (Configuration.GetSection ("JWTSettings:Key").Value);
             services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer (options => {
@@ -116,7 +118,7 @@ namespace questionnaire.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository> ();
+            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
@@ -156,19 +158,7 @@ namespace questionnaire.Api {
             services.AddScoped<IEmailContent, EmailContent> ();
 
             #endregion
-
         }
-        public virtual void ConfigureDatabase (IServiceCollection services) {
-            services.AddDbContext<QuestionnaireContext> (options =>
-                options.UseSqlServer (Configuration.GetConnectionString ("questionnaireDatabase"),
-                    b => b.MigrationsAssembly ("questionnaire.Api")));
-
-        }
-        public virtual void Migrate (IServiceScope serviceScope) {
-            serviceScope.ServiceProvider.GetService<QuestionnaireContext> ().Database.Migrate ();
-        }
-
-        public virtual void SeedData (IServiceScope serviceScope) { }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
@@ -185,11 +175,6 @@ namespace questionnaire.Api {
                         }
                     });
                 });
-            }
-
-            using (var serviceScope = app.ApplicationServices.CreateScope ()) {
-                Migrate (serviceScope);
-                SeedData (serviceScope);
             }
 
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());

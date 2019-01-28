@@ -1,44 +1,73 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Moq;
-using questionnaire.Core.Domains;
-using questionnaire.Infrastructure.Data;
-using questionnaire.Infrastructure.Extensions.Factories.Interfaces;
-using questionnaire.Infrastructure.Repositories;
-using questionnaire.Infrastructure.Repositories.Interfaces;
-using questionnaire.Infrastructure.Services;
-using questionnaire.Infrastructure.Services.Interfaces;
-using questionnaire.Integration.Tests;
-using Xunit;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using questionnaire.Core.Domains;
+//using questionnaire.Infrastructure.Data;
+//using questionnaire.Infrastructure.Repositories;
+//using questionnaire.Infrastructure.Repositories.Interfaces;
+//using questionnaire.Integration.Tests;
+//using questionnaire.UnitTests.Fixtures;
+//using Xunit;
 
-namespace questionnaire.UnitTests.Repositories {
-    public class CareerOfficeRepositoryTests : IClassFixture<TestHostFixture> {
+//namespace questionnaire.UnitTests.Repositories
+//{
+//    public class CareerOfficeRepositoryTests : IClassFixture<CareerOfficeRepositoryFixture>
+//    {
 
-        private readonly TestHostFixture _fixture;
-        public CareerOfficeRepositoryTests (TestHostFixture fixture) {
-            _fixture = fixture;
-        }
+//        private readonly QuestionnaireContext _context;
+//        private readonly ICareerOfficeRepository _careerOfficeRepository;
+//        public CareerOfficeRepositoryTests(CareerOfficeRepositoryFixture fixture)
+//        {
+//            _context = fixture.context;
+//            _careerOfficeRepository = new CareerOfficeRepository(_context);
+//        }
 
-        [Fact]
-        public async Task AddAsync_NewUserAddedCorrectlyToTheList_ReturnTrue () {
-            //Arrange
-            // var studentRepositoryMock = new Mock<IStudentRepository> ();
-            // var accountRepositoryMock = new Mock<IAccountRepository> ();
-            // var careerOfficeRepositoryMock = new Mock<ICareerOfficeRepository> ();
-            // var studentServiceMock = new Mock<IStudentService> ();
-            // var careerOfficeServiceMock = new Mock<ICareerOfficeService> ();
-            // var accountEmailFactoryMock = new Mock<IAccountEmailFactory> ();
-            // var careerOffice = new CareerOffice ("jan", "nowak", "wp@wp.pl", "+48123456789", "!A123456a");
-            // var authService = new AuthService (accountRepositoryMock.Object, studentRepositoryMock.Object, studentServiceMock.Object, careerOfficeRepositoryMock.Object, careerOfficeServiceMock.Object, accountEmailFactoryMock.Object);
-            var careerOffice = new CareerOffice ("jan", "nowak", "wp@wp.pl", "+48123456789", "!A123456a");
-            IList<CareerOffice> careerOfficeArr = new List<CareerOffice> { };
-            var careerOfficesMock = DbSetMock.CreateDbSetMock (careerOfficeArr);
-            var questionnaireContextMock = new Mock<QuestionnaireContext> ();
-            questionnaireContextMock.Setup (x => x.CareerOffices).Returns (careerOfficesMock.Object);
-            questionnaireContextMock.Setup (x => x.CareerOffices.AddAsync (It.IsAny<CareerOffice> ()))
-            //Act
+//        [Fact]
+//        public async Task AddAsync_NewCarrerOfficeAddedCorrectly_ReturnTrue()
+//        {
+//            //Arrange
+//            var careerOffice = new CareerOffice("jan", "nowak", "wp@wp.pl", "+48123456789", "!A123456a");
 
-            //Assert
-        }
-    }
-}
+//            //Act
+//            await _careerOfficeRepository.AddAsync(careerOffice);
+//            //Assert
+//            var obj = _context.CareerOffices.FirstOrDefault(x => x.Id == careerOffice.Id);
+//            Assert.Equal(careerOffice.Email, obj.Email);
+//        }
+//        [Fact]
+//        public async Task GetByIdAsync_GetCorrectCareerOffice_ReturnTrue()
+//        {
+//            //Arrange
+//            int id = 1;
+//            var existingUser = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
+//            //Act
+//            var user = await _careerOfficeRepository.GetByIdAsync(id);
+//            //Assert
+//            Assert.Equal(existingUser, user);
+//        }
+//        [Fact]
+//        public async Task GetByEmailAsync_GetCorrectCareerOffice_ReturnTrue()
+//        {
+//            //Arrange
+//            string email = "wp@wp.pl";
+//            var existingUser = _context.CareerOffices.FirstOrDefault(x => x.Email == email);
+//            //Act
+//            var user = await _careerOfficeRepository.GetByEmailAsync(email);
+//            //Assert
+//            Assert.Equal(existingUser, user);
+//        }
+//        [Fact]
+//        public async Task UpdateAsync_ObjectNameHasBeenCorrectlyChanged_ReturnTrue()
+//        {
+//            //Arrange
+//            int id = 1;
+//            string name = "Piotr";
+//            var user = await _careerOfficeRepository.GetByIdAsync(id);
+//            user.SetName(name);
+//            //Act
+//            await _careerOfficeRepository.UpdateAsync(user);
+//            //Assert
+//            var obj = await _careerOfficeRepository.GetByIdAsync(id);
+//            Assert.Equal(user.Name, obj.Name);
+//        }
+//    }
+//}

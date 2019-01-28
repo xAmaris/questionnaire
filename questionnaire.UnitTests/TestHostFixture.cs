@@ -1,16 +1,25 @@
-﻿using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Newtonsoft.Json;
-using questionnaire.UnitTests.Startup;
-using Xunit;
+﻿//using System;
+//using Microsoft.EntityFrameworkCore;
+//using questionnaire.Infrastructure.Data;
 
-namespace questionnaire.Integration.Tests {
-    public class TestHostFixture : ICollectionFixture<WebApplicationFactory<TestsStartup>> {
+//namespace questionnaire.Integration.Tests
+//{
+//    public class TestHostFixture : IDisposable
+//    {
 
-        public TestHostFixture () {
+//        public QuestionnaireContext Context => InMemoryContext();
+//        private static QuestionnaireContext InMemoryContext()
+//        {
+//            var options = new DbContextOptionsBuilder<QuestionnaireContext>()
+//                .UseInMemoryDatabase("TestsDB")
+//                .Options;
+//            var context = new QuestionnaireContext(options);
 
-        }
-    }
-}
+//            return context;
+//        }
+//        public void Dispose()
+//        {
+//            Context?.Dispose();
+//        }
+//    }
+//}
