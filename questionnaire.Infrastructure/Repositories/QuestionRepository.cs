@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class QuestionRepository : IQuestionRepository {
-        private readonly questionnaireContext _context;
-        public QuestionRepository (questionnaireContext context) {
+        private readonly QuestionnaireContext _context;
+        public QuestionRepository (QuestionnaireContext context) {
             _context = context;
         }
 

@@ -8,9 +8,9 @@ using Org.BouncyCastle.Asn1.X9;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class QuestionReportRepository : IQuestionReportRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public QuestionReportRepository (questionnaireContext context) {
+        public QuestionReportRepository (QuestionnaireContext context) {
             _context = context;
         }
 

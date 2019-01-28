@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class ChoiceOptionTemplateRepository : IChoiceOptionTemplateRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public ChoiceOptionTemplateRepository (questionnaireContext context) {
+        public ChoiceOptionTemplateRepository (QuestionnaireContext context) {
             _context = context;
         }
 

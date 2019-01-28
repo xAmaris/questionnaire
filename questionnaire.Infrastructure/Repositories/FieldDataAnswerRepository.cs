@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class FieldDataAnswerRepository : IFieldDataAnswerRepository {
-        private readonly questionnaireContext _context;
-        public FieldDataAnswerRepository (questionnaireContext context) {
+        private readonly QuestionnaireContext _context;
+        public FieldDataAnswerRepository (QuestionnaireContext context) {
             _context = context;
         }
 

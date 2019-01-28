@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class DataSetRepository : IDataSetRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public DataSetRepository (questionnaireContext context) {
+        public DataSetRepository (QuestionnaireContext context) {
             _context = context;
         }
 

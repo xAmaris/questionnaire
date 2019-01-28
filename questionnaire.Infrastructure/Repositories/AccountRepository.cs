@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class AccountRepository : IAccountRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public AccountRepository (questionnaireContext context) {
+        public AccountRepository (QuestionnaireContext context) {
             _context = context;
         }
 

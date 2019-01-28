@@ -10,9 +10,9 @@ namespace questionnaire.Infrastructure.Repositories
 {
     public class SurveyTemplateRepository : ISurveyTemplateRepository
     {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public SurveyTemplateRepository (questionnaireContext context) {
+        public SurveyTemplateRepository (QuestionnaireContext context) {
             _context = context;
         }
 

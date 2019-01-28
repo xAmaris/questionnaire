@@ -8,7 +8,7 @@ using questionnaire.Core.Domains.SurveysAnswers;
 using questionnaire.Core.Domains.SurveyTemplates;
 
 namespace questionnaire.Infrastructure.Data {
-    public class questionnaireContext : DbContext {
+    public class QuestionnaireContext : DbContext {
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<FieldData> FieldData { get; set; }
@@ -35,7 +35,7 @@ namespace questionnaire.Infrastructure.Data {
         public DbSet<AccountRestoringPassword> AccountRestoringPasswords { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
-        public questionnaireContext (DbContextOptions<questionnaireContext> options) : base (options) { }
+        public QuestionnaireContext (DbContextOptions<QuestionnaireContext> options) : base (options) { }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             modelBuilder.Entity<Account> ()

@@ -1,0 +1,4 @@
+d:\AngularProjects\questionnaire\questionnaire.UnitTests\obj\Debug\netcoreapp2.2\questionnaire.UnitTests.csprojAssemblyReference.cache
+d:\AngularProjects\questionnaire\questionnaire.UnitTests\obj\Debug\netcoreapp2.2\questionnaire.UnitTests.csproj.CoreCompileInputs.cache
+d:\AngularProjects\questionnaire\questionnaire.UnitTests\obj\Debug\netcoreapp2.2\questionnaire.UnitTests.AssemblyInfoInputs.cache
+d:\AngularProjects\questionnaire\questionnaire.UnitTests\obj\Debug\netcoreapp2.2\questionnaire.UnitTests.AssemblyInfo.cs

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class CareerOfficeRepository : ICareerOfficeRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public CareerOfficeRepository (questionnaireContext context) {
+        public CareerOfficeRepository (QuestionnaireContext context) {
             _context = context;
         }
 

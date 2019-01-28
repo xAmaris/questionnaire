@@ -2,7 +2,7 @@ using questionnaire.Core.Domains.Abstract;
 
 namespace questionnaire.Core.Domains {
     public class CareerOffice : Account {
-        public CareerOffice () { }
+        protected CareerOffice () { }
 
         public CareerOffice (string name, string surname, string email, string phoneNumber, string password) : base (name, surname, email, phoneNumber, password) {
             Role = "careerOffice";

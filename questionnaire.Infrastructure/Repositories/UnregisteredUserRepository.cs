@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class UnregisteredUserRepository : IUnregisteredUserRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public UnregisteredUserRepository (questionnaireContext context) {
+        public UnregisteredUserRepository (QuestionnaireContext context) {
             _context = context;
         }
 

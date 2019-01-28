@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace questionnaire.Infrastructure.Repositories {
     public class RowChoiceOptionAnswerRepository : IRowChoiceOptionAnswerRepository {
-        private readonly questionnaireContext _context;
+        private readonly QuestionnaireContext _context;
 
-        public RowChoiceOptionAnswerRepository (questionnaireContext context) {
+        public RowChoiceOptionAnswerRepository (QuestionnaireContext context) {
             _context = context;
         }
         public async Task AddAsync (RowChoiceOptionAnswer rowChoiceOptionAnswer) {
