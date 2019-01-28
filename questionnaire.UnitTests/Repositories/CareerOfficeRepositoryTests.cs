@@ -8,15 +8,20 @@ using questionnaire.Infrastructure.Repositories;
 using questionnaire.Infrastructure.Repositories.Interfaces;
 using questionnaire.Infrastructure.Services;
 using questionnaire.Infrastructure.Services.Interfaces;
+using questionnaire.Integration.Tests;
 using Xunit;
 
 namespace questionnaire.UnitTests.Repositories {
-    public class CareerOfficeRepositoryTests {
+    public class CareerOfficeRepositoryTests : IClassFixture<TestHostFixture> {
+
+        private readonly TestHostFixture _fixture;
+        public CareerOfficeRepositoryTests (TestHostFixture fixture) {
+            _fixture = fixture;
+        }
 
         [Fact]
         public async Task AddAsync_NewUserAddedCorrectlyToTheList_ReturnTrue () {
             //Arrange
-
             // var studentRepositoryMock = new Mock<IStudentRepository> ();
             // var accountRepositoryMock = new Mock<IAccountRepository> ();
             // var careerOfficeRepositoryMock = new Mock<ICareerOfficeRepository> ();
