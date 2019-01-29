@@ -154,7 +154,8 @@ export class MainSettingsComponent implements OnInit {
       firstName: this.name.value,
       lastName: this.lastName.value,
       email: this.email.value,
-      phoneNum: this.phoneNum.value
+      phoneNum: this.phoneNum.value,
+      role: this.userInfo.role
     };
     return _user;
   }

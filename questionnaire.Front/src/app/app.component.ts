@@ -219,7 +219,8 @@ export class AppComponent implements OnInit, OnDestroy {
     ) {
       routeUrl = url + 'survey/(s:a//m:a)';
     } else if (currUrl.includes('viewform/t')) {
-      routeUrl = '/app/admin/survey/create/2';
+      const id = currUrl[currUrl.length - 1];
+      routeUrl = '/app/admin/survey/create/' + id;
     }
     this.router.navigateByUrl(routeUrl);
   }

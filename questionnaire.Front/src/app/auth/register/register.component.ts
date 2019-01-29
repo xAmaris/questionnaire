@@ -69,9 +69,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.sharedService.deleteControlArray();
   }
   ngOnInit() {
-    // reset login status
-    this.authService.logout();
-
     // form declaration
     this.regForm = this.fb.group({
       name: [

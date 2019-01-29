@@ -19,6 +19,15 @@ const mainRoutes: Routes = [
         }
       },
       {
+        path: 'student',
+        loadChildren: './student-view/student-view.module#StudentViewModule',
+        canLoad: [AuthGuard],
+        canActivate: [RoleGuard],
+        data: {
+          expectedRole: 'student'
+        }
+      },
+      {
         path: 'settings',
         loadChildren: './settings/settings.module#SettingsModule',
         canLoad: [AuthGuard]

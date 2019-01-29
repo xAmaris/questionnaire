@@ -14533,11 +14533,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\AngularProjects\\questionnaire\\questionnaire.Api\\questionnaire.Api.csproj",
+      "projectUniqueName": "D:\\AngularProjects\\questionnaire\\questionnaire.Api\\questionnaire.Api.csproj",
       "projectName": "questionnaire.Api",
-      "projectPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Api\\questionnaire.Api.csproj",
+      "projectPath": "D:\\AngularProjects\\questionnaire\\questionnaire.Api\\questionnaire.Api.csproj",
       "packagesPath": "C:\\Users\\gabi9\\.nuget\\packages\\",
-      "outputPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Api\\obj\\",
+      "outputPath": "D:\\AngularProjects\\questionnaire\\questionnaire.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14556,8 +14556,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "d:\\AngularProjects\\questionnaire\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj": {
-              "projectPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj"
+            "D:\\AngularProjects\\questionnaire\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj": {
+              "projectPath": "D:\\AngularProjects\\questionnaire\\questionnaire.Infrastructure\\questionnaire.Infrastructure.csproj"
             }
           }
         }

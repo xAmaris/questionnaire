@@ -5,6 +5,7 @@ export class UserProfile {
   lastName: string;
   email: string;
   phoneNum: string;
+  role: string;
 }
 export class User extends UserProfile {
   password: string;

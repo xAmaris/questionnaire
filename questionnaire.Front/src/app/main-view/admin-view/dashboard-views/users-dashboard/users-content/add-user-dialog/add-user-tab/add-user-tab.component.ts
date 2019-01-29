@@ -10,11 +10,25 @@ import {
 import {
   AbstractControl,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { Moment } from 'moment';
 import { SharedService } from '../../../../../../../services/shared.service';
+
+function dateValidator(control: FormControl): { [s: string]: boolean } {
+  const val = control.value as Moment;
+  if (!val) {
+    return;
+  }
+  const currDate = new Date().getTime();
+  const compareDate = val.valueOf();
+  if (compareDate > currDate) {
+    return { invalidDate: true };
+  }
+}
 
 @Component({
   selector: 'app-add-user-tab',
@@ -91,7 +105,10 @@ export class AddUserTabComponent implements OnInit {
         '',
         Validators.compose([Validators.required, Validators.minLength(3)])
       ],
-      dateOfCompletion: ['', Validators.compose([Validators.required])]
+      dateOfCompletion: [
+        '',
+        Validators.compose([Validators.required, dateValidator])
+      ]
     });
     this.name = this.dialogForm.controls['name'];
     this.surname = this.dialogForm.controls['surname'];
@@ -100,6 +117,7 @@ export class AddUserTabComponent implements OnInit {
     this.typeOfStudy = this.dialogForm.controls['typeOfStudy'];
     this.dateOfCompletion = this.dialogForm.controls['dateOfCompletion'];
   }
+
   setValues() {
     this.name.setValue(this.data.name);
     this.surname.setValue(this.data.surname);
@@ -135,6 +153,11 @@ export class AddUserTabComponent implements OnInit {
           break;
         case 'dateOfCompletion':
           this.dateOfCompletionErrorStr = errorObj.errorStr;
+          if (this.dateOfCompletion.hasError('invalidDate')) {
+            this.dateOfCompletionErrorStr =
+              this.dateOfCompletionErrorStr +
+              ' musi być wcześniejsza od daty dzisiejszej';
+          }
           break;
       }
       return true;

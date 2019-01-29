@@ -13,14 +13,17 @@ export class RoleGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole: string = route.data.expectedRole;
-    const currentRole: string = JSON.parse(localStorage.getItem('currentUser'))
-      .role;
-    if (currentRole === expectedRole) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      return false;
+    }
+    const role: string = currentUser.role;
+    if (role === expectedRole) {
       this.accountService.setRoleSubject(expectedRole);
       return true;
     } else {
       if (this.accountService.isLogged.value === true) {
-        this.sharedService.routeSwitch(currentRole);
+        this.sharedService.routeSwitch(role);
       } else {
         this.router.navigateByUrl('auth/login');
       }

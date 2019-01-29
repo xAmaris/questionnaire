@@ -153,23 +153,25 @@ export class SurveyCreatorComponent
     this.sharedService.showCreatorButton(true);
   }
   getSurvey(): void {
-    this.activatedRoute.data.map(data => data.cres).subscribe(
-      (res: SurveyTemplate) => {
-        this.surveyService.isCreatorLoading(false);
-        if (res) {
-          this.id = res.id;
-          if (res.questionTemplates.length === 0) {
-            this.createQuestionData();
-            this.updateSurveySubject();
-          } else if (res.questionTemplates.length > 0) {
-            this.createQuestionData(res);
+    this.activatedRoute.data
+      .map(data => data.cres)
+      .subscribe(
+        (res: SurveyTemplate) => {
+          this.surveyService.isCreatorLoading(false);
+          if (res) {
+            this.id = res.id;
+            if (res.questionTemplates.length === 0) {
+              this.createQuestionData();
+              this.updateSurveySubject();
+            } else if (res.questionTemplates.length > 0) {
+              this.createQuestionData(res);
+            }
           }
+        },
+        error => {
+          this.surveyService.isCreatorLoading(false);
         }
-      },
-      error => {
-        this.surveyService.isCreatorLoading(false);
-      }
-    );
+      );
   }
 
   showBackButton(): void {
@@ -183,9 +185,7 @@ export class SurveyCreatorComponent
   showSurveyDialog(): void {
     this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
       data => {
-        if (data === true) {
-          this.openSendSurveyDialog();
-        }
+        this.openSendSurveyDialog();
       }
     );
   }
@@ -765,11 +765,9 @@ export class SurveyCreatorComponent
   createSurvey(): void {
     this.createSurveySub = this.surveyService
       .createSurvey(this.invoiceForm.getRawValue())
-      .subscribe(
-        () => {
-          this.router.navigate(['/app/admin/d']);
-        },
-      );
+      .subscribe(() => {
+        this.router.navigate(['/app/admin/d']);
+      });
   }
 
   showSurvey(): void {

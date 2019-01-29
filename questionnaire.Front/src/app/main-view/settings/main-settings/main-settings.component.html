@@ -3,70 +3,91 @@
     <div id="register-container">
       <div id="form-container">
         <div id="regErr">
-          <mat-error *ngIf=registrationError>{{registrationErrorMessage}}</mat-error>
+          <mat-error *ngIf="registrationError">{{
+            registrationErrorMessage
+          }}</mat-error>
         </div>
         <mat-accordion>
-
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>
-                Imię i nazwisko
-              </mat-panel-title>
+              <mat-panel-title> Imię i nazwisko </mat-panel-title>
               <mat-panel-description>
-                {{userInfo.firstName + ' ' + userInfo.lastName}}
+                {{ userInfo.firstName + ' ' + userInfo.lastName }}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
               <mat-form-field>
-                <input matInput placeholder="Imię" formControlName="name" [value]="userInfo.firstName">
-                <mat-error *ngIf="inputError(name)">{{nameErrorStr}}</mat-error>
+                <input
+                  matInput
+                  placeholder="Imię"
+                  formControlName="name"
+                  [value]="userInfo.firstName"
+                />
+                <mat-error *ngIf="inputError(name)">{{
+                  nameErrorStr
+                }}</mat-error>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Nazwisko" formControlName="lastName" [value]="userInfo.lastName">
-                <mat-error *ngIf="inputError(lastName)">{{lastNameErrorStr}}</mat-error>
+                <input
+                  matInput
+                  placeholder="Nazwisko"
+                  formControlName="lastName"
+                  [value]="userInfo.lastName"
+                />
+                <mat-error *ngIf="inputError(lastName)">{{
+                  lastNameErrorStr
+                }}</mat-error>
               </mat-form-field>
             </ng-template>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>
-                E-mail
-              </mat-panel-title>
+              <mat-panel-title> E-mail </mat-panel-title>
               <mat-panel-description>
-                {{userInfo.email}}
+                {{ userInfo.email }}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
               <mat-form-field>
-                <input matInput placeholder="E-mail" formControlName="email" [value]="userInfo.email">
-                <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+                <input
+                  matInput
+                  placeholder="E-mail"
+                  formControlName="email"
+                  [value]="userInfo.email"
+                />
+                <mat-error *ngIf="inputError(email)">{{
+                  emailErrorStr
+                }}</mat-error>
               </mat-form-field>
             </ng-template>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>
-                Numer telefonu
-              </mat-panel-title>
+              <mat-panel-title> Numer telefonu </mat-panel-title>
               <mat-panel-description>
-                {{userInfo.phoneNum}}
+                {{ userInfo.phoneNum }}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
               <mat-form-field>
-                <input matInput placeholder="Nr telefonu" formControlName="phoneNum" [value]="userInfo.phoneNum">
-                <mat-error *ngIf="inputError(phoneNum)">{{phoneNumErrorStr}}</mat-error>
+                <input
+                  matInput
+                  placeholder="Nr telefonu"
+                  formControlName="phoneNum"
+                  [value]="userInfo.phoneNum"
+                />
+                <mat-error *ngIf="inputError(phoneNum)">{{
+                  phoneNumErrorStr
+                }}</mat-error>
               </mat-form-field>
             </ng-template>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>
-                Hasło
-              </mat-panel-title>
+              <mat-panel-title> Hasło </mat-panel-title>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
               <div [routerLink]="['/auth/password']">
@@ -75,11 +96,9 @@
             </ng-template>
           </mat-expansion-panel>
 
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngIf="userInfo.role === 'careerOffice'">
             <mat-expansion-panel-header>
-              <mat-panel-title>
-                Dodaj Admina
-              </mat-panel-title>
+              <mat-panel-title> Dodaj Admina </mat-panel-title>
             </mat-expansion-panel-header>
             <ng-template matExpansionPanelContent>
               <div [routerLink]="['/auth/add']">
@@ -87,11 +106,18 @@
               </div>
             </ng-template>
           </mat-expansion-panel>
-
         </mat-accordion>
       </div>
       <div class="btnBox">
-        <button type="button" class="white" mat-raised-button color="primary" (click)=onSubmit(reg)>Zapisz</button>
+        <button
+          type="button"
+          class="white"
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit(reg)"
+        >
+          Zapisz
+        </button>
       </div>
     </div>
   </form>

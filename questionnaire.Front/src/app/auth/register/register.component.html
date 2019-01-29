@@ -44,6 +44,7 @@
             <input matInput autocomplete="email" placeholder="E-mail" type="text" id="email" formControlName="email"
               (focus)="onFocus(email)" (blur)="onBlur(email)">
             <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+            <mat-hint>Należy podać prawdziwy adres email</mat-hint>
           </mat-form-field>
         </div>
         <div class="group half" *ngIf="profileName.value === 'Student'">

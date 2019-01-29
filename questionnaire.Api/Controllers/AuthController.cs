@@ -3,6 +3,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using questionnaire.Core.Domains.Abstract;
 using questionnaire.Infrastructure.Commands.Account;
 using questionnaire.Infrastructure.Commands.CareerOffice;
@@ -10,12 +13,8 @@ using questionnaire.Infrastructure.Commands.User;
 using questionnaire.Infrastructure.Extension.JWT;
 using questionnaire.Infrastructure.Extension.JWT.Interfaces;
 using questionnaire.Infrastructure.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
-namespace questionnaire.Api.Controllers
-{
+namespace questionnaire.Api.Controllers {
     public class AuthController : ApiUserController {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
@@ -57,14 +56,8 @@ namespace questionnaire.Api.Controllers
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            if(account.Role == "careerOffice"){
-                var loginResult = new { LoginData = token, account.Role, account.Name, account.Surname, account.Email, account.PhoneNumber};
-                return Json (loginResult);
-            }
-            else{
-                var loginResult = new { LoginData = token, account.Role};
-                return Json (loginResult);
-            }
+            var loginResult = new { LoginData = token, account.Role, account.Name, account.Surname, account.Email, account.PhoneNumber };
+            return Json (loginResult);
         }
 
         [HttpPost ("students")]

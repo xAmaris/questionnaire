@@ -24,11 +24,12 @@ export class AccountService {
 
   setProfileData() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const _profileData = {
+    const _profileData: UserProfile = {
       firstName: user.name,
       lastName: user.surname,
       email: user.email,
-      phoneNum: user.phoneNumber
+      phoneNum: user.phoneNumber,
+      role: user.role
     };
     this.profileData.next(_profileData);
   }
