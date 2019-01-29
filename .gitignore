@@ -389,3 +389,5 @@ healthchecksdb
 # End of https://www.gitignore.io/api/angular,visualstudio,visualstudiocode
 .vs/questionnaire/v15/Server/sqlite3/storage.ide
 .vs/questionnaire/v15/Server/sqlite3/storage.ide-wal
+.vscode/launch.json
+.vscode/tasks.json

@@ -2,13 +2,10 @@
 using questionnaire.Core.Domains.SurveyReport;
 using questionnaire.Infrastructure.Repositories.Interfaces;
 using questionnaire.Infrastructure.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace questionnaire.Tests.Services
 {
-    class SurveyServiceTests
+    class SurveyServiceReportTests
     {
         private SurveyReport _surveyReport;
         private QuestionReport _questionReport;
@@ -17,7 +14,7 @@ namespace questionnaire.Tests.Services
         private Mock<ISurveyRepository> _surveyRepository;
         private Mock<IDataSetRepository> _dataSetRepository;
         private Mock<IQuestionReportRepository> _questionReportRepository;
-        public SurveyServiceTests()
+        public SurveyServiceReportTests()
         {
             _surveyReportRepository = new Mock<ISurveyReportRepository>();
             _surveyRepository = new Mock<ISurveyRepository>();
@@ -25,5 +22,6 @@ namespace questionnaire.Tests.Services
             _questionReportRepository = new Mock<IQuestionReportRepository>();
             _surveyReportService = new SurveyReportService(_surveyReportRepository.Object, _surveyRepository.Object, _dataSetRepository.Object, _questionReportRepository.Object);
         }
+
     }
 }

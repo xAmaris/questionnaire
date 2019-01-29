@@ -11,20 +11,18 @@ using questionnaire.Infrastructure.Services.Interfaces;
 
 namespace questionnaire.Infrastructure.Services {
     public class SurveyTemplateService : ISurveyTemplateService {
-        private IMapper _mapper;
         private readonly ISurveyTemplateRepository _surveyTemplateRepository;
         private readonly IQuestionTemplateRepository _questionTemplateRepository;
         private readonly IFieldDataTemplateRepository _fieldDataTemplateRepository;
         private readonly IChoiceOptionTemplateRepository _choiceOptionTemplateRepository;
         private readonly IRowTemplateRepository _rowTemplateRepository;
 
-        public SurveyTemplateService (IMapper mapper,
+        public SurveyTemplateService (
             ISurveyTemplateRepository surveyTemplateRepository,
             IQuestionTemplateRepository questionTemplateRepository,
             IFieldDataTemplateRepository fieldDataTemplateRepository,
             IChoiceOptionTemplateRepository choiceOptionTemplateRepository,
             IRowTemplateRepository rowTemplateRepository) {
-            _mapper = mapper;
             _surveyTemplateRepository = surveyTemplateRepository;
             _questionTemplateRepository = questionTemplateRepository;
             _fieldDataTemplateRepository = fieldDataTemplateRepository;
@@ -32,7 +30,7 @@ namespace questionnaire.Infrastructure.Services {
             _rowTemplateRepository = rowTemplateRepository;
         }
 
-        public async Task<int> CreateSurveyAsync (SurveyToAdd command) {
+        public async Task<int> CreateSurveyTemplateAsync (SurveyToAdd command) {
             var surveyTemplateId = await CreateAsync (command.Title);
             if (command.Questions == null)
                 throw new NullReferenceException ("Cannot create empty survey");
@@ -48,7 +46,7 @@ namespace questionnaire.Infrastructure.Services {
             return surveyTemplateId;
         }
 
-        public async Task UpdateSurveyAsync (SurveyToUpdate command) {
+        public async Task UpdateSurveyTemplateAsync (SurveyToUpdate command) {
             var surveyTemplateId = await UpdateAsync (command.SurveyId, command.Title);
             if (command.Questions == null)
                 throw new NullReferenceException ("Cannot create empty survey");
@@ -64,7 +62,7 @@ namespace questionnaire.Infrastructure.Services {
         }
 
         private async Task AddChoiceOptionsAndRowsAsync (int questionTemplateId, string select, FieldDataToAdd fieldDataToAdd) {
-            var fieldDataId = await AddFieldDataToQuestionAsync (questionTemplateId,
+            var fieldDataId = await AddFieldDataTemplateToQuestionTemplateAsync (questionTemplateId,
                 fieldDataToAdd.Input,
                 fieldDataToAdd.MinValue,
                 fieldDataToAdd.MaxValue,
@@ -98,13 +96,13 @@ namespace questionnaire.Infrastructure.Services {
             }
         }
 
-        public async Task<int> CreateAsync (string title) {
+        async Task<int> CreateAsync (string title) {
             var surveyTemplate = new SurveyTemplate (title);
             await _surveyTemplateRepository.AddAsync (surveyTemplate);
             return surveyTemplate.Id;
         }
 
-        public async Task<int> AddQuestionToSurveyAsync (int surveyTemplateId, int questionPosition, string content,
+        async Task<int> AddQuestionToSurveyAsync (int surveyTemplateId, int questionPosition, string content,
             string select, bool isRequired) {
             var surveyTemplate = await _surveyTemplateRepository.GetByIdAsync (surveyTemplateId);
             if (content == "")
@@ -115,7 +113,7 @@ namespace questionnaire.Infrastructure.Services {
             return questionTemplate.Id;
         }
 
-        public async Task<int> AddFieldDataToQuestionAsync (int questionTemplateId, string input, int minValue, int maxValue,
+        public async Task<int> AddFieldDataTemplateToQuestionTemplateAsync (int questionTemplateId, string input, int minValue, int maxValue,
             string minLabel, string maxLabel) {
             var questionTemplate = await _questionTemplateRepository.GetByIdAsync (questionTemplateId);
             switch (questionTemplate.Select) {
@@ -180,31 +178,31 @@ namespace questionnaire.Infrastructure.Services {
             }
         }
 
-        public async Task AddChoiceOptionsAsync (int fieldDataTemplateId, int optionPosition, bool value, string viewValue) {
+        async Task AddChoiceOptionsAsync (int fieldDataTemplateId, int optionPosition, bool value, string viewValue) {
             var fieldDataTemplate = await _fieldDataTemplateRepository.GetByIdAsync (fieldDataTemplateId);
             var choiceOptionTemplate = new ChoiceOptionTemplate (optionPosition, value, viewValue);
             fieldDataTemplate.AddChoiceOptionTemplate (choiceOptionTemplate);
             await _choiceOptionTemplateRepository.AddAsync (choiceOptionTemplate);
         }
 
-        public async Task AddRowAsync (int fieldDataTemplateId, int rowPosition, string input) {
+        async Task AddRowAsync (int fieldDataTemplateId, int rowPosition, string input) {
             var fieldDataTemplate = await _fieldDataTemplateRepository.GetByIdAsync (fieldDataTemplateId);
             var rowTemplate = new RowTemplate (rowPosition, input);
             fieldDataTemplate.AddRowTemplate (rowTemplate);
             await _rowTemplateRepository.AddAsync (rowTemplate);
         }
 
-        public async Task<IEnumerable<SurveyTemplate>> GetAllAsync () {
+        public async Task<IEnumerable<SurveyTemplate>> GetAllSurveyTemplatesAsync () {
             IEnumerable<SurveyTemplate> surveyTemplates = await _surveyTemplateRepository.GetAllWithQuestionTemplatesAsync ();
             return surveyTemplates;
         }
 
-        public async Task<SurveyTemplate> GetByIdAsync (int surveyTemplateId) {
+        public async Task<SurveyTemplate> GetSurveyTemplateByIdAsync (int surveyTemplateId) {
             var surveyTemplate = await _surveyTemplateRepository.GetByIdWithQuestionTemplatesAsync (surveyTemplateId);
             return surveyTemplate;
         }
 
-        public async Task<int> UpdateAsync (int surveyTemplateId, string title) {
+        async Task<int> UpdateAsync (int surveyTemplateId, string title) {
             var surveyTemplate = await _surveyTemplateRepository.GetByIdWithQuestionTemplatesAsync (surveyTemplateId);
             foreach (var questionTemplate in surveyTemplate.QuestionTemplates.ToList ()) {
                 await _questionTemplateRepository.DeleteAsync (questionTemplate);
@@ -214,7 +212,7 @@ namespace questionnaire.Infrastructure.Services {
             return surveyTemplate.Id;
         }
 
-        public async Task DeleteAsync (int surveyTemplateId) {
+        public async Task DeleteSurveyTemplateAsync (int surveyTemplateId) {
             try {
                 var surveyTemplate = await _surveyTemplateRepository.GetByIdAsync (surveyTemplateId);
                 await _surveyTemplateRepository.DeleteAsync (surveyTemplate);

@@ -19,7 +19,7 @@ namespace questionnaire.Api.Controllers
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
             try{
-                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
+                var survey = await _surveyTemplateService.GetSurveyTemplateByIdAsync (surveyId);
                 return Json (survey);
             }
             catch(Exception e){
@@ -30,7 +30,7 @@ namespace questionnaire.Api.Controllers
         [HttpGet ("{surveyId}/{email}/{userId}")]
         public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
             try{
-                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
+                var survey = await _surveyTemplateService.GetSurveyTemplateByIdAsync (surveyId);
                 return Json (survey);
             }
             catch(Exception e){
@@ -41,7 +41,7 @@ namespace questionnaire.Api.Controllers
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys () {
             try{
-                var surveys = await _surveyTemplateService.GetAllAsync ();
+                var surveys = await _surveyTemplateService.GetAllSurveyTemplatesAsync ();
                 return Json (surveys);
             }
             catch(Exception e){
@@ -54,7 +54,7 @@ namespace questionnaire.Api.Controllers
             try{
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
-                var surveyTemplateId = await _surveyTemplateService.CreateSurveyAsync (command);
+                var surveyTemplateId = await _surveyTemplateService.CreateSurveyTemplateAsync (command);
                 return Json(surveyTemplateId);
             }
             catch(Exception e){
@@ -67,7 +67,7 @@ namespace questionnaire.Api.Controllers
             try{
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
-                await _surveyTemplateService.UpdateSurveyAsync (command);
+                await _surveyTemplateService.UpdateSurveyTemplateAsync (command);
                 return StatusCode (200);
             }
             catch(Exception e){
@@ -78,7 +78,7 @@ namespace questionnaire.Api.Controllers
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId){
             try{
-                await _surveyTemplateService.DeleteAsync(surveyId);
+                await _surveyTemplateService.DeleteSurveyTemplateAsync(surveyId);
                 return StatusCode(200);
             }
             catch(Exception e){
