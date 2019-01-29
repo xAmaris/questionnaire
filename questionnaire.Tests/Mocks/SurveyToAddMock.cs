@@ -15,7 +15,7 @@ namespace questionnaire.Tests.Mocks
                 Questions = new List<QuestionToAdd>() {
                 new QuestionToAdd () {
                 QuestionPosition = 0,
-                Content = "1",
+                Content = "",
                 Select = "short-answer",
                 IsRequired = true,
                 FieldData = new List<FieldDataToAdd> () {

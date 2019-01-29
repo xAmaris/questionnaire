@@ -89,8 +89,6 @@ namespace questionnaire.Infrastructure.Services {
         }
 
         private async Task AddRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId) {
-            if (fieldDataToAdd.Rows == null)
-                await Task.CompletedTask;
             foreach (var row in fieldDataToAdd.Rows) {
                 await AddRowAsync (fieldDataId, row.RowPosition, row.Input);
             }
@@ -113,7 +111,7 @@ namespace questionnaire.Infrastructure.Services {
             return questionTemplate.Id;
         }
 
-        public async Task<int> AddFieldDataTemplateToQuestionTemplateAsync (int questionTemplateId, string input, int minValue, int maxValue,
+        async Task<int> AddFieldDataTemplateToQuestionTemplateAsync (int questionTemplateId, string input, int minValue, int maxValue,
             string minLabel, string maxLabel) {
             var questionTemplate = await _questionTemplateRepository.GetByIdAsync (questionTemplateId);
             switch (questionTemplate.Select) {
@@ -216,7 +214,7 @@ namespace questionnaire.Infrastructure.Services {
             try {
                 var surveyTemplate = await _surveyTemplateRepository.GetByIdAsync (surveyTemplateId);
                 await _surveyTemplateRepository.DeleteAsync (surveyTemplate);
-            } catch (NullReferenceException) {
+            } catch (ArgumentNullException) {
                 throw new ObjectDoesNotExistException ($"Survey with given Id: {surveyTemplateId} does not exist.");
             }
         }

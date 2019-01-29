@@ -8,8 +8,6 @@ namespace questionnaire.Infrastructure.Services.Interfaces
     public interface ISurveyTemplateService
     {
         Task<int> CreateSurveyTemplateAsync (SurveyToAdd command);
-        Task<int> AddFieldDataTemplateToQuestionTemplateAsync (int questionTemplateId, string input, int minValue, int maxValue, string minLabel,
-            string maxLabel);
         Task<IEnumerable<SurveyTemplate>> GetAllSurveyTemplatesAsync ();
         Task<SurveyTemplate> GetSurveyTemplateByIdAsync (int surveyTemplateId);
         Task UpdateSurveyTemplateAsync (SurveyToUpdate command);
