@@ -1,8 +1,6 @@
 # Created by https://www.gitignore.io/api/angular,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=angular,visualstudio,visualstudiocode
-.vs
-.vscode
-questionnaire.sln
+/.sln
 ### Angular ###
 ## Angular ##
 # compiled output
