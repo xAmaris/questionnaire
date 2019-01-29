@@ -20,21 +20,25 @@ namespace questionnaire.Tests
             SeedData(context);
             Context = context;
         }
-        private static void SeedData(QuestionnaireContext context)
+        public static void SeedData(QuestionnaireContext context)
         {
+            //SurveyTemplates
+            SeedSurveyTemplate(context);
+
             //CareerOffices
             var careerOffice = new CareerOffice("user", "user", "user@user.pl", "+48123456789", "!A123456a");
             context.CareerOffices.Add(careerOffice);
 
-            //SurveyTemplates
-            var surveyTemplate = new SurveyTemplate("surveyTemplate title");
-            context.SurveyTemplates.Add(surveyTemplate);
-
-
             //Surveys
             var survey = new Survey("survey title");
             context.Surveys.Add(survey);
+                       
+            context.SaveChanges();
+        }
 
+        public static void SeedSurveyTemplate(QuestionnaireContext context)
+        {
+            var surveyTemplate = new SurveyTemplate("surveyTemplate title");
 
             //QuestionTemplates
             var shortAnswerQuestion = new QuestionTemplate(0, "1", "short-answer", true);
@@ -189,12 +193,7 @@ namespace questionnaire.Tests
             context.QuestionTemplates.Add(singleGridQuestion);
             context.QuestionTemplates.Add(multipleGridQuestion);
 
-
-
-
-
-
-            context.SaveChanges();
+            context.SurveyTemplates.Add(surveyTemplate);
         }
         public void Dispose()
         {
