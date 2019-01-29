@@ -1,10 +1,11 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { AccountService } from '../services/account.service';
@@ -14,7 +15,7 @@ import { AccountService } from '../services/account.service';
   templateUrl: './restore-password.component.html',
   styleUrls: ['./restore-password.component.scss']
 })
-export class RestorePasswordComponent {
+export class RestorePasswordComponent implements OnInit {
   loader = false;
   passwordForm: FormGroup;
   passwordErrorStr: string;
@@ -26,7 +27,8 @@ export class RestorePasswordComponent {
     private router: Router,
     private fb: FormBuilder,
     private accountService: AccountService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private titleService: Title
   ) {
     this.passwordForm = this.fb.group({
       password: [
@@ -38,7 +40,9 @@ export class RestorePasswordComponent {
     this.href = this.router.url.split('/');
     this.token = this.href[this.href.length - 1];
   }
-
+  ngOnInit() {
+    this.titleService.setTitle('Przywracanie hasła');
+  }
   onSubmit(form) {
     if (form.valid) {
       this.loader = true;

@@ -4,6 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using questionnaire.Api.ActionFilters;
 using questionnaire.Core.Domains.ImportFile;
 using questionnaire.Infrastructure.Commands.Account;
@@ -29,25 +42,12 @@ using questionnaire.Infrastructure.Validators.CareerOffice;
 using questionnaire.Infrastructure.Validators.Email;
 using questionnaire.Infrastructure.Validators.ImportFile;
 using questionnaire.Infrastructure.Validators.User;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using static questionnaire.Infrastructure.Extension.Exception.ExceptionsHelper;
-using questionnaire.Infrastructure.Extensions.JWT;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using questionnaire.Infrastructure.Extensions.Aggregate.Interfaces;
 using questionnaire.Infrastructure.Extensions.Aggregate;
+using questionnaire.Infrastructure.Extensions.Aggregate.Interfaces;
+using questionnaire.Infrastructure.Extensions.JWT;
 
 namespace questionnaire.Api {
     public class Startup {
@@ -118,7 +118,7 @@ namespace questionnaire.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
+            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository> ();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
@@ -177,9 +177,16 @@ namespace questionnaire.Api {
                 });
             }
 
+            using (var serviceScope = app.ApplicationServices.CreateScope ()) {
+                Migrate (serviceScope);
+            }
+
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
             app.UseAuthentication ();
             app.UseMvc ();
+        }
+        void Migrate (IServiceScope serviceScope) {
+            serviceScope.ServiceProvider.GetService<QuestionnaireContext> ().Database.Migrate ();
         }
     }
 }

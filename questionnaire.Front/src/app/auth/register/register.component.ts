@@ -6,11 +6,11 @@ import {
   NgForm,
   Validators
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { Admin, Student } from '../other/user.model';
 import { AccountService } from '../services/account.service';
-import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -62,13 +62,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router,
     private accountService: AccountService,
     private sharedService: SharedService,
-    private authService: AuthenticationService
+    private titleService: Title
   ) {}
 
   ngOnDestroy() {
     this.sharedService.deleteControlArray();
   }
   ngOnInit() {
+    this.titleService.setTitle('Rejestracja');
     // form declaration
     this.regForm = this.fb.group({
       name: [

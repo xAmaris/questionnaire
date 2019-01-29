@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student-view',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-view.component.scss']
 })
 export class StudentViewComponent implements OnInit {
-
-  constructor() { }
+  constructor(private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Ankietyzator - student');
   }
-
 }

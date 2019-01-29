@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { UserProfile } from '../other/user.model';
 import { SharedService } from './../../services/shared.service';
 import { AccountService } from './../services/account.service';
@@ -38,10 +39,12 @@ export class AddAdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private sharedService: SharedService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Dodaj admina');
     this.setForm();
   }
   onSubmit(form) {

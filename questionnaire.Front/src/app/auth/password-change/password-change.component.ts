@@ -6,6 +6,7 @@ import {
   NgForm,
   Validators
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { AccountService } from '../services/account.service';
@@ -40,10 +41,12 @@ export class PasswordChangeComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private accountService: AccountService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Zmiana hasła');
     this.declareForm();
     this.showBack(true);
     this.showAdminMenu(true);

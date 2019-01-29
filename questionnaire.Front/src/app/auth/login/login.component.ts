@@ -6,9 +6,8 @@ import {
   NgForm,
   Validators
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { SharedService } from '../../services/shared.service';
-import { UserProfile } from '../other/user.model';
 import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -48,10 +47,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private authenticationService: AuthenticationService,
     private accountService: AccountService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private titleService: Title
   ) {}
 
   ngOnDestroy() {
@@ -62,6 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Logowanie');
     // reset login status
     this.authenticationService.logout();
 

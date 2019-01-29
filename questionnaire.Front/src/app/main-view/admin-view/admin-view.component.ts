@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -7,8 +8,12 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./admin-view.component.scss']
 })
 export class AdminViewComponent implements OnInit, OnDestroy {
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService,
+    private titleService: Title
+  ) {}
   ngOnInit() {
+    this.titleService.setTitle('Ankietyzator - admin');
     this.showAdminMenu();
   }
   showAdminMenu() {

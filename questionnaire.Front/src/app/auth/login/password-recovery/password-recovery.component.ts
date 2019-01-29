@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../services/shared.service';
 import { AccountService } from '../../services/account.service';
@@ -32,10 +33,12 @@ export class PasswordRecoveryComponent implements OnInit {
     private fb: FormBuilder,
     private accountService: AccountService,
     private sharedService: SharedService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Odzyskiwanie hasła');
     // get mail string
     this.mail = this.accountService.getMailData();
 
