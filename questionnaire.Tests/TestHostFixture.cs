@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using questionnaire.Core.Domains;
+using questionnaire.Core.Domains.SurveyTemplates;
 using questionnaire.Infrastructure.Data;
 
 namespace questionnaire.Tests
@@ -22,6 +23,8 @@ namespace questionnaire.Tests
         {
             var careerOffice = new CareerOffice("user", "user", "user@user.pl", "+48123456789", "!A123456a");
             context.CareerOffices.AddAsync(careerOffice);
+            var surveyTemplate = new SurveyTemplate("new title");
+            context.SurveyTemplates.AddAsync(surveyTemplate);
             context.SaveChanges();
         }
         public void Dispose()

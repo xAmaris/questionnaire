@@ -33,10 +33,9 @@ namespace questionnaire.Tests.Repositories
         public async Task GetByIdAsync_GetCorrectCareerOffice_ReturnTrue()
         {
             //Arrange
-            int id = 1;
-            var careerOffice = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
+            var careerOffice = _context.CareerOffices.FirstOrDefault();
             //Act
-            var user = await _careerOfficeRepository.GetByIdAsync(id);
+            var user = await _careerOfficeRepository.GetByIdAsync(careerOffice.Id);
             //Assert
             Assert.NotNull(user);
             Assert.Equal(careerOffice, user);
@@ -45,8 +44,7 @@ namespace questionnaire.Tests.Repositories
         public async Task GetByEmailAsync_GetCorrectCareerOffice_ReturnTrue()
         {
             //Arrange
-            int id = 1;
-            var careerOffice = _context.CareerOffices.FirstOrDefault(x => x.Id == id);
+            var careerOffice = _context.CareerOffices.FirstOrDefault();
             //Act
             var user = await _careerOfficeRepository.GetByEmailAsync(careerOffice.Email);
             //Assert
@@ -57,15 +55,14 @@ namespace questionnaire.Tests.Repositories
         public async Task UpdateAsync_ObjectNameHasBeenCorrectlyChanged_ReturnTrue()
         {
             //Arrange
-            int id = 1;
             string name = "Piotr";
-            var user = await _careerOfficeRepository.GetByIdAsync(id);
-            user.SetName(name);
+            var careerOffice = _context.CareerOffices.FirstOrDefault();
+            careerOffice.SetName(name);
             //Act
-            await _careerOfficeRepository.UpdateAsync(user);
+            await _careerOfficeRepository.UpdateAsync(careerOffice);
             //Assert
-            var obj = await _careerOfficeRepository.GetByIdAsync(id);
-            Assert.Equal(user.Name, obj.Name);
+            var obj = await _careerOfficeRepository.GetByIdAsync(careerOffice.Id);
+            Assert.Equal(careerOffice.Name, obj.Name);
         }
     }
 }
