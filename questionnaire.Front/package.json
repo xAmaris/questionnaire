@@ -34,7 +34,9 @@
     "core-js": "^2.4.1",
     "moment": "^2.22.2",
     "primeng": "^6.1.5",
+    "protractor-http-client": "^1.0.4",
     "rxjs": "^6.3.3",
+    "protractor": "^5.4.1",
     "rxjs-compat": "^6.3.3",
     "sortablejs": "^1.7.0",
     "zone.js": "^0.8.26"
