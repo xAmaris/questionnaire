@@ -5,10 +5,9 @@ import { httpPostRequest } from './../http-request';
 
 export class LoginPage {
   EC = protractor.ExpectedConditions;
-  private loginUrl = 'auth/login';
-  private validCredentials: UserData = {
-    Email: 'gabi97_97@o2.pl',
-    // Email: 'testingquestionnaire@gmail.com',
+  loginUrl = 'auth/login';
+  validCredentials: UserData = {
+    Email: 'testingquestionnaire@gmail.com',
     Password: '!A123456a',
     Username: 'testingquestionnaire',
     Name: 'test',
@@ -30,7 +29,6 @@ export class LoginPage {
     this.openMail();
   }
   openMail() {
-    console.log('halo');
     const mailDiv = browser
       .element(by.css('table.F.cf.zt'))
       .element(by.tagName('tbody'))
@@ -46,19 +44,19 @@ export class LoginPage {
     browser
       .wait(this.EC.textToBePresentInElement(mailTag, 'questionnaire'), 50000)
       .then(() => {
-        console.log('mamy');
         mailDiv.click();
         const sth = browser.element(
           by.cssContainingText('a', 'link aktywacyjny')
         );
         browser.wait(this.EC.visibilityOf(sth), 5000).then(() => {
-          console.log('h2 is');
           sth.click();
-          this.navigateToApp();
-          this.logInToApp();
+          browser.getAllWindowHandles().then(handles => {
+            browser.switchTo().window(handles[0]);
+            this.navigateToApp();
+            this.logInToApp();
+          });
         });
       });
-    // browser.wait;
   }
   redirectToRegisterPage() {
     browser.get('/auth/register');
@@ -116,7 +114,7 @@ export class LoginPage {
     browser
       .wait(
         this.EC.visibilityOf(browser.element(by.css('input[name="password"]'))),
-        5000
+        1000
       )
       .then(() => {
         browser
@@ -133,19 +131,9 @@ export class LoginPage {
             )
           )
           .then(() => {
-            console.log('SHOWED');
             this.navigateToMail();
           });
       });
-    // ar.click();
-    console.log('?');
-    element(by.css('input[name="password"]')).sendKeys(
-      this.validCredentials.Password
-    );
-    element(by.css('input[name="password"]')).sendKeys(protractor.Key.ENTER);
-    console.log('lul');
-
-    // browser.pause();
   }
   logInToApp() {
     const emailinput = browser.element(
