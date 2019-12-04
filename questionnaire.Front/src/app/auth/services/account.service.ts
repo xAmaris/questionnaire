@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppConfig } from '../../app.config';
 import { UserProfile } from '../other/user.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AccountService {
@@ -64,9 +64,11 @@ export class AccountService {
         PhoneNumber: user.phoneNum,
         Password: user.password
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   // change password
   changePassword(OldPassword, NewPassword) {

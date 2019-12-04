@@ -10,10 +10,6 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:no-submodule-imports no-implicit-dependencies
 import * as cloneDeep from 'lodash/cloneDeep';
-import { Subject } from 'rxjs/internal/Subject';
-import { Observable } from 'rxjs/Observable';
-import { debounceTime, switchMap } from 'rxjs/operators';
-import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../../../services/shared.service';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
@@ -39,6 +35,8 @@ import {
 import { SurveyService } from '../services/survey.services';
 import { SendSurveyDialogData } from './../../../../data/shared.data';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
+import { Subscription, Observable, Subject } from 'rxjs';
+import { debounceTime, switchMap, map } from 'rxjs/operators';
 // import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
 @Component({
@@ -153,25 +151,23 @@ export class SurveyCreatorComponent
     this.sharedService.showCreatorButton(true);
   }
   getSurvey(): void {
-    this.activatedRoute.data
-      .map(data => data.cres)
-      .subscribe(
-        (res: SurveyTemplate) => {
-          this.surveyService.isCreatorLoading(false);
-          if (res) {
-            this.id = res.id;
-            if (res.questionTemplates.length === 0) {
-              this.createQuestionData();
-              this.updateSurveySubject();
-            } else if (res.questionTemplates.length > 0) {
-              this.createQuestionData(res);
-            }
+    this.activatedRoute.data.pipe(map(data => data.cres)).subscribe(
+      (res: SurveyTemplate) => {
+        this.surveyService.isCreatorLoading(false);
+        if (res) {
+          this.id = res.id;
+          if (res.questionTemplates.length === 0) {
+            this.createQuestionData();
+            this.updateSurveySubject();
+          } else if (res.questionTemplates.length > 0) {
+            this.createQuestionData(res);
           }
-        },
-        error => {
-          this.surveyService.isCreatorLoading(false);
         }
-      );
+      },
+      error => {
+        this.surveyService.isCreatorLoading(false);
+      }
+    );
   }
 
   showBackButton(): void {

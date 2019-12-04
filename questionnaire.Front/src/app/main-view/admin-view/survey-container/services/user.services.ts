@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppConfig } from '../../../../app.config';
 import {
   RegisteredUser,
@@ -9,6 +8,7 @@ import {
   UnregisteredUserModel
 } from '../../../../models/user.model';
 import { UserProfile } from './../../../../auth/other/user.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -25,16 +25,20 @@ export class UserService {
   importUsers(file): Observable<any> {
     return this.http
       .post<any>(this.config.apiUrl + '/importfile/import', file)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getAllUsers(): Observable<UnregisteredUser[]> {
     return this.http
       .get<any[]>(this.config.apiUrl + '/importfile/unregisteredUsers')
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   saveUnregisteredUser(user: UnregisteredUserModel): Observable<any> {
     console.log(user);
@@ -47,17 +51,21 @@ export class UserService {
         TypeOfStudy: user.typeOfStudy,
         DateOfCompletion: user.completionDate
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
 
   deleteUserById(id: number): Observable<any> {
     return this.http
       .delete<any>(this.config.apiUrl + '/importfile/unregisteredUsers/' + id)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   updateUserById(id: number, user: UnregisteredUserModel): Observable<any> {
     return this.http
@@ -69,8 +77,10 @@ export class UserService {
         TypeOfStudy: user.typeOfStudy,
         DateOfCompletion: user.completionDate
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
 }

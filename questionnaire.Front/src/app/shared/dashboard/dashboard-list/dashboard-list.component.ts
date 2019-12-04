@@ -7,7 +7,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
 
 @Component({
@@ -16,7 +16,7 @@ import { SurveyService } from '../../../main-view/admin-view/survey-container/se
   styleUrls: ['./dashboard-list.component.scss']
 })
 export class DashboardListComponent implements OnInit, OnDestroy {
-  @ContentChild(TemplateRef)
+  @ContentChild(TemplateRef, { static: false })
   parentTemplate;
   private _itemArr: any[];
   @Input()
@@ -38,8 +38,7 @@ export class DashboardListComponent implements OnInit, OnDestroy {
   // subs
   isLoadingSub: Subscription = new Subscription();
 
-  constructor(private surveyService: SurveyService, public dialog: MatDialog) {
-  }
+  constructor(private surveyService: SurveyService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.isLoadingFromOutside();

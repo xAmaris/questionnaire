@@ -14,7 +14,7 @@ import { UserService } from '../../../../../survey-container/services/user.servi
   styleUrls: ['./import-user-tab.component.scss']
 })
 export class ImportUserTabComponent implements OnInit {
-  @ViewChild('fileInput')
+  @ViewChild('fileInput', { static: false })
   fileInput: FileUpload;
   @ViewChildren('progress')
   progress: ElementRef;

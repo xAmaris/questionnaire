@@ -16,8 +16,6 @@ import { AppBarTooltip } from '../../models/shared.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppBarComponent {
-  @ViewChild(MatMenuTrigger)
-  trigger: MatMenuTrigger;
   private _url = '/app/admin/d/';
   private _showAdmin: boolean;
   private _showSendButton: boolean;
@@ -142,6 +140,9 @@ export class AppBarComponent {
   routeSwitch: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   progressButton: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @ViewChild(MatMenuTrigger, { static: false })
+  trigger: MatMenuTrigger;
 
   constructor() {}
 

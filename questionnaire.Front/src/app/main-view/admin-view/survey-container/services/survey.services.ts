@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
-import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../../../app.config';
 import { Update } from '../models/survey-creator.models';
 import { SurveySurvey, SurveyTemplate } from '../models/survey.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SurveyService {
@@ -26,9 +26,11 @@ export class SurveyService {
         SurveyId: id,
         Questions: survey.questions
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   sendSurvey(survey) {
     return this.http
@@ -36,16 +38,20 @@ export class SurveyService {
         Subject: survey.Subject,
         Body: survey.Body
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   sendSpecificSurvey(id: number): Observable<any> {
     return this.http
       .post<any>(this.config.apiUrl + '/email/survey-emails/' + id, {})
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   createSurvey(survey) {
     return this.http
@@ -53,9 +59,11 @@ export class SurveyService {
         Title: survey.title,
         Questions: survey.questions
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   updateSurvey(object: Update): Observable<any> {
     console.log(object);
@@ -65,58 +73,72 @@ export class SurveyService {
         Title: object.Title,
         Questions: object.QuestionTemplates
       })
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   deleteSurvey(id: number) {
     return this.http
       .delete<any>(this.config.apiUrl + '/surveytemplate/' + id)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getAllSurveys(): Observable<SurveyTemplate[]> {
     return this.http
       .get<SurveyTemplate[]>(this.config.apiUrl + '/surveytemplate/surveys')
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getAllSentSurveys(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.config.apiUrl + '/survey/surveys')
-      .map(data => {
+    return this.http.get<any[]>(this.config.apiUrl + '/survey/surveys').pipe(
+      map(data => {
         return data;
-      });
+      })
+    );
   }
   getSurveyTemplateWithId(id: number): Observable<SurveyTemplate> {
     return this.http
       .get<SurveyTemplate>(this.config.apiUrl + '/surveytemplate/' + id)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getSentSurveyWithId(id: number): Observable<SurveySurvey> {
     return this.http
       .get<SurveySurvey>(this.config.apiUrl + '/survey/' + id)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getSurveyWithIdAndHash(id: number, hash: string): Observable<any> {
     return this.http
       .get<any>(this.config.apiUrl + '/survey/' + id + '/' + hash)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   getSurveyReport(id: number): Observable<any> {
     return this.http
       .get<any>(this.config.apiUrl + '/surveyreport/surveyReports/' + id)
-      .map(data => {
-        return data;
-      });
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
   }
   saveSurveysFromApi(): void {
     this.getAllSurveys().subscribe(data => {

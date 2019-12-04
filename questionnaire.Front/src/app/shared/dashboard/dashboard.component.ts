@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild('sidenav')
+  @ViewChild('sidenav', { static: false })
   sidenav;
-  @ViewChild(RouterOutlet)
+  @ViewChild(RouterOutlet, { static: false })
   outlet: RouterOutlet;
   show = true;
   loading = true;

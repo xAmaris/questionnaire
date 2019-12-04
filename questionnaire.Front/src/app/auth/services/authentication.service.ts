@@ -1,10 +1,11 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { BehaviorSubject } from 'rxjs';
 import { AppConfig } from '../../app.config';
 import { User } from '../other/user.model';
 import { AccountService } from './account.service';
+import { map } from 'rxjs/operators';
 
 /**
  * Service for authentication - log in and log out.
@@ -14,14 +15,12 @@ import { AccountService } from './account.service';
  */
 @Injectable()
 export class AuthenticationService {
-  profileData: BehaviorSubject<User> = new BehaviorSubject<
-  User
->(undefined);
+  profileData: BehaviorSubject<User> = new BehaviorSubject<User>(undefined);
   constructor(
     private http: HttpClient,
     private config: AppConfig,
     private userService: AccountService
-  ) { }
+  ) {}
 
   /**
    * Sign in user - make request using values email and password
@@ -34,15 +33,17 @@ export class AuthenticationService {
   login(Email: string, Password: string) {
     return this.http
       .post<any>(this.config.apiUrl + '/auth/login', { Email, Password })
-      .map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.loginData.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.userService.isLoggedNext(true);
-        }
-        return user;
-      });
+      .pipe(
+        map(user => {
+          // login successful if there's a jwt token in the response
+          if (user && user.loginData.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.userService.isLoggedNext(true);
+          }
+          return user;
+        })
+      );
   }
 
   /**

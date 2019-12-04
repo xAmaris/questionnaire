@@ -4,8 +4,7 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject, Observable ,  Subscription } from 'rxjs';
 import { UserProfile } from '../../auth/other/user.model';
 import { AccountService } from '../../auth/services/account.service';
 import { SharedService } from '../../services/shared.service';

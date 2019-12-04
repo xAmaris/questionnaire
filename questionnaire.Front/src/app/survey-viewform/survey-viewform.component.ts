@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import {
   MainFormSurvey,
   MainFormTemplate,
@@ -23,6 +23,7 @@ import {
 import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
 import { SharedService } from '../services/shared.service';
 import { SurveyCompletedComponent } from './survey-completed/survey-completed.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -73,7 +74,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     this.sharedService.showUser(false);
   }
   getSurvey(): void {
-    this.activatedRoute.data.map(data => data.cres).subscribe(
+    this.activatedRoute.data.pipe(map(data => data.cres)).subscribe(
       res => {
         if (res) {
           const params = this.activatedRoute.snapshot.params;

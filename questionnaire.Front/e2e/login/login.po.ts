@@ -29,31 +29,36 @@ export class LoginPage {
     this.openMail();
   }
   openMail() {
-    const mailDiv = browser
-      .element(by.css('table.F.cf.zt'))
+    const mailTag = browser.element
+      .all(by.css('table.F.cf.zt'))
+      .get(1)
       .element(by.tagName('tbody'))
-      .all(by.tagName('tr'))
-      .first();
-    const mailTag = mailDiv
-      .all(by.tagName('td'))
-      .get(4)
-      .all(by.tagName('div'))
-      .last()
-      .element(by.tagName('span'))
-      .element(by.tagName('span'));
+      .all(by.cssContainingText('span', 'Ankietyzator - aktywacja konta.'))
+      .get(1);
+    // const mailTag = browser.element(
+    //   by.cssContainingText('span', 'Ankietyzator - aktywacja konta.')
+    // );
+
     browser
-      .wait(this.EC.textToBePresentInElement(mailTag, 'questionnaire'), 50000)
+      .wait(
+        this.EC.textToBePresentInElement(
+          mailTag,
+          'Ankietyzator - aktywacja konta.'
+        ),
+        50000
+      )
       .then(() => {
-        mailDiv.click();
+        mailTag.click();
         const sth = browser.element(
           by.cssContainingText('a', 'link aktywacyjny')
         );
         browser.wait(this.EC.visibilityOf(sth), 5000).then(() => {
-          sth.click();
-          browser.getAllWindowHandles().then(handles => {
-            browser.switchTo().window(handles[0]);
-            this.navigateToApp();
-            this.logInToApp();
+          sth.click().then(() => {
+            browser.getAllWindowHandles().then(handles => {
+              browser.switchTo().window(handles[1]);
+              this.navigateToApp();
+              this.logInToApp();
+            });
           });
         });
       });
@@ -97,10 +102,7 @@ export class LoginPage {
     // ).click();
   }
   browserSendKeys(keys: any) {
-    browser
-      .actions()
-      .sendKeys(keys)
-      .perform();
+    browser.actions().sendKeys(keys).perform();
   }
   logInToGoogleAccount() {
     // browser.waitForAngular(false);

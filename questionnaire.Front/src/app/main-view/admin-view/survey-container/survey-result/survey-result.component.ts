@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../../../../services/shared.service';
 import { SurveyService } from '../services/survey.services';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-survey-result',
@@ -61,7 +62,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     this.sharedService.showBackButton(true);
   }
   getSurvey(): void {
-    this.activatedRoute.data.map(data => data.cres).subscribe(
+    this.activatedRoute.data.pipe(map(data => data.cres)).subscribe(
       res => {
         if (res) {
           this.createData(res);
