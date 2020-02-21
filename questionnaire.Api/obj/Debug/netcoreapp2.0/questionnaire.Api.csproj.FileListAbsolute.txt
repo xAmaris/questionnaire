@@ -17,3 +17,44 @@ D:\AngularProjects\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\quest
 D:\AngularProjects\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csproj.CopyComplete
 D:\AngularProjects\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.dll
 D:\AngularProjects\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\nlog.config
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.deps.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.runtimeconfig.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.runtimeconfig.dev.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csprojAssemblyReference.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorAssemblyInfo.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorAssemblyInfo.cs
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.AssemblyInfoInputs.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.AssemblyInfo.cs
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorTargetAssemblyInfo.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csproj.CopyComplete
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.deps.json
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.runtimeconfig.json
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.runtimeconfig.dev.json
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Api.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Infrastructure.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csprojAssemblyReference.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csproj.CoreCompileInputs.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorAssemblyInfo.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorAssemblyInfo.cs
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.AssemblyInfoInputs.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.AssemblyInfo.cs
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.RazorTargetAssemblyInfo.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.csproj.CopyComplete
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Api\obj\Debug\netcoreapp2.0\questionnaire.Api.pdb

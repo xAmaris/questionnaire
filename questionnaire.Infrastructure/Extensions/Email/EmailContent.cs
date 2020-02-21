@@ -13,7 +13,7 @@ namespace questionnaire.Infrastructure.Extensions.Email {
 
         public string RecoveringPasswordEmail (string name, Guid token) {
             return $"Witaj, {name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w" +
-                $" <a href=\"http://localhost:4200/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło.";
+                $" <a href=\"http://localhost:4200/auth/restore/{token}\">link </a>, aby zmienić swoje hasło.";
         }
 
         public string SurveyEmail (int surveyId, string email) {

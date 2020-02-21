@@ -55,8 +55,6 @@
   #survey-module {
     #wrapper {
       #content {
-        grid-template-rows: auto auto;
-        grid-template-columns: auto;
         #mailSpace {
           grid-column: 1 / span 2;
           grid-row: 2;

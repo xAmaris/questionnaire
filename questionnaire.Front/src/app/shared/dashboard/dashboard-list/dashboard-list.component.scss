@@ -8,6 +8,7 @@
     #container {
       height: 100%;
       width: 100%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       .survey-item {
         display: flex;
         align-items: center;
@@ -16,10 +17,6 @@
       }
       .survey-item:hover {
         background-color: #eaeaea;
-      }
-      .break {
-        height: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
       }
     }
     #empty {

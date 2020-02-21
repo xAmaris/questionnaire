@@ -515,7 +515,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "5BdAWDgMNwf90L0J+C/eh6kfHDa37ViL1cBL1nv5zPA4TB2cGV51YiQyvzCEy9DBE0LwwMI4+PkUpIekKyocSA==",
+      "sha512": "CCf4NjmDOoise7FAij2VPuHIgKKsu696vkTwhOkPVQfLsTmB2WLFfQ4yeO5Udtk8FD636UBMx6Y9eovzJKT76A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
@@ -672,11 +672,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
+      "projectUniqueName": "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
       "projectName": "questionnaire.Core",
-      "projectPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
+      "projectPath": "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Core\\questionnaire.Core.csproj",
       "packagesPath": "C:\\Users\\gabi9\\.nuget\\packages\\",
-      "outputPath": "d:\\AngularProjects\\questionnaire\\questionnaire.Core\\obj\\",
+      "outputPath": "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

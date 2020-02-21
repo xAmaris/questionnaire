@@ -12,8 +12,10 @@ import {
 } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  FontAwesomeModule,
+  FaIconLibrary
+} from '@fortawesome/angular-fontawesome';
 import { faChartBar, faEye } from '@fortawesome/free-regular-svg-icons';
 import {
   faArrowLeft,
@@ -34,7 +36,6 @@ import {
   faTrash,
   faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { SortablejsModule } from 'angular-sortablejs/dist';
 import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
 import { AppRoutingModule } from './app.routing';
@@ -52,28 +53,6 @@ import { SharedService } from './services/shared.service';
 import { LoadingOverlayModule } from './shared/loading-overlay/loading-overlay.module';
 import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
 
-library.add(
-  faTimes,
-  faBars,
-  faPlus,
-  faTrash,
-  faSortDown,
-  faSortUp,
-  faGripVertical,
-  faPen,
-  faBriefcase,
-  faCog,
-  faEye,
-  faClone,
-  faUserAlt,
-  faEllipsisV,
-  faSearch,
-  faEllipsisH,
-  faChartBar,
-  faArrowLeft,
-  faFileExcel
-);
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -87,8 +66,7 @@ library.add(
     FontAwesomeModule,
     LoadingOverlayModule,
     BarModule,
-    LoadingScreenModule,
-    SortablejsModule.forRoot({ animation: 150 })
+    LoadingScreenModule
   ],
   providers: [
     AuthenticationService,
@@ -121,4 +99,28 @@ library.add(
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faTimes,
+      faBars,
+      faPlus,
+      faTrash,
+      faSortDown,
+      faSortUp,
+      faGripVertical,
+      faPen,
+      faBriefcase,
+      faCog,
+      faEye,
+      faClone,
+      faUserAlt,
+      faEllipsisV,
+      faSearch,
+      faEllipsisH,
+      faChartBar,
+      faArrowLeft,
+      faFileExcel
+    );
+  }
+}

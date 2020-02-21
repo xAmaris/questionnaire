@@ -7,3 +7,20 @@ D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\ques
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
 D:\AngularProjects\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.deps.json
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csprojAssemblyReference.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfoInputs.cache
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
+C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.deps.json
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csprojAssemblyReference.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csproj.CoreCompileInputs.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfoInputs.cache
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb

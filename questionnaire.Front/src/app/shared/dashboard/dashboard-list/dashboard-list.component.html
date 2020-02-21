@@ -4,7 +4,6 @@
       <div class="survey-item">
         <ng-content *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-content>
       </div>
-      <div class="break"></div>
     </div>
     <div id="empty" *ngIf="fetching === false && itemArr.length === 0"> {{ emptyListInfo}}</div>
   </div>

@@ -7,7 +7,6 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SortablejsModule } from 'angular-sortablejs/dist';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
@@ -16,6 +15,7 @@ import { MoveQuestionDialogComponent } from './move-question-dialog/move-questio
 import { ButtonSingleControlComponent } from './survey-creator-component/button-single-control/button-single-control.component';
 import { SurveyCreatorComponent } from './survey-creator.component';
 import { SurveyCreatorRoutingModule } from './survey-creator.routing';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -29,8 +29,8 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
     FontAwesomeModule,
     ProgressSpinnerModule,
     MatSlideToggleModule,
-    SortablejsModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    DragDropModule
   ],
   declarations: [
     SurveyCreatorComponent,

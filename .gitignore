@@ -391,3 +391,8 @@ healthchecksdb
 .vs/questionnaire/v15/Server/sqlite3/storage.ide-wal
 .vscode/launch.json
 .vscode/tasks.json
+questionnaire.Api/appsettings.json
+questionnaire.Api/appsettings.json
+questionnaire.Core/obj/project.assets.json
+questionnaire.Core/obj/questionnaire.Core.csproj.nuget.g.props
+questionnaire.Core/obj/project.assets.json

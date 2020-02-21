@@ -61,7 +61,7 @@
             <div class="dropdown" *ngSwitchCase="'dropdown-menu'" formArrayName="choiceOptions">
               <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
                 <mat-form-field appearance="standard">
-                  <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
+                  <input matInput type="text" formControlName="viewValue" maxlength="100" #inputs (keyup)="updateSurveySubject()"
                     (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                 </mat-form-field>
                 <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
@@ -104,7 +104,7 @@
                   <mat-radio-button></mat-radio-button>
                 </mat-radio-group>
                 <mat-form-field appearance="standard">
-                  <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
+                  <input matInput type="text" formControlName="viewValue" maxlength="100" #inputs (keyup)="updateSurveySubject()"
                     (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                 </mat-form-field>
                 <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
@@ -119,7 +119,7 @@
                     <mat-checkbox formControlName="value"></mat-checkbox>
                   </div>
                   <mat-form-field appearance="standard">
-                    <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
+                    <input matInput type="text" formControlName="viewValue" maxlength="100" #inputs (keyup)="updateSurveySubject()"
                       (focus)="setSelection($event)" (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
@@ -147,7 +147,7 @@
                     <mat-radio-button></mat-radio-button>
                   </mat-radio-group>
                   <mat-form-field appearance="standard">
-                    <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue" maxlength="20"
+                    <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue" maxlength="100"
                       #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" (focus)="setSelection($event)">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['choiceOptions'])"
@@ -182,7 +182,7 @@
                       <mat-checkbox formControlName="value"></mat-checkbox>
                     </div>
                     <mat-form-field appearance="standard">
-                      <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="20"
+                      <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="100"
                         #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" (focus)="setSelection($event)">
                     </mat-form-field>
                     <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['choiceOptions'])"
