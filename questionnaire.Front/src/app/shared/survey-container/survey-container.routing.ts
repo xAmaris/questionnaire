@@ -15,12 +15,12 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'response/:id/:hash',
         loadChildren:
-          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
+          './../../modules/survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
       },
       {
         path: 'create/:id',
         loadChildren:
-          './../../main-view/admin-view/survey-container/survey-creator/survey-creator.module#SurveyCreatorModule',
+          './../../modules/main-view/admin-view/survey-container/survey-creator/survey-creator.module#SurveyCreatorModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyCreatorResolver
@@ -30,7 +30,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'viewform/:preview/:id/:hash',
         loadChildren:
-          './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
+          './../../modules/survey-viewform/survey-viewform.module#SurveyViewformModule',
         canActivate: [ViewformGuard],
         resolve: {
           cres: SurveyViewformResolver
@@ -40,7 +40,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'viewform/:preview/:id',
         loadChildren:
-          './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
+          './../../modules/survey-viewform/survey-viewform.module#SurveyViewformModule',
         resolve: {
           cres: SurveyViewformResolver
         },
@@ -49,7 +49,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'result/:id',
         loadChildren:
-          './../../main-view/admin-view/survey-container/survey-result/survey-result.module#SurveyResultModule',
+          './../../modules/main-view/admin-view/survey-container/survey-result/survey-result.module#SurveyResultModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyResultResolver

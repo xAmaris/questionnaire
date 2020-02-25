@@ -16,13 +16,13 @@ const adminRoutes: Routes = [
       {
         path: 'd',
         loadChildren:
-          './../../shared/dashboard/dashboard.module#DashboardModule',
+          './../../../shared/dashboard/dashboard.module#DashboardModule',
         canLoad: [AuthGuard]
       },
       {
         path: 'survey',
         loadChildren:
-          './../../shared/survey-container/survey-container.module#SurveyContainerModule',
+          './../../../shared/survey-container/survey-container.module#SurveyContainerModule',
         canLoad: [AuthGuard]
       }
     ]

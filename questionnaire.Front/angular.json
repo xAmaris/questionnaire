@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "questionnaire": {
-      "root": "",
+      "root": "src",
       "sourceRoot": "src",
       "projectType": "application",
       "architect": {
@@ -20,7 +20,12 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/primeng/resources/primeng.min.css"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "."
+              ]
+            }
           },
           "configurations": {
             "production": {

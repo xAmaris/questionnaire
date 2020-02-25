@@ -45,14 +45,14 @@ const routes: Routes = [
             path: outletPath,
             outlet: outlets.sidebar,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-sidenav/survey-sidenav.module#SurveySidenavModule',
+              './../../modules/main-view/admin-view/dashboard-views/survey-dashboard/survey-sidenav/survey-sidenav.module#SurveySidenavModule',
             data: { preload: true, delay: true }
           },
           {
             path: outletPath,
             outlet: outlets.manage,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-content/survey-content.module#SurveyContentModule',
+              './../../modules/main-view/admin-view/dashboard-views/survey-dashboard/survey-content/survey-content.module#SurveyContentModule',
             data: { preload: true, delay: true }
           }
         ]
@@ -70,7 +70,7 @@ const routes: Routes = [
             outlet: outlets.sidebar,
             loadChildren:
               // tslint:disable-next-line:max-line-length
-              './../../main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-sidenav/survey-sent-sidenav.module#SurveySentSidenavModule',
+              './../../modules/main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-sidenav/survey-sent-sidenav.module#SurveySentSidenavModule',
             data: { preload: true, delay: true }
           },
           {
@@ -78,7 +78,7 @@ const routes: Routes = [
             outlet: outlets.manage,
             loadChildren:
               // tslint:disable-next-line:max-line-length
-              './../../main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-content/survey-sent-content.module#SurveySentContentModule',
+              './../../modules/main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-content/survey-sent-content.module#SurveySentContentModule',
             data: { preload: true, delay: true }
           }
         ]
@@ -95,14 +95,14 @@ const routes: Routes = [
             path: outletPath,
             outlet: outlets.sidebar,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/users-dashboard/users-sidenav/users-sidenav.module#UsersSidenavModule',
+              './../../modules/main-view/admin-view/dashboard-views/users-dashboard/users-sidenav/users-sidenav.module#UsersSidenavModule',
             data: { preload: true, delay: true }
           },
           {
             path: outletPath,
             outlet: outlets.manage,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/users-dashboard/users-content/users-content.module#UsersContentModule',
+              './../../modules/main-view/admin-view/dashboard-views/users-dashboard/users-content/users-content.module#UsersContentModule',
             data: { preload: true, delay: true }
           }
         ]
