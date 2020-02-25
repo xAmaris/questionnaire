@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SharedService } from '../../services/shared.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-dashboard',

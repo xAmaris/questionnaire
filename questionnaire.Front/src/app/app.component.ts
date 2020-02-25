@@ -8,11 +8,11 @@ import {
   RouterEvent
 } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { UserProfile } from './auth/other/user.model';
-import { AccountService } from './auth/services/account.service';
-import { AuthenticationService } from './auth/services/authentication.service';
-import { AppBarTooltip } from './models/shared.models';
-import { SharedService } from './services/shared.service';
+import { UserProfile } from './core/auth/other/user.model';
+import { AccountService } from './core/auth/services/account.service';
+import { AuthenticationService } from './core/auth/services/authentication.service';
+import { AppBarTooltip } from './shared/models/shared.models';
+import { SharedService } from './shared/services/shared.service';
 
 @Component({
   selector: 'app-root',

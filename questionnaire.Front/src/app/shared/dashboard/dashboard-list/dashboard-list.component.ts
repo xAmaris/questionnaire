@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
+import { SurveyService } from '../../../modules/main-view/admin-view/survey-container/services/survey.services';
 
 @Component({
   selector: 'app-dashboard-list',

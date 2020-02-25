@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../../auth/other/guard.auth';
-import { ViewformGuard } from '../../auth/other/viewform.auth';
-import { SurveyCreatorResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
-import { SurveyResultResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-result.resolver';
-import { SurveyViewformResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
+import { AuthGuard } from '../../core/auth/other/guard.auth';
+import { ViewformGuard } from '../../core/auth/other/viewform.auth';
+import { SurveyCreatorResolver } from '../../modules/main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
+import { SurveyResultResolver } from '../../modules/main-view/admin-view/survey-container/resolvers/survey-result.resolver';
+import { SurveyViewformResolver } from '../../modules/main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
 import { SurveyContainerComponent } from './survey-container.component';
 
 const surveyContainerRoutes: Routes = [

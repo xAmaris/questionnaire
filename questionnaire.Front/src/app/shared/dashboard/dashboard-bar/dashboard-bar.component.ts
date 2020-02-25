@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
+import { SurveyService } from '../../../modules/main-view/admin-view/survey-container/services/survey.services';
 
 @Component({
   selector: 'app-dashboard-bar',

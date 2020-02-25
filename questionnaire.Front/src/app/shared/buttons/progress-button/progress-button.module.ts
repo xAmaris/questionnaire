@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { MaterialsModule } from './../../../materials/materials.module';
+import { MaterialsModule } from '../../../core/materials/materials.module';
 import { ProgressButtonComponent } from './progress-button.component';
 
 @NgModule({
