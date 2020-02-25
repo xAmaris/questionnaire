@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
-import { AppConfig } from '../../../../../app.config';
+import { AppConfig } from '../../../../../core/others/url.config';
 import { Update } from '../models/survey-creator.models';
 import { SurveySurvey, SurveyTemplate } from '../models/survey.model';
 import { map } from 'rxjs/operators';

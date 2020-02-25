@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
-import { AppConfig } from '../../../app.config';
+import { AppConfig } from '../../others/url.config';
 import { User } from '../other/user.model';
 import { AccountService } from './account.service';
 import { map } from 'rxjs/operators';

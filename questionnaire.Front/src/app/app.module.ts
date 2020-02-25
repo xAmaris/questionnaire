@@ -37,7 +37,7 @@ import {
   faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
-import { AppConfig } from './app.config';
+import { AppConfig } from './core/others/url.config';
 import { AppRoutingModule } from './app.routing';
 import { AuthGuard } from './core/auth/other/guard.auth';
 import { GuidGuard } from './core/auth/other/guid.auth';
