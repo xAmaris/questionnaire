@@ -15,7 +15,7 @@ import { SurveyService } from '../../../survey-container/services/survey.service
   styleUrls: ['./survey-sent-content.component.scss']
 })
 export class SurveySentContentComponent implements OnInit, OnDestroy {
-  groupTitle = 'Grupa ankiet 1';
+  groupTitle = 'Lista ankiet';
   emptyListInfo = 'Brak wysłanych ankiet';
   loading = false;
   surveyArr: SurveySurvey[];

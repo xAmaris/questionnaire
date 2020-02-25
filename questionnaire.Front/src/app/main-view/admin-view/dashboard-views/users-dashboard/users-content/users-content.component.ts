@@ -19,7 +19,7 @@ import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab
   styleUrls: ['./users-content.component.scss']
 })
 export class UsersContentComponent implements OnInit {
-  groupTitle = 'Grupa użytkowników 1';
+  groupTitle = 'Lista użytkowników';
   buttonDets = 'Dodaj nowego użytkownika';
   emptyListInfo = 'Brak niezarejestrowanych użytkowników';
   // tslint:disable-next-line:max-line-length
