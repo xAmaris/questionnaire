@@ -14,7 +14,6 @@ describe('Login page', () => {
       .then(async () => {
         page.navigateToApp();
         await page.logInToApp();
-        console.log('all is fine and ok');
       })
       .catch(() => {
         page.redirectToRegisterPage();

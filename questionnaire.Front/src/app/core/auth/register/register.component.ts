@@ -110,14 +110,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     });
 
     // connecting controls with form inputs
-    this.name = this.regForm.controls['name'];
-    this.lastName = this.regForm.controls['lastName'];
-    this.email = this.regForm.controls['email'];
-    this.password = this.regForm.controls['password'];
-    this.passwordConfirm = this.regForm.controls['passwordConfirm'];
-    this.profileName = this.regForm.controls['profileName'];
-    this.albumID = this.regForm.controls['albumID'];
-    this.phoneNum = this.regForm.controls['phoneNum'];
+    this.name = this.regForm.controls.name;
+    this.lastName = this.regForm.controls.lastName;
+    this.email = this.regForm.controls.email;
+    this.password = this.regForm.controls.password;
+    this.passwordConfirm = this.regForm.controls.passwordConfirm;
+    this.profileName = this.regForm.controls.profileName;
+    this.albumID = this.regForm.controls.albumID;
+    this.phoneNum = this.regForm.controls.phoneNum;
     this.hide(this.defaultProfile);
   }
 
@@ -136,18 +136,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm): void {
-    console.log(this.profileName.value);
 
     if (!form.valid) {
       // showing possible errors
       this.setAllAsTouched();
-      console.log(this.email);
     } else {
       this.loading = true;
       this.createUser();
-      console.log(this.user);
       // create new user
-      console.log(this.profileName.value);
       switch (this.profileName.value) {
         case 'Student':
           this.accountService.createStudent(this.user).subscribe(
@@ -158,7 +154,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
               this.loading = false;
               this.registrationError = true;
               // set error message from api to loginErrorMessage
-              console.log(error.error);
               this.registrationErrorMessage = error;
             }
           );

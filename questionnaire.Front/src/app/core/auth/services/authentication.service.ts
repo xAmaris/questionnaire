@@ -58,8 +58,8 @@ export class AuthenticationService {
   }
 
   activateAccount(token: string) {
-    const string = '/auth/activation/' + token;
-    return this.http.get(this.config.apiUrl + string);
+    const str = '/auth/activation/' + token;
+    return this.http.get(this.config.apiUrl + str);
   }
   setProfileData() {
     // return this.http

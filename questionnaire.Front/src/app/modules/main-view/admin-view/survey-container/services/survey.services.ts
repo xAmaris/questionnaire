@@ -66,7 +66,6 @@ export class SurveyService {
       );
   }
   updateSurvey(object: Update): Observable<any> {
-    console.log(object);
     return this.http
       .put<Update>(this.config.apiUrl + '/surveytemplate/surveys', {
         surveyId: object.id,

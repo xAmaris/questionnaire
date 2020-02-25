@@ -47,15 +47,6 @@ export class AccountService {
   }
 
   createNewAdmin(user): Observable<any> {
-    console.log(
-      JSON.stringify({
-        Name: user.firstName,
-        Surname: user.lastName,
-        Email: user.email,
-        PhoneNumber: user.phoneNum,
-        Password: user.password
-      })
-    );
     return this.http
       .post<any>(this.config.apiUrl + '/auth/careerOffices', {
         Name: user.firstName,
