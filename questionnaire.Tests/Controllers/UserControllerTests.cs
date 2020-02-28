@@ -34,7 +34,7 @@ namespace questionnaire.Tests.Controllers
             };
             var jsoncontent = JsonConvert.SerializeObject(updateAccount);
             var httpcontent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync("/api/accountupdate/accounts", httpcontent);
+            var response = await _client.PutAsync("/api/accountupdate/accounts", httpcontent);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
     }

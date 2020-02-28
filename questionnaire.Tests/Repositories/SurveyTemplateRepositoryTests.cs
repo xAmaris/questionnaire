@@ -1,4 +1,5 @@
-﻿using questionnaire.Core.Domains.SurveyTemplates;
+﻿using Microsoft.Extensions.DependencyInjection;
+using questionnaire.Core.Domains.SurveyTemplates;
 using questionnaire.Infrastructure.Data;
 using questionnaire.Infrastructure.Repositories;
 using questionnaire.Infrastructure.Repositories.Interfaces;
@@ -14,7 +15,7 @@ namespace questionnaire.Tests.Repositories
         private readonly ISurveyTemplateRepository _surveyTemplateRepository;
         public SurveyTemplateRepositoryTests(TestHostFixture fixture)
         {
-            _context = fixture._context;
+            _context = fixture._factory.Server.Host.Services.CreateScope().ServiceProvider.GetRequiredService<QuestionnaireContext>();
             _surveyTemplateRepository = new SurveyTemplateRepository(_context);
         }
         [Fact]

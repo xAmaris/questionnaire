@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using questionnaire.Core.Domains.SurveyTemplates;
 using questionnaire.Infrastructure.Commands.Survey;
@@ -30,7 +31,7 @@ namespace questionnaire.Tests.Services
         private ISurveyTemplateService _surveyTemplateService;
         public SurveyServiceTemplateTests(TestHostFixture fixture)
         {
-            _context = fixture._context;
+            _context = fixture._factory.Server.Host.Services.CreateScope().ServiceProvider.GetRequiredService<QuestionnaireContext>();
             _surveyTemplateRepository = new SurveyTemplateRepository(_context);
             _questionTemplateRepository = new QuestionTemplateRepository(_context);
             _fieldDataTemplateRepository = new FieldDataTemplateRepository(_context);

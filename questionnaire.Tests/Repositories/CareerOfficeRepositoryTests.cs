@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using questionnaire.Core.Domains;
 using questionnaire.Infrastructure.Data;
 using questionnaire.Infrastructure.Repositories;
@@ -14,7 +15,7 @@ namespace questionnaire.Tests.Repositories
         private readonly ICareerOfficeRepository _careerOfficeRepository;
         public CareerOfficeRepositoryTests(TestHostFixture fixture)
         {
-            _context = fixture._context;
+            _context = fixture._factory.Server.Host.Services.CreateScope().ServiceProvider.GetRequiredService<QuestionnaireContext>();
             _careerOfficeRepository = new CareerOfficeRepository(_context);
         }
 
