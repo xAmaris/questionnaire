@@ -38,6 +38,12 @@ namespace questionnaire.Tests.Controllers
         [Fact]
         public async Task GetSurveyAndCreateSurveyAnswer()
         {
+            using (var scope = _factory.Server.Host.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<QuestionnaireContext>();
+
+            }
+
             var response = await _client.GetAsync("/api/surveyTemplate/1");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -86,14 +92,19 @@ namespace questionnaire.Tests.Controllers
                 var context = scope.ServiceProvider.GetRequiredService<QuestionnaireContext>();
 
                 ISurveyReportRepository _surveyReportRepository = new SurveyReportRepository(context);
+                ISurveyRepository _surveyRepository = new SurveyRepository(context);
+                IDataSetRepository _dataSetRepository = new DataSetRepository(context);
+                IQuestionReportRepository _questionReportRepository = new QuestionReportRepository(context);
                 ISurveyUserIdentifierRepository _surveyUserIdentifierRepository = new SurveyUserIdentifierRepository(context);
                 ISurveyUserIdentifierService _surveyUserIdentifierService = new SurveyUserIdentifierService(_surveyUserIdentifierRepository);
-                ISurveyReportService _surveyReportService = new SurveyReportService(_surveyUserIdentifierRepository);
+                ISurveyReportService _surveyReportService = new SurveyReportService(_surveyReportRepository, _surveyRepository, _dataSetRepository, _questionReportRepository);
                 await _surveyUserIdentifierService.CreateAsync(_email, survey.Id);
                 await _surveyReportService.CreateAsync(survey.Id, survey.Title);
+
+                var identifier = context.SurveyUserIdentifiers.FirstOrDefault(x => x.SurveyId == survey.Id);
                 var jsoncontent = JsonConvert.SerializeObject(answer);
                 var httpcontent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
-                var answerRes = await _client.PostAsync("/api/surveyAnswer/" + hash.UserEmailHash, httpcontent);
+                var answerRes = await _client.PostAsync("/api/surveyAnswer/" + identifier.UserEmailHash, httpcontent);
                 answerRes.StatusCode.Should().Be(HttpStatusCode.OK);
             }
 
