@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
-using questionnaire.Core.Domains.Surveys;
+using Newtonsoft.Json;
 
 namespace questionnaire.Core.Domains.SurveyTemplates
 {
     public class SurveyTemplate
     {
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; private set; }
+        [JsonProperty(PropertyName = "title")]
         public string Title { get; private set; }
+        [JsonProperty(PropertyName = "createdAt")]
         public DateTime CreatedAt { get; private set; }
+        [JsonProperty(PropertyName = "questionTemplates")]
         public ICollection<QuestionTemplate> QuestionTemplates { get; private set; } = new List<QuestionTemplate> ();
 
         private SurveyTemplate () { }

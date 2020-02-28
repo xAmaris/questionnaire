@@ -30,7 +30,7 @@ namespace questionnaire.Tests.Services
         private ISurveyTemplateService _surveyTemplateService;
         public SurveyServiceTemplateTests(TestHostFixture fixture)
         {
-            _context = fixture.Context;
+            _context = fixture._context;
             _surveyTemplateRepository = new SurveyTemplateRepository(_context);
             _questionTemplateRepository = new QuestionTemplateRepository(_context);
             _fieldDataTemplateRepository = new FieldDataTemplateRepository(_context);

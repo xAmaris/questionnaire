@@ -7,8 +7,6 @@ namespace questionnaire.Tests.Services
 {
     class SurveyServiceReportTests
     {
-        private SurveyReport _surveyReport;
-        private QuestionReport _questionReport;
         private SurveyReportService _surveyReportService;
         private Mock<ISurveyReportRepository> _surveyReportRepository;
         private Mock<ISurveyRepository> _surveyRepository;

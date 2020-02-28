@@ -18,9 +18,9 @@ C:\Users\goskroba\Desktop\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.deps.json
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.dll
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\bin\Debug\netcoreapp2.0\questionnaire.Core.pdb
-D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csprojAssemblyReference.cache
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csproj.CoreCompileInputs.cache
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfoInputs.cache
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.AssemblyInfo.cs
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.dll
 D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.pdb
+D:\aplikacja inżynierka\questionnaire\questionnaire.Core\obj\Debug\netcoreapp2.0\questionnaire.Core.csprojAssemblyReference.cache

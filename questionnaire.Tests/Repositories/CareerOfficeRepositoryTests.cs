@@ -14,7 +14,7 @@ namespace questionnaire.Tests.Repositories
         private readonly ICareerOfficeRepository _careerOfficeRepository;
         public CareerOfficeRepositoryTests(TestHostFixture fixture)
         {
-            _context = fixture.Context;
+            _context = fixture._context;
             _careerOfficeRepository = new CareerOfficeRepository(_context);
         }
 

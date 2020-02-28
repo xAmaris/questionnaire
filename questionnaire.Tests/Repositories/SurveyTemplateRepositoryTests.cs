@@ -14,7 +14,7 @@ namespace questionnaire.Tests.Repositories
         private readonly ISurveyTemplateRepository _surveyTemplateRepository;
         public SurveyTemplateRepositoryTests(TestHostFixture fixture)
         {
-            _context = fixture.Context;
+            _context = fixture._context;
             _surveyTemplateRepository = new SurveyTemplateRepository(_context);
         }
         [Fact]

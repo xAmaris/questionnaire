@@ -11,6 +11,10 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("questionnaire.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Api", "questionnaire.Api.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("questionnaire.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Core", "questionnaire.Core.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("questionnaire.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=nu" +
+    "ll", "D:\\aplikacja inżynierka\\questionnaire\\questionnaire.Infrastructure", "questionnaire.Infrastructure.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("questionnaire.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

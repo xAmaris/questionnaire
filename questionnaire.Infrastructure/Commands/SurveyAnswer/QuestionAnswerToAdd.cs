@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using questionnaire.Core.Domains.SurveyTemplates;
 using questionnaire.Infrastructure.Validators.Survey;
 
 namespace questionnaire.Infrastructure.Commands.SurveyAnswer
@@ -11,5 +13,6 @@ namespace questionnaire.Infrastructure.Commands.SurveyAnswer
         public bool IsRequired { get; set; }
         [FieldDataValidator]
         public ICollection<FieldDataAnswerToAdd> FieldData { get; set; }
+
     }
 }
