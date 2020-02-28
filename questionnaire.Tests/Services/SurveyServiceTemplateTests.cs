@@ -156,16 +156,6 @@ namespace questionnaire.Tests.Services
             await Assert.ThrowsAsync<ObjectDoesNotExistException>(() => _surveyTemplateService.DeleteSurveyTemplateAsync(id));
         }
         [Fact]
-        public async Task GetAllSurveyTemplatesAsync_GetAllSurveysCorrectly()
-        {
-            //Arrange
-            var surveyTemplatesFromContext = _context.SurveyTemplates.AsEnumerable();
-            //Act
-            var surveyTemplates = await _surveyTemplateService.GetAllSurveyTemplatesAsync();
-            //Assert
-            Assert.Equal(surveyTemplatesFromContext, surveyTemplates);
-        }
-        [Fact]
         public async Task GetSurveyTemplateByIdAsync_CorrectlyFetchSurveyTemplate()
         {
             //Arrange

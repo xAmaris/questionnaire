@@ -53,17 +53,6 @@ namespace questionnaire.Tests.Repositories
             Assert.Equal(existingSurveyTemplate, surveyTemplate);
         }
         [Fact]
-        public async Task GetAllWithQuestionTemplatesAsync_GetAllCorrectly()
-        {
-            //Arrange
-            var currentSurveyTemplates = _context.SurveyTemplates.AsEnumerable();
-            //Act
-            var surveyTemplates = await _surveyTemplateRepository.GetAllWithQuestionTemplatesAsync();
-            //Assert
-            Assert.NotNull(surveyTemplates);
-            Assert.Equal(currentSurveyTemplates, surveyTemplates);
-        }
-        [Fact]
         public async Task UpdateAsync_UpdatedCorrectly()
         {
             //Assert
