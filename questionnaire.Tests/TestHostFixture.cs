@@ -32,7 +32,7 @@ namespace questionnaire.Tests
         public TestHostFixture()
         {
             SetHttpClient();
-            SetAuthToken().Wait();
+            Task.Run(SetAuthToken).Wait();
         }
         public void SetHttpClient()
         {
