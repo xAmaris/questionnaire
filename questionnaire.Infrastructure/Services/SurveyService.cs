@@ -14,7 +14,6 @@ using questionnaire.Infrastructure.Services.Interfaces;
 
 namespace questionnaire.Infrastructure.Services {
     public class SurveyService : ISurveyService {
-        private IMapper _mapper;
         private readonly ISurveyRepository _surveyRepository;
         private readonly IQuestionRepository _questionRepository;
         private readonly IFieldDataRepository _fieldDataRepository;
@@ -23,7 +22,7 @@ namespace questionnaire.Infrastructure.Services {
         private readonly ISurveyTemplateRepository _surveyTemplateRepository;
         private readonly ISurveyReportService _surveyReportService;
 
-        public SurveyService (IMapper mapper,
+        public SurveyService (
             ISurveyRepository surveyRepository,
             IQuestionRepository questionRepository,
             IFieldDataRepository fieldDataRepository,
@@ -31,7 +30,6 @@ namespace questionnaire.Infrastructure.Services {
             IRowRepository rowRepository,
             ISurveyTemplateRepository surveyTemplateRepository,
             ISurveyReportService surveyReportService) {
-            _mapper = mapper;
             _surveyRepository = surveyRepository;
             _questionRepository = questionRepository;
             _fieldDataRepository = fieldDataRepository;
