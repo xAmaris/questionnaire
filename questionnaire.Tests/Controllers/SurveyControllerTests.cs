@@ -19,13 +19,13 @@ using Xunit;
 
 namespace questionnaire.Tests.Controllers
 {
-    public class SurveyTemplateControllerTests : IClassFixture<TestHostFixture>
+    public class SurveyControllerTests : IClassFixture<TestHostFixture>
     {
         private HttpClient _client;
         private CustomWebApplicationFactory _factory;
         private readonly string _email;
 
-        public SurveyTemplateControllerTests(TestHostFixture fixture)
+        public SurveyControllerTests(TestHostFixture fixture)
         {
             _client = fixture.Client;
             _factory = fixture._factory;
