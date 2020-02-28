@@ -10,9 +10,7 @@ using questionnaire.Core.Domains.Surveys;
 using questionnaire.Core.Domains.SurveyTemplates;
 using questionnaire.Infrastructure.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace questionnaire.Tests
 {

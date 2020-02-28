@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
 using questionnaire.Infrastructure.Commands.Account;
-using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;

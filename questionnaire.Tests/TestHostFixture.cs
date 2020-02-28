@@ -1,22 +1,9 @@
 using System;
-using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using questionnaire.Api;
-using questionnaire.Core.Domains;
-using questionnaire.Core.Domains.Surveys;
-using questionnaire.Core.Domains.SurveyTemplates;
-using questionnaire.Infrastructure.Commands.CareerOffice;
 using questionnaire.Infrastructure.Commands.User;
 using questionnaire.Infrastructure.Data;
 
