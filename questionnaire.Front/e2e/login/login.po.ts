@@ -35,9 +35,6 @@ export class LoginPage {
       .element(by.tagName('tbody'))
       .all(by.cssContainingText('span', 'Ankietyzator - aktywacja konta.'))
       .get(1);
-    // const mailTag = browser.element(
-    //   by.cssContainingText('span', 'Ankietyzator - aktywacja konta.')
-    // );
 
     browser
       .wait(
@@ -95,24 +92,17 @@ export class LoginPage {
         this.navigateToGoogleLogin();
       });
     });
-    // element(
-    //   by.css(
-    //     'form>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)>label>fa-icon>svg>path'
-    //   )
-    // ).click();
   }
   browserSendKeys(keys: any) {
     browser.actions().sendKeys(keys).perform();
   }
   logInToGoogleAccount() {
-    // browser.waitForAngular(false);
     browser
       .element(by.css('input[name="identifier"]'))
       .sendKeys(this.validCredentials.Username);
     browser
       .element(by.css('input[name="identifier"]'))
       .sendKeys(protractor.Key.ENTER);
-    // const ar = element(by.buttonText('passwordNext'));
     browser
       .wait(
         this.EC.visibilityOf(browser.element(by.css('input[name="password"]'))),
