@@ -12,8 +12,9 @@ import { ImportUserTabComponent } from './import-user-tab.component';
     FileUploadModule,
     FontAwesomeModule,
     MatButtonModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
   ],
-  declarations: [ImportUserTabComponent]
+  declarations: [ImportUserTabComponent],
+  exports: [ImportUserTabComponent]
 })
 export class ImportUserTabModule {}

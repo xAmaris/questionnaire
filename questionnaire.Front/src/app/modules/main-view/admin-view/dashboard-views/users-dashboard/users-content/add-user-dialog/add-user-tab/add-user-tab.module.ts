@@ -14,6 +14,7 @@ import { AddUserTabComponent } from './add-user-tab.component';
     ProgressSpinnerModule,
     MatDatepickerModule
   ],
-  declarations: [AddUserTabComponent]
+  declarations: [AddUserTabComponent],
+  exports: [AddUserTabComponent]
 })
 export class AddUserTabModule {}

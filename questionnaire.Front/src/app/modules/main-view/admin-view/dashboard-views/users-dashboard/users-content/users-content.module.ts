@@ -1,3 +1,4 @@
+import { AddUserTabModule } from './add-user-dialog/add-user-tab/add-user-tab.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.compon
 import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
 import { UsersContentComponent } from './users-content.component';
 import { UsersTileComponent } from './users-tile/users-tile.component';
+import { ImportUserTabModule } from './add-user-dialog/import-user-tab/import-user-tab.module';
 
 export const routes: Routes = [{ path: '', component: UsersContentComponent }];
 
@@ -36,7 +38,9 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     FontAwesomeModule,
     MatProgressSpinnerModule,
     IconButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ImportUserTabModule,
+    AddUserTabModule
   ],
   entryComponents: [
     ConfirmDialogComponent,

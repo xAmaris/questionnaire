@@ -8,3 +8,4 @@ import { basicTransition } from './other/router.animations';
   animations: [basicTransition]
 })
 export class AuthComponent {}
+
