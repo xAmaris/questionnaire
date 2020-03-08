@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { basicTransition } from './other/router.animations';
 
 @Component({
@@ -7,9 +7,4 @@ import { basicTransition } from './other/router.animations';
   styleUrls: ['./auth.component.scss'],
   animations: [basicTransition]
 })
-export class AuthComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {
-  }
-}
+export class AuthComponent {}
